@@ -1,0 +1,123 @@
+%% $RCSfile: proj_report_outline.tex,v $
+%% $Revision: 1.2 $
+%% $Date: 2010/04/23 02:40:16 $
+%% $Author: kevin $
+
+\documentclass[11pt
+              , a4paper
+              , twoside
+              , openright
+              ]{report}
+
+
+\usepackage{float} % lets you have non-floating floats
+
+\usepackage{url} % for typesetting urls
+\usepackage[numbers]{natbib}
+
+%
+%  We don't want figures to float so we define
+%
+\newfloat{fig}{thp}{lof}[chapter]
+\floatname{fig}{Figure}
+
+%% These are standard LaTeX definitions for the document
+%%                            
+\title{PitchHub - A Collaboration Platform for Innovators}
+\author{Michael Winton}
+
+%% This file can be used for creating a wide range of reports
+%%  across various Schools
+%%
+%% Set up some things, mostly for the front page, for your specific document
+%
+% Current options are:
+% [ecs|msor]              Which school you are in.
+%
+% [bschonscomp|mcompsci]  Which degree you are doing
+%                          You can also specify any other degree by name
+%                          (see below)
+% [font|image]            Use a font or an image for the VUW logo
+%                          The font option will only work on ECS systems
+%
+\usepackage[image,ecs,mcompsci]{vuwproject}
+
+\usepackage{graphicx}
+\usepackage{wrapfig}
+\usepackage{lscape}
+\usepackage{rotating}
+\graphicspath{ {images/} }
+
+% font
+% You should specifiy your supervisor here with
+\supervisor{Dr. Kris Bubendorfer}
+% use \supervisors if there is more than one supervisor
+
+% Unless you've used the bschonscomp or mcompsci
+%  options above use
+\otherdegree{ENGR489 - Bachelor of Engineering}
+% here to specify degree
+
+% Comment this out if you want the date printed.
+\date{}
+
+\begin{document}
+
+% Make the page numbering roman, until after the contents, etc.
+\frontmatter
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{abstract}
+
+The ability to connect innovative ideas to people and resources is an essential component of the innovation process. This project is concerned with empowering the innovation community with an online collaboration system that is simultaneously useful to all actors in the innovation ecosystem while ensuring that all sensitive IP shared is stored in a secure manner. The goal of this report is to detail the steps taken in designing and implementing a distributed web application that facilitates collaboration and enforces data security with threshold cryptography.
+
+\end{abstract}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\maketitle
+
+% \include{acknowledge}
+
+\tableofcontents
+
+% we want a list of the figures we defined
+\listof{fig}{Figures}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\mainmatter
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+% individual chapters included here
+
+\include{1_introduction}
+\include{2_background}
+\include{3.1_design_web}
+\include{3.2_implementation_web}
+\include{4.1_design_threshold}
+\include{4.2_implementation_threshold}
+\include{5_evaluation_design}
+\include{6_evaluation}
+\include{7_conclusion}
+\include{8_future_work}
+
+% \include{using}
+% \include{example}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\backmatter
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+\bibliographystyle{IEEEtranN}
+\bibliography{final}
+
+
+\end{document}
