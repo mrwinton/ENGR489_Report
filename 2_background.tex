@@ -1,7 +1,10 @@
 %!TEX root = proj_report_outline.tex
-\chapter{Background into Collaborative Platforms for Innovation}
+\chapter{Background}
 
 This chapter aims to explore the related works of collaborative platforms used in the innovation space and also contextualises where in this landscape PitchHub aims to occupy. First, this chapter presents a taxonomy of the primary roles used within the collaborative innovation process. Second, this chapter describes the current collaborative platforms being used in the innovation space and establishes where each stands within the role taxonomy. Third, this chapter concludes with a discussion on the practical limitations that are introduced by being innovation-orientated.
+
+\section{Innovation Community}
+
 
 \section{Common Roles in Innovation}
 
@@ -16,28 +19,41 @@ The process of driving an idea from its conceptualisation to its realisation com
 
 These four roles represent the different functions required in an innovative product or service's successful execution. Challengers provide the idea or problem to solved in order to realise a business opporunity. Enablers provide the resources required to action the innovation, this may be in terms of man-power, assets or financing. Solvers provide the answer to the idea or problem presented by the Challenger(s). Facilitators provide the connections to drive the innovation's exection, this may be in terms of connecting other people to the idea, or helping the idea gain reputation. Whether these roles are shared amongst a team or fulfilled by a single person in most cases of innovation these roles are too large for one person to embody them all. To continue with the Apple ][ example, we may catergorise Steve Jobs as the challenger, asking why computers can't serve the consumer market, Steve Wozniak can be seen as an enabler and sover, as he both designed the Apple ][ and built them, and Mike Markulla, can be regarded as an enabler and facilitator, as he financed the production and also lent his reputation to the product. 
 
-\section{An Investigation of Collaborative Platforms}
+\section{Security in Innovation}
+
+\section{Security, Privacy, and Trust in Online Communities}
+
+The nature of bringing the innovation process online consequently involves bringing what could be commercially sensitive information online also. In recent times there has been a growing trend of online security attacks where user data has been compromised. Given this reality, there is a large amount of trust involved where users are relying on the platforms they are inputting their sensitive data into to take precautions to keep this data safe. Research in the domain of economics has shown that ``without trust, risk is paralyzing; transactions simply do not take place'' \cite{boyd2002community}, this notion is similarly applicable in the online innovation space where users are transacting in intellectual property and skills rather than money. This trust enables users to operate in what can be seen as an unsafe environment, where they little power over how the data is stored and who can view it once they have inputted it. It is therefore important for platforms to make good on this trust and implement safeguards against these threats and provide functionality that gives users control of their data.
+\newline
+However, the security of online communities does not solely depend on their technical security. As explored by \citeauthor{johnson2012facebook} in their work regarding Facebook and privacy \cite{johnson2012facebook} social networks also face the problem of managing insider threat. Insider threat is where users innappropriately share content with members on the network. This problem is raised by the lack of or under use of privacy controls. In a platform where commercially sensitive information is the content at stake it is important the platform enforce or encourage the use of these privacy controls.
+\newline
+\citeauthor{shin2010effects}'s study explores the constructs of security, privacy, and trust in social networks. His findings affirmed the above discussion, concluding that security and privacy play vital roles in developing trust from the users \cite{shin2010effects}.
+
+\section{Related Work}
+
 Naturally, a platform that aims to facilitate collaboration for purposes of innovation at it's empowering an idea in relation to these roles. In this section we explore the current solutions being used to facilitate collaboration and discuss how each works in relation to these roles.
 \\
-\\
-\textbf{IdeaForge}\cite{ideaForge:online}
+\newline
+\textbf{IdeaForge} \cite{ideaForge:online}
 is a collaborative innovation platform that supports the Challenger, Enabler and Solver roles. In it's own parlance IdeaForge is described as a three-sided marketplace where users can provide ``ideas, time/skills or cash/resources". The main aim for this platform is to facilitate anytime/anywhere collaboration within the global innovation community. Additionally, IdeaForge provides some visibility settings for ideas, where they may be scoped as visible publicly or members only. IdeaForge does not provide functionality for Facilitators, therefore ideas being hosted on IdeaForge require external facilitation. IdeaForge can be regarded as the most similar to PitchHub in spirit as it serves many of the roles identified and provides scoping functionality.
 \\
-\\
-\textbf{Assembly}\cite{assembly:online}
+\newline
+\textbf{Assembly} \cite{assembly:online}
 is a collaborative platform that implicitly supports Challenger, Enabler, Solver, and Facilitator roles. Assembly is orientated around communities that may focus on one or more ideas. The platform does not explicitly distinguish between the roles identified but it's forum-like structure means that any of these roles may raise challenges or solutions within the groups. Assembly's recommender system functionality, where users get recommended groups they may be interested in, illustrates how Assembly itself can be seen as carrying out the Facilitator's role. PitchHub and Assembly differ on focus, where PitchHub focuses on the idea Assembly focuses on the community, this structure while applicable to the innovation space is less directed towards the immediate fulfillment of ideas and more for general collaboration.
 \\
+\newline
+\textbf{AngelList} \cite{Angel:online} and \textbf{Enterprise Angels} \cite{enterpriseAngles:online} are examples of online platforms for investors, a subset of of Enablers, looking to fund businesses. Crowd funding and microequity platforms such as \textbf{Kickstarter} \cite{Kicks6:online}, \textbf{Indiegogo} \cite{Indie3:online} and \textbf{PledgeMe} \cite{Pledge:online} are becoming increasingly viable sources of funding. These platforms are primarily for Challenger/Solvers looking to seed their innovations, and Enablers looking to get return on their investment. An interesting phenomenon of these platforms is the social ``hype" that is sometimes garnered around many of the products/services launched on these platforms. While the solicitation of funds is not a primary goal of PitchHub the inherent socialness of these funding platforms is directly comparable.
 \\
-\textbf{AngelList}\cite{Angel:online} and \textbf{Enterprise Angels} are examples of online platforms for investors, a subset of of Enablers, looking to fund businesses. Crowd funding and microequity platforms such as \textbf{Kickstarter}, \textbf{Indiegogo} and \textbf{PledgeMe} are becoming increasingly viable sources of funding. These platforms are primarily for Challenger/Solvers looking to seed their innovations, and Enablers looking to get return on their investment. An interesting phenomenon of these platforms is the social ``hype" that is sometimes garnered around many of the products/services launched on these platforms. While the solicitation of funds is not a primary goal of PitchHub the inherent socialness of these funding platforms is directly comparable.
+\newline
+Inevitably large social networks have also been used in the innovation space as platforms to help facilitate collaboration. Examples include \textbf{LinkedIn} \cite{Linkedin:online} being used by New Zealand Healthcare Innovation \cite{nzHealthCare:online}, \textbf{Facebook} \cite{Faceb6:online} being used in the Great New Zealand Science Project \cite{greatNZScience:online}, and \textbf{Google Groups} \cite{Googlegroups:online} being used in the National Science Challenges \cite{nzNSC10:online}. These platforms have the inherent benefit of convenience as many people in the innovation ecosystem are already members of these networks. These platforms however suffer from lack of (used) privacy controls, and therefore is not a conducive environment for users wishing to discuss commercially sensitive information. These repurposed examples of social networks are in stark constrast to PitchHub's goal of facilitating collaborative innovation.
 \\
-\\
-Inevitably large social networks have also been used in the innovation space as platforms to help facilitate collaboration. Examples include \textbf{LinkedIn} being used by New Zealand Healthcare Innovation, \textbf{Facebook} being used in the Great New Zealand Science Project, and \textbf{Google Groups} being used in the National Science Challenges. These platforms have the inherent benefit of convenience as many people in the innovation ecosystem are already members of these networks. These platforms however suffer from lack of (used) privacy controls, and therefore is not a conducive environment for users wishing to discuss commercially sensitive information. These repurposed examples of social networks are in stark constrast to PitchHub's goal of facilitating collaborative innovation.
-\\
-\\
-The proliferation of online networks has been a boon for communities, enabling unprecedented reach. The innovation community has benefitted greatly from these networks, however as demonstrated in the above investigation these networks lack features which serve the directed making of connections between all roles within the innovation community.
+\newline
+The proliferation of online networks has been a boon for communities, enabling unprecedented reach. The innovation community has benefitted greatly from these networks, however as demonstrated in the above investigation these networks lack features which serve the directed making of connections between all roles within the innovation community and also lack (used) privacy control functionality.
 
 [visualise the above, force directed graph layout?]
 
 PitchHub aims to learn and build on many of the ideas from these networks. First, to provide a platform that serves all roles within the innovation ecosystem. Second, to systematically build valuable business connections centerd around an idea. Third, to enable users privacy control over their contributions to an idea.
 
-\section{Practical Limitations of Online Collaboration for Innovation}
+\section{Database Security}
+
+\subsection{Threshold Security Schemes}
