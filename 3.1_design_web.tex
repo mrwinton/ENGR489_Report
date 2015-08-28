@@ -1,15 +1,7 @@
 %!TEX root = proj_report_outline.tex
+
 \chapter{Web Application Design}
-INTRO TODO
-
-\section{Requirements}
-Discuss What Callaghan Has Provided, and how this has guided direction.
-
-PitchCards similar to CRC cards in that they are easy to create and meant to be iterated upon, low barrier to entry.
-
-Callaghan's image of a PitchCard
-
-Scope of Disclosure - Complex database queries
+The design of the web application focused on the use of standard architecture patterns and web development technologies. This approach was taken as web application development covers numerous domains and technologies. In \citeauthor{shklar2009web}'s guide ``Web Application Architecture: Principles, Protocols and Practices'' they describe the core areas of knowledge required: HTTP, HTML, SMTP, JavaScript, Databases, Graphics Design, and Server Technology \cite{shklar2009web}. While designing a unique foundation specifically optimised for PitchHub is enticing, as Donald Knuth is famously quoted ``premature optimization is the root of all evil''. Furthermore, given the time constraints of this project, PitchHub leverages battle tested open source libraries to deliver more functionality while reserving the ability to make custom modifications and changes as necessary. This chapter explores these design choices and also the alternative designs that were considered throughout this project.
 
 \section{Architecture}
 
@@ -18,6 +10,17 @@ Why three layered?
 Diagram
 
 Explain each layer
+
+\section{Technology Choice}
+
+The quality of service attributes of a web application are deeply influenced by the fundamental technologies backing the solution. In this section both the framework and database selections are discussed in relation to quality of service attributes and more importantly the requirements identified in Chapter \ref{C:requirements}.
+
+\subsection{Framework Selection}
+
+Research was conducted on the web application frameworks available in effort to speed up the prototyping process. Ruby on Rails, Laravel, Django, Angular.js and OpenSocial were identified as frameworks that could work in fulfilment of the requirements specified. Ultimately the choice of frameworks was between Ruby on Rails and OpenSocial as they are written in languages that I most understand (Ruby and Java, respectively). Ruby on Rails is an open source framework that embraces RESTful web service design and conforms to the MVC architecture. Of note, Ruby on Rails has a wealth of open-source secret sharing and functional testing libraries that are directly applicable to the requirements of this project. OpenSocial in contrast to Ruby on Rails is first and foremost a framework for creating social network, and while PitchHub is not specifically a social network it's primary objective is to facilitate social interaction. Using OpenSocial would offer user authentication as well as messaging and posting functionality out of the box. 
+\par
+Of these frameworks Ruby on Rails was selected because of its vast open source library and elegant handling of complex user interaction flows. This decision results in a trade off in performance. Even in the current versions of each language Java has a significant  performance advantage over Ruby \cite{Perfo1:online}. For a simple web application this generally would not be a concern, however the secret sharing component entails the use of encryption algorithms which are computationally expensive. This was concluded not to be a major issue as Ruby on Rails offers the ability to run JRuby which is Ruby executed atop the JVM. JRuby offers significantly improved performance and even allows native Java to be executed if necessary \cite{Jruby:online}.
+
 
 \section{Behaviour Driven Development}
 
