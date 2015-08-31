@@ -51,4 +51,8 @@ The case for using a relational database like PostgreSQL is also motivated by th
 \par
 Ultimately MongoDB was selected as the database for PitchHub. MongoDB was chosen because the Pitch Card data is well suited to this data and the use case flows which require joins at most only need one join operation. It was concluded that using MongoDB and performing manual joins within the application is not a major issue because of this. Also MongoDB's ability to scale horizontally easily without the expensive migrations characteristic of relational databases provides an edge over PostgreSQL in meeting the scalability requirement.
 
-
+\section{Behaviour Driven Development}
+The development of the web application in keeping with the iterative approach involved progress on many aspects of the project each week: requirements analysis, requirements validation, design, development, testing, and documentation.
+Behaviour Driven Development (BDD) was incorporated within this process to ensure that the mutual understanding documented in the weekly reports was being directly (and accurately) translated into the prototype.
+\par
+This kind of development involved requirements being distilled into specifications, with the behaviour of the code being specified ahead of the implementation. This meant that the implementation then had the onus to fulfil the specified behaviour. With this approach PitchHub's progress was able to be tracked in each iteration in regards to actual business value being delivered. A by-product of this approach has resulted in PitchHub's test-suite relying less on tests on classes and units but on specification. The BDD process has been described as producing what is essentially executable documentation \cite{astels2006new}.
