@@ -2,13 +2,17 @@
 \chapter{Threshold Security Scheme}\label{C:threshholdSecurity}
 
 \section{Design}
+As discussed in Section \ref{S:databaseSecurity} Shamir's Secret Sharing Scheme is a threshold security scheme based on Lagrange interpolation. Recall, that the scheme works by splitting the secret into `n' shares, `k' of which are required to then retrieve the original secret. In this section the design for the service enabling PitchHub to leverage the secret sharing scheme is discussed.
 
-\subsection{Shamir's Secret Sharing Scheme}
+\subsection{Shamir's Secret Sharing Scheme Service}
+First, in designing the service an open-source implementation of Shamir's Secret Sharing was selected. This was a key design decision. While the principles of Shamir's Secret Sharing are simple, personally implementing a cryptography library should be treated with care. To implement and establish trust in such a component would require rigorous testing to be proven as secure. Leveraging the collective strength of the open-source community ensures that the implementations have had many eyes go through them (with different backgrounds/expertises). The primary activity for PitchHub in regards to Secret Sharing was to design and implement a service that integrates the security scheme.
+\par
+As discussed by prominent cryptographer and author \citeauthor{schneier1999cryptography} ``Building cryptography into products is hard... Flaws can appear anywhere. They can be in the trust model, the system design, the algorithms and protocols, the implementations, the source code, the human-computer interface, the procedures, the underlying computer system. Anywhere.''\cite{schneier1999cryptography}, PitchHub therefore approached the integration of the security scheme library with emphasis on limiting the amount of coupling. This was in effort such that no unintentional knowledge of the system producing vulnerabilities undermining the security scheme's integrity.
 
 \subsection{Overcoming Limitations of Threshold Security Schemes}
 
 \section{Implementation}
 
-\subsection{Implementation of Shamir's Secret Sharing Scheme}
+\subsection{Shamir's Secret Sharing Scheme Service}
 
-\subsection{Implementation of Secret Keeper Redundancy}
+\subsection{Secret Keeper Redundancy}
