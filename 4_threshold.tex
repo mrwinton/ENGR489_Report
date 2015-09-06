@@ -4,7 +4,7 @@
 \section{Design}
 As discussed in Section \ref{S:databaseSecurity} Shamir's Secret Sharing Scheme is a threshold security scheme based on Lagrange interpolation. Recall, the scheme works by splitting the secret into \textit{n} shares, \textit{k} of which are required to then retrieve the original secret. In this section the design for the service enabling PitchHub to leverage the secret sharing scheme is discussed.
 
-\subsection{Shamir's Secret Sharing Scheme Service}
+\subsection{Shamir's Secret Sharing Scheme Service}\label{SS:design_shamir_secret_sharing_service}
 First, in designing the service an open-source implementation of Shamir's Secret Sharing was selected. This was a key design decision. While the principles of Shamir's Secret Sharing are simple, personally implementing a cryptography library should be treated with care. To implement and establish trust in such a component would require rigorous testing to be proven as secure. Leveraging the collective strength of the open-source community ensures that the implementations have had many eyes go through them (with different backgrounds/expertises). The primary activity for PitchHub in regards to Secret Sharing was to design and implement a service that integrates the security scheme.
 \par
 As discussed by prominent cryptographer and author \citeauthor{schneier1999cryptography} ``Building cryptography into products is hard... Flaws can appear anywhere. They can be in the trust model, the system design, the algorithms and protocols, the implementations, the source code, the human-computer interface, the procedures, the underlying computer system. Anywhere.'' \cite{schneier1999cryptography}. PitchHub  approached the integration of the security scheme library with emphasis on limiting the amount of coupling. By reducing coupling between the library and wider system we reduce the risk of system knowledge producing vulnerabilities within PitchHub and undermining the security scheme's integrity.
@@ -18,7 +18,7 @@ Given share combinations up to \textit{k}, Secret Sharing Schemes ensure that th
 \par
 The first issue can be alleviated by introducing diversity to the secret keepers. Instead of all secret keepers being MongoDB instances including alternative data stores in the secret keeper configuration means that the vulnerabilities of the data stores themselves do not manifest as a vulnerability for the system as a whole. However, to do this effectively we require a configuration where there is not \textit{k} secret keepers of the same data store. If there were, the whole exercise of including alternative data stores would be rendered moot as an attacker with the ability to breach the particular data store would be able to fulfil the threshold \textit{k}. This issue of diversity and security is explored by \citeauthor{littlewood2004redundancy} who conclude that depending on the context diversity can be one of the most effective means of neutralising `systemic' attacks by merely avoiding the danger.
 \par
-There is a fundamental tension in the relationship between availability and security in threshold schemes. Representations of the classic Threshold Security Schemes where each secret keeper contains one and only share of the secret favour security over availability. This is great when secret keepers do not have any membership changes or only member changes that still preserve \textit{k} secret keepers. In this example should \textit{k} or more secret keepers go down the entire service becomes unavailable, and in cases where \textit{k} cannot ever be re-established then the secret data is irretrievable. There are a number of approaches that can be used to increase availability but each suffer from an increase in complexity and a decrease in security. For example, concepts used in distributed databases are directly applicable to secret sharing schemes. Redundancy and hinted hand-off are methods used by distributed database systems are used to ensure availability by node's sharing their data such that if they go down the data stored is still accessible through the nodes who hold the shared data. In the context of Threshold Schemes this means that some nodes may have more than one secret share for the same secret, this demonstrably reduces the significance of the threshold. For a system like PitchHub I believe classic redundancy where each member would contain a whole other keeper's secret shares is a step too far. However we could raise availability of the secret members themselves by represetnting secret members as high-availability clusters rather than individual databases, this architecture configuration is featured in Fig \ref{fig:architecture_high_availability}.
+There is a fundamental tension in the relationship between availability and security in threshold schemes. Representations of the classic Threshold Security Schemes where each secret keeper contains one and only share of the secret favour security over availability. This is great when secret keepers do not have any membership changes or only member changes that still preserve \textit{k} secret keepers. In this example should \textit{k} or more secret keepers go down the entire service becomes unavailable, and in cases where \textit{k} cannot ever be re-established then the secret data is irretrievable. There are a number of approaches that can be used to increase availability but each suffer from an increase in complexity and a decrease in security. For example, concepts used in distributed databases are directly applicable to secret sharing schemes. Redundancy and hinted hand-off are methods used by distributed database systems are used to ensure availability by node's sharing their data such that if they go down the data stored is still accessible through the nodes who hold the shared data. In the context of Threshold Schemes this means that some nodes may have more than one secret share for the same secret, this demonstrably reduces the significance of the threshold. For a system like PitchHub I believe classic redundancy where each member would contain a whole other keeper's secret shares is a step too far. However we could raise availability of the secret members themselves by representing secret members as high-availability clusters rather than individual databases, this architecture configuration is featured in Fig \ref{fig:architecture_high_availability}.
 
 \begin{figure}[ht]
     \centering
@@ -30,5 +30,25 @@ There is a fundamental tension in the relationship between availability and secu
 \section{Implementation}
 
 \subsection{Shamir's Secret Sharing Scheme Service}
+The secret sharing configuration developed for the prototype used a (\textit{3},\textit{4})-threshold scheme, where at least 3 of the 4 shares representing a secret must be combined to reconstruct the secret. The technologies used for the Secret Keepers are as follows: 2x MongoDB instances, 2x PostgreSQL instances, diversity in relation to implementation is further explored in Subsection \ref{SS:diverse_secret_keepers}. The Secret Sharing Service was implemented as designed in Subsection \ref{SS:design_shamir_secret_sharing_service} to support all CRUD operations. The approach for splitting objects was done on the field level, where each object's values where split and then placed into a new object representing the share that is ultimately persisted. For example, Fig
 
-\subsection{Secret Keeper Redundancy}
+\subsection{Diverse Secret Keepers}\label{SS:diverse_secret_keepers}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
