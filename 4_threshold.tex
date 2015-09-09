@@ -30,7 +30,9 @@ There is a fundamental tension in the relationship between availability and secu
 \section{Implementation}
 
 \subsection{Shamir's Secret Sharing Scheme Service}
-The secret sharing configuration developed for the prototype used a (\textit{3},\textit{4})-threshold scheme, where at least 3 of the 4 shares representing a secret must be combined to reconstruct the secret. The technologies used for the Secret Keepers are as follows: 2x MongoDB instances, 2x PostgreSQL instances, diversity in relation to implementation is further explored in Subsection \ref{SS:diverse_secret_keepers}. The Secret Sharing Service was implemented as designed in Subsection \ref{SS:design_shamir_secret_sharing_service} to support all CRUD operations. The approach for splitting objects was done on the field level, where each object's values where split and then placed into a new object representing the share that is ultimately persisted. For example, Fig \ref{fig:comment_split}
+The secret sharing configuration developed for the prototype used a (\textit{3},\textit{4})-threshold scheme, where at least 3 of the 4 shares representing a secret must be combined to reconstruct the secret. The technologies used for the Secret Keepers are as follows: 2x MongoDB instances, and 2x PostgreSQL instances, this implementation is further explored in Subsection \ref{SS:diverse_secret_keepers}. The Secret Sharing Service was implemented as designed in Subsection \ref{SS:design_shamir_secret_sharing_service}. The requirement
+
+The approach for splitting objects was done on the field level, where each object's values are split and then placed into a new share that is ultimately persisted, Fig \ref{fig:comment_split} visualises how this done on a comment object. 
 
 \begin{figure}[ht]
     \centering

@@ -27,14 +27,44 @@ Collaboration on PitchHub is actioned through users making suggestions and comme
 The software methodology adopted in this project has been an agile, iterative approach. Each iteration is approximately one week in length and consists of the following actions: requirements analysis, requirements validation, design, development, testing, and documentation. During the early stages of the project identifying all of the requirements in a waterfall-like approach was infeasible as this would have required large contiguous amounts of time, of which Callaghan Innovation would not have been able to provide. So in keeping with the agile approach requirements were gathered progressively during client meetings and through the already completed conceptual work. 
 
 \section{Functional Requirements}
-\begin{itemize}
-\item The prototype must fulfil the user flows specified by Callaghan Innovation (i.e. the actions that enable the innovation community to connect and co-create).
-\item The prototype must be store data securely to establish trust with users, by knowing that their commercially sensitive data is safe.
-\item The prototype must provide privacy controls over user content so that users can control the scope of disclosure.
-\end{itemize}
+The following functional requirements were identified as being key to the success of the project:
+\newline
+\\
+\textbf{F1: The prototype must enable the innovation community to collaborate.}
+\newline
+\\
+The most significant requirement is to ensure that the user stories specified by Callaghan Innovation are fulfilled. The prototype must support these interactions in a sensible manner. Focusing on ideas, rather than people, users should be able to initiate and collaborate on the execution of innovative ideas.
+\newline
+\\
+\textbf{F2: The prototype must store sensitive data securely.}
+\newline
+\\
+In order for users to feel safe contributing what may be commercially sensitive communication all data of this nature must be stored in a secure manner. The prototype must consider both how and at what granularity the Threshold-scheme is applied to maintain a balance with performance.
+\newline
+\\
+\textbf{F3:  The prototype must enable users to scope the disclosure of their content/identity.}
+\newline
+\\
+An interaction behaviour must be developed such that users are able to negotiate the scope of their content to prevent unwanted attention. If users do not wish to disclose their identity or wish to use a scope this behaviour must be supported.
+\newline
+\\
+\textbf{F4:  The prototype must be portable and extensible.}
+\newline
+\\
+Given the varying degrees of technical skills of the stakeholders at Callaghan Innovation the prototype must be able to be run and extended with minimal effort. The prototype must therefore consider technologies that support ease-of-use over the entire SDLC.
 
 \section{Non-functional Requirements}
-\begin{itemize}
-\item The prototype must be performant, enabling users to fluently use the platform without distraction.
-\item The prototype must support a distributed architecture to enable PitchHub the ability to scale and store data in a geographically redundant configuration.
-\end{itemize}
+The following non-functional requirements were identified as necessary for the prototype's success:
+\newline
+\\
+\textbf{NF1: The prototype must be performant.}
+\newline
+\\
+In order to facilitate collaboration within the online innovation community the prototype must enable users to fluently use the platform without distraction. It is well-known that extended load/wait times increase the likelihood of abandoning of the operation and degrade overall user satisfaction \cite{SiteSpeed1:online}\cite{TheAverage:online}\cite{HowL7:online}.
+\newline
+\\
+\textbf{NF2: The prototype must support a distributed architecture.}
+\newline
+\\
+The ability to easily/efficiently scale to meet user demand is a highly desirable property for web systems today. The prototype should use a distributed architecture to achieve this scalability. Consideration must be given to how redundancy and security operate within the system's distributed context.
+
