@@ -30,9 +30,7 @@ There is a fundamental tension in the relationship between availability and secu
 \section{Implementation}
 
 \subsection{Shamir's Secret Sharing Scheme Service}
-The secret sharing configuration developed for the prototype used a (\textit{3},\textit{4})-threshold scheme, where at least 3 of the 4 shares representing a secret must be combined to reconstruct the secret. The technologies used for the Secret Keepers are as follows: 2x MongoDB instances, and 2x PostgreSQL instances, this implementation is further explored in Subsection \ref{SS:diverse_secret_keepers}. The Secret Sharing Service was implemented as designed in Subsection \ref{SS:design_shamir_secret_sharing_service}. The requirement
-
-The approach for splitting objects was done on the field level, where each object's values are split and then placed into a new share that is ultimately persisted, Fig \ref{fig:comment_split} visualises how this done on a comment object. 
+Beyond the configuration of the service which is further explored in Subsection \ref{SS:diverse_secret_keepers} an initial concern was in determining at what granularity the Pitch Cards/Contribution objects should be split. The options considered were as follows: split a binary representation of the object, split each field present in the object, or split only the sensitive fields in the object. The first option results in the entire object being encrypted with little ability to reason about the contents. This approach is considered too restrictive as data such as \textit{user id}, \textit{status}, and \textit{timestamps} would have to be exposed to facilitate meaningful database queries. The second approach is better with regard to the fact that the structure of the data is reflected in the database however we would still require the same exposing of attributes as the first option. Ultimately, the approach for splitting objects was done on the field level, where each object's sensitive values are split and then placed into a new share that is persisted. Fig \ref{fig:comment_split} visualises how this done on a comment object. 
 
 \begin{figure}[ht]
     \centering
@@ -43,11 +41,13 @@ The approach for splitting objects was done on the field level, where each objec
 
 \subsection{Diverse Secret Keepers}\label{SS:diverse_secret_keepers}
 
-
-
-
-
-
+The secret sharing configuration developed for the prototype used a (\textit{3},\textit{4})-threshold scheme, where at least 3 of the 4 shares representing a secret must be combined to reconstruct the secret. The technologies used for the Secret Keepers are as follows: 2x MongoDB instances, and 2x PostgreSQL instances.
+\par
+The motivation behind using PostgreSQL instances to diversify the Secret Keepers is twofold. First, as discussed in Subsection \ref{SS:databaseSelection} the relational model is the ideal way to model N:M relationships users have with Pitch Cards and Suggestions/Comments. Second, the relational model is supported as the primary object-mapping system by Ruby on Rails. Given these reasons there are an abundance of advantages: modelling the data in a natural way that fits it's structure, better support throughout the development of the component, ability to prototype at a high velocity. Consideration was given to other document-model solutions such as CouchDB \cite{Apach2:online} and Couchbase \cite{Accel4:online} however these proved to have an underwhelming level of documentation for their ODM libraries.
+\par
+An initial concern was that the upfront schema set-up and overall schema-strictness required by relational databases would impact PitchHub's portability and extensibility, important attributes captured in requirement \textit{F4}. Thankfully, Ruby on Rails has out-of-the-box support for \textit{migrations} which enable database schemas to be defined/altered incrementally. This is another case of PitchHub configuring infrastructure in code and opening the door for automation.
+\par
+The most manual portion of setting up PitchHub at this stage is that the migrations required being manually executed on each database instance (as well as maintaining separate configuration files for each instance). To consolidate and automate this process PitchHub leverages the open-source community's \textit{Octopus} library \cite{tchan7:online}. Octopus enables sharding and migration management for distributed database configurations. Integrating Octopus restores near `plug-and-play' functionality that PitchHub enjoyed in the initial non-secret sharing prototype. Still required is the actual setting up of the PostgreSQL instances. This can be done manually or via Vagrant but even this is considered to violate requirement \textit{F4}, which identifies non-technical users being able to easily set up a local instance of PitchHub. To resolve this issue, the (development branch of) PitchHub makes use of SQLite \cite{SQLit5:online}, a self-contained, zero-configuration SQL database. This configuration while not appropriate for production makes local instances of PitchHub with the secret sharing configuration easily accessible by non-technical users.
 
 
 

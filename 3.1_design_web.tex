@@ -31,7 +31,7 @@ The design of the system's model is another case of requirements being captured 
     \label{fig:class_diagram}
 \end{sidewaysfigure}
 
-\section{Technology Choice}
+\section{Technology}
 
 The quality of service attributes of a web application are deeply influenced by the fundamental technologies backing the solution. In this section both the framework and database selections are discussed in relation to quality of service attributes and more importantly the requirements identified in Chapter \ref{C:requirements}.
 
@@ -41,7 +41,7 @@ Research was conducted on the web application frameworks available in effort to 
 \par
 Of these frameworks Ruby on Rails was selected because of its vast open source library and elegant handling of complex user interaction flows. This decision results in a trade off in performance. Even in the current versions of each language Java has a significant  performance advantage over Ruby \cite{Perfo1:online}. For a simple web application this generally would not be a concern, however the secret sharing component entails the use of encryption algorithms which are computationally expensive. This was concluded not to be a major issue as Ruby on Rails offers the ability to run JRuby which is Ruby executed atop the JVM. JRuby offers significantly improved performance and even allows native Java to be executed if necessary \cite{Jruby:online}.
 
-\subsection{Database Selection}
+\subsection{Database Selection}\label{SS:databaseSelection}
 
 The choice of database has profound effects on the performance and scalability requirements identified in Chapter \ref{C:requirements}. The rise of NoSQL databases has been attributed to the increasing need for highly scalable and performant databases. Given this need in PitchHub, in addition to PostgreSQL, the NoSQL databases MongoDB and Cassandra were also investigated.
 \par
