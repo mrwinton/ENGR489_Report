@@ -5,7 +5,7 @@
 As discussed in Section \ref{S:databaseSecurity} Shamir's Secret Sharing Scheme is a threshold security scheme based on Lagrange interpolation. Recall, the scheme works by splitting the secret into \textit{n} shares, \textit{k} of which are required to then retrieve the original secret. In this section the design for the service enabling PitchHub to leverage the secret sharing scheme is discussed.
 
 \subsection{Shamir's Secret Sharing Scheme Service}\label{SS:design_shamir_secret_sharing_service}
-First, in designing the service an open-source implementation of Shamir's Secret Sharing was selected. This was a key design decision. While the principles of Shamir's Secret Sharing are simple, personally implementing a cryptography library should be treated with care. To implement and establish trust in such a component would require rigorous testing to be proven as secure. Leveraging the collective strength of the open-source community ensures that the implementations have had many eyes go through them (with different backgrounds/expertises). The primary activity for PitchHub in regards to Secret Sharing was to design and implement a service that integrates the security scheme.
+The first action in designing the service was choosing an open-source implementation of Shamir's Secret Sharing. Deciding to use an open-source implementation over writing a custom implementation was a key design decision. While the principles of Shamir's Secret Sharing are simple, personally implementing a cryptography library should be treated with care. To implement and establish trust in such a component would require rigorous testing to be proven as secure. Leveraging the collective strength of the open-source community ensures that the implementations have had many eyes go through them (with different backgrounds/expertises). The primary activity for PitchHub in regards to Secret Sharing was to design and implement a service that integrates the security scheme.
 \par
 As discussed by prominent cryptographer and author \citeauthor{schneier1999cryptography} ``Building cryptography into products is hard... Flaws can appear anywhere. They can be in the trust model, the system design, the algorithms and protocols, the implementations, the source code, the human-computer interface, the procedures, the underlying computer system. Anywhere.'' \cite{schneier1999cryptography}. PitchHub  approached the integration of the security scheme library with emphasis on limiting the amount of coupling. By reducing coupling between the library and wider system we reduce the risk of system knowledge producing vulnerabilities within PitchHub and undermining the security scheme's integrity.
 \par
@@ -35,7 +35,7 @@ Beyond the configuration of the service which is further explored in Subsection 
 \begin{figure}[ht]
     \centering
     \includegraphics[width=1\textwidth]{comment_split}
-    \caption{}
+    \caption{A comment object shown before and after the split operation. Each secret share contains an indecipherable portion of the original secret.}
     \label{fig:comment_split}
 \end{figure}
 
