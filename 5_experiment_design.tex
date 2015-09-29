@@ -4,7 +4,7 @@ Following the completion and deployment of the prototype, an analysis of the art
 
 \section{Evaluation Scope}
 In designing the evaluation the requirements identified in Chapter \ref{C:requirements} were deconstructed to clearly define, where possible, the conditions upon which each requirement can be considered fulfilled. The high-level results of this requirements deconstruction is displayed in the following table:
-\\
+
 \begin{adjustwidth}{-1.25cm}{}
 \begin{tabular}{ |p{1cm}||p{6cm}|p{10cm}|  }
  \hline
@@ -28,21 +28,77 @@ In designing the evaluation the requirements identified in Chapter \ref{C:requir
 \vspace{1em}
 
 The breakdown's fulfilment criteria denotes the steps required to satisfactorily mark the requirement as completed, however as seen in requirement F2 and F4 some of these steps require external review. These two requirements are discussed first.
-\par
-To achieve a satisfactory degree of verification for satisfying requirement F2 would require a level of scrutiny and knowledge possessed only by a security expert. While the integration of the Shamir's Secret Sharing service has been implemented to the best of my ability I believe I am unable to fully explore the security aspect of this evaluation. An evaluation of this requirement would require consideration of the following points: first, the cryptographic modules in the Secret Sharing Service must be verified and second, the security of the storage functionality cannot be considered in isolation. Should any combination of access control, communications, or session management components be compromised it is possible that the data protection component may also be compromised by association. Therefore evaluating whether ``data is stored securely'' must be done within the context of the wider system rather than specifically on the Secret Sharing Service. Verifying the Secret Sharing service's cryptographic implementation would take us further down the rabbit hole. OWASP's application security verification standard \cite{OWASP:online} details the minimum steps: all cryptographic modules fail securely, random number generators apply the appropriate standards, all cryptographic modules are validated against FIPS 140-2 or equivalent, all cryptographic modules operate in their approved mode according to their published security policies. Given the large burden to validate this requirement and the project's limited resources I regard the evaluation of requirement F2 out of scope. Cursory steps I have taken to build confidence in the prototype's security are as follows: Shamir Secret Sharing service, all requests enforce ssl, CSRF tokens to prevent CSRF, escaped user input to prevent XSS, 
+
+Achieving a conclusive degree of verification for requirement F2 would require a level of scrutiny and knowledge possessed only by a security expert. While the integration of the Shamir's Secret Sharing service has been implemented to the best of my ability I believe I am unable to fully explore the security aspect for this evaluation. An evaluation of this requirement would require consideration of the following points: first, the cryptographic modules in the Secret Sharing Service must be verified and second, the security of the storage functionality cannot be considered in isolation. Should any combination of access control, communications, or session management components be compromised it is possible that the data protection component may also be compromised by association. Therefore evaluating whether ``data is stored securely'' must be done within the context of the wider system rather than specifically on the Secret Sharing Service. Verifying the Secret Sharing service's cryptographic implementation would take us further down the rabbit hole. OWASP's application security verification standard \cite{OWASP:online} details the minimum steps: all cryptographic modules fail securely, random number generators apply the appropriate standards, all cryptographic modules are validated against FIPS 140-2 or equivalent, all cryptographic modules operate in their approved mode according to their published security policies. Given the large burden to validate this requirement and the project's limited resources I regard the evaluation of requirement F2 out of scope. Cursory steps I have taken to build confidence in the prototype's security are as follows: Shamir Secret Sharing service, all requests enforce ssl, CSRF tokens to prevent CSRF, escaped user input to prevent XSS, 
 white-list firewall set-up, \textit{fstab} modification to prevent shared memory attacks, \textit{sysctl} and host file modification to prevent IP Spoofing, and DenyHosts \cite{DenyH6:online} integrated to prevent SSH attacks.
-\par
-Assessing whether a system is portable and extensible is an inherently subjective endeavour. The fulfilment criteria for requirement F4 reflects this. A system can be regarded as portable if it works in all environments required of it, and likewise a system can be regarded as extensible given it is able to adapt to all it's future requirements. However, determining all the future environments and requirements of the system is a difficult task. PitchHub has therefore sought to achieve general portability and extensibility. Portability has been defined as ``The ease with which a system or component can be transferred from one hardware or software environment to another'' \cite{mattsson2006software}. As discussed in previous sections PitchHub has employed virtualisation and automation to make such tasks easy as possible. Extensibility is informally defined as ``the ability of the system to tolerate additional features or functionality will little or no required rework of previously developed features or functions'' \cite{Extensibility:online}. PitchHub has been developed with this in mind, the layered architecture and MVC pattern followed mean that both hardware and software components are divided in terms of responsibility. This separation of concerns means that future change request modifications will be isolated to components whose responsibility fits. The inability to strictly quantify or qualify whether requirement F4 is met has led me to regard this requirement out of scope for the purposes of this evaluation. However I believe the spirit of this requirement has been reflected in the system's design.
-\par
+
+Assessing whether a system is portable and extensible is an inherently subjective endeavour. The fulfilment criteria for requirement F4 reflects this. A system can be regarded as portable if it works in all environments required of it, and likewise a system can be regarded as extensible given it is able to adapt to all it's future requirements. However, determining all the future environments and requirements of the system is a difficult task. PitchHub has therefore sought to achieve general portability and extensibility. The definition of portability adopted is: ``the ease with which a system or component can be transferred from one hardware or software environment to another'' \cite{mattsson2006software}. As discussed in previous sections PitchHub has employed virtualisation and automation to make such tasks easy as possible. The definition of extensibility adopted is: ``the ability of the system to tolerate additional features or functionality will little or no required rework of previously developed features or functions'' \cite{Extensibility:online}. PitchHub has been developed with this in mind, the layered architecture and MVC pattern followed mean that both hardware and software components are divided in terms of responsibility. This separation of concerns means that future change request modifications will be isolated to components whose responsibility fits. The inability to strictly quantify or qualify whether requirement F4 is met has led me to regard this requirement as out of scope for the purposes of this evaluation. However I believe the spirit of this requirement has been reflected in the system's design.
+
 Requirements F1 and F3 have very similar fulfilment criteria and hence have been grouped together for the evaluation. Through this evaluation we establish that PitchHub has the required functionality to support collaboration within the innovation community. The experiment design and test bed implemented for these functional requirements are described in Section \ref{SS:collaborativeFunctionality}.
-\par
+
 Requirement NF1 relies on a simulation based evaluation, where synthetic data is seeded to imitate the load the entire innovation community in New Zealand could have on PitchHub. Requirement NF2 is implicitly satisfied through this experiment as the simulation is deployed on distributed infrastructure. Through this experiment we establish that the PitchHub application has the ability to support the innovation community. The experiment design and test bed implemented for these non-functional requirements are described in Section \ref{SS:performance}.
 
 \section{Assumptions and Limitations}
+The experiments undertaken have operated under a number of assumptions and limitations. These assumptions and limitations are explored in this section, with reflection on their possible ramifications.
+One of the key assumptions underpinning the PitchHub system is that the functionality specified in the user stories will actually facilitate collaboration within the innovation ecosystem. There has been no prior user study nor previous works which indicate that the collaborative approaches embraced (idea-deconstruction/scope of disclosure) by the prototype will either help or hinder the collaboration process. Based on Callaghan Innovation's experience in the innovation community and the current trend of platforms being released targeting innovators (e.g. IdeaForge and Assembly identified in Section \ref{background}) we believe that there is an inherent need for online collaboration within this community. Discerning whether the prototype produced has the ability to satiate this need will be determined through experience. Currently the prototype has been bought-into by the wider Callaghan Innovation networks group. This is an ideal \textit{proving ground} as it means that resources will be made available to continue PitchHub. Furthermore, the acceptance by a separate Callaghan Innovation group is a positive indication that the functionality supported is desired.
+
+A limitation of the experiment described in Section \ref{SS:performance} is that it is only semi-globally distributed. Two servers hosted on AWS (located in Oregon, USA) and two servers hosted by Callaghan Innovation in Wellington provide an uncommon network topology. The Secret Sharing Service with the ``3, 4'' threshold scheme means that on each database query at least one request will be sent to one of the AWS instances. This impacts the performance results due to the latency incurred. For performance results it would have been better to have all servers hosted within New Zealand. However, security and disaster recovery considerations motivated the move to embrace a more geographically distributed network.
+
+A further limitation of the experiment described in Section \ref{SS:performance} is that it seeded with synthetic data rather than user data. This is because no open-source user data currently exists within the domain of collaborative networks\footnote{As of 29/9/15.}. To achieve a representative synthetic dataset I required: the number of people in the innovation community to determine user base size and also an idea of their platform engagement with regard to how many Pitch Cards and Suggestions/Comments they would contribute. Statistics New Zealand's data on innovation gives a picture of the innovation communities size from 2003 to 2013 \cite{Innov5:online}\cite{Innov7:online}\cite{Innov9:online}\cite{Innov11:online}\cite{Innov13:online}. 
+The data available categorises New Zealand businesses with dealings in the innovation ecosystem by size (e.g. 6 - 9 people, ... 50 - 99 people) and maps how many companies fit each range. The meaningfulness derived is somewhat impacted by this as the results include people who have no direct stake within the innovation ecosystem (i.e. not resembling one of the roles identified in Section \ref{background}). Ultimately, this data gives a ballpark, albeit overly high, estimate of the size of the innovation community in New Zealand. The results from this analysis is presented in Fig \ref{fig:innovation_size}.
+An accurate estimation of the amount of contributions each user may have is inherently important to a performance evaluation where database queries make up the majority of processing time. To make the seed data more realistic a Pareto distribution was chosen as advised by Callaghan Innovation. Reason for such a distribution is that we conjecture that the vast majority of users will likely make only a few Pitch Cards and Suggestions, while a long tail of more avid users will be contributing a disproportionate amount of Pitch Cards and Suggestions relative to the entire user base. This conjecture is supported by recent work analysing user engagement in online support groups \cite{carron2014describing}\cite{van2015mapping}. The authors of both papers find that similar power distributions are able to characterise user engagement. The power distribution assumed for this evaluation as informed by Callaghan Innovation is displayed in Fig \ref{fig:contribution_distribution}.
+
+\begin{figure}[ht]
+    \centering
+    \includegraphics[width=0.8\textwidth]{innovation_size}
+    \caption{The estimated total number of employees of businesses with innovation activities from the years 2005 to 2013. The large error range is resultant from the wide range presented in the data.}
+    \label{fig:innovation_size}
+\end{figure}
+
+\begin{figure}[ht]
+    \centering
+    \includegraphics[width=0.6\textwidth]{contribution_distribution}
+    \caption{The assumed Pareto distribution describing user engagement with regard to Pitch Cards and Suggestions shared.}
+    \label{fig:contribution_distribution}
+\end{figure}
 
 \section{Test Design}
+This section describes the test beds designed for the evaluation. The aim of each test is discussed alongside reflection on how the test bed's automation has improved the robustness and flexibility of each test.
 
 \subsection{Collaboration Functionality}\label{SS:collaborativeFunctionality}
+The principal aim in testing the fulfilment of requirements F1 and F3 is to ensure that users have the tools/functionality available to successfully collaborate online. Specifically what successful online collaboration is has been captured in the user stories developed by Callaghan Innovation with assistance from myself. The following is an example (concatenated for brevity) of the general granularity achieved in each user story:
+
+\begin{verbatim}
+Feature: Annotate Pitch Card
+  As a user, I want to suggest changes on viewable pitches so that I can offer insight
+
+  Background:
+    Given following users exist:
+      | username    | email             |
+      | Foo	        | foo@foo.foo       |
+      | Bar      	  | bar@bar.bar       |
+    And a user with email "foo@foo.foo" posts a well formed pitch card
+
+  Scenario: suggest a change
+    When I sign in as "bar@bar.bar"
+    And I am on the first pitch card contributed by "foo@foo.foo"
+    And I click "suggest" on the pitch point "solve"
+    And I fill in the following:
+      | change              | my suggested change                   |
+      | comment             | reasoning for my change suggestion    |
+    And I set the content scope of disclosure to "public"
+    And I set my identity scope of disclosure to "collaborators"
+    And I press "Submit"
+    Then I should see "my suggested change" within "discourses-content"
+    And I should see "reasoning for my change suggestion" within "discourses-content"
+    And I should see "less than a minute ago" within "discourses-content"
+
+\end{verbatim}
+
+The test bed PitchHub uses for evaluating the functional requirements `executes' these user stories. It does so in exactly the same way users interact with the system through a browser. This has been achieved by using Cucumber, a Ruby behaviour driven development library, and Selenium, a popular web driver. To verify that these `executable' user stories sufficiently simulate user behaviour let us explore the above example. The feature \textit{Annotate Pitch Card} contains three main sections: a brief description of the test's aim, the background which specifies the beginning state of each test, and scenarios which are essentially the feature's tests. The content of the background and scenario blocks are interpreted via step definitions which use Selenium to then drive browser interaction. For example, the line ``When I sign in as bar@bar.bar'' is interpreted into the following browser interactions: navigate to page \url{localhost:3000/users/sign_in}, fill email field, fill password field, click login button.
+A key advantage in having functionality testing automated in this way is that the state of the application is far simpler to reason about. At the start of each test the application is guaranteed to always be in the state specified in the background. Furthermore, all statements following the `then' keyword act as assert statements making in-test guarantees possible.
+
+Ultimately, the aim of ensuring functionality is supported is well-suited to this type of testing for the following reasons: first, user interaction is simulated naturally, second, automation ensures that no lingering tests and their leftover states affect current tests, and third, the natural definition of these tests mean that non-technical users can specify and test behaviour. The greatest threat to validity with this experiment design is that Selenium uses Firefox. Online sources agree that Google Chrome holds the dominating market share at around 50\% as opposed to Firefox's share at aroung 10\%. Ideally, simulations would be run on all major browsers but as it stands the Firefox driver for Selenium is the most robust and featured. However, this threat is considered to be acceptable given that browser conformance to W3C standards is high.
 
 \subsection{Performance}\label{SS:performance}
 
