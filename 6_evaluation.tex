@@ -7,6 +7,9 @@
 
 wiki: SecretSharing
 
-The disadvantage of unconditionally secure secret sharing schemes is that the storage and transmission of the shares requires an amount of storage and bandwidth resources equivalent to the size of the secret times the number of shares. If the size of the secret were significant, say 1 GB, and the number of shares were 10, then 10 GB of data must be stored by the shareholders
 
-talk about NN threshold
+\subsection{Discussion}
+
+A limitation of the experiment described in Section \ref{SS:performance} is that it is only semi-globally distributed. Two servers hosted on AWS (located in Oregon, USA) and two servers hosted by Callaghan Innovation in Wellington provide an uncommon network topology. The Secret Sharing Service with the ``3, 4'' threshold scheme means that on each database query at least one request will be sent to one of the AWS instances. This impacts the performance results due to the latency incurred. For performance results it would have been better to have all servers hosted within New Zealand. However, security and disaster recovery considerations motivated the move to embrace a more geographically distributed network.
+
+The disadvantage of unconditionally secure secret sharing schemes is that the storage and transmission of the shares requires an amount of storage and bandwidth resources equivalent to the size of the secret times the number of shares. If the size of the secret were significant, say 1 GB, and the number of shares were 10, then 10 GB of data must be stored by the shareholders
