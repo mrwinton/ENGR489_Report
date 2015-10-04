@@ -1,5 +1,23 @@
 %!TEX root = proj_report_outline.tex
 \chapter{Threshold Security Scheme}\label{C:threshholdSecurity}
+TODO This chapters discusses the importance of database security, introduces threshold security schemes and describes how Shamir's Secret Sharing scheme has been integrated with PitchHub for the purposes of fulfilling Requirement TODO.
+
+\section{Database Security}\label{S:databaseSecurity}
+Securely storing data is a large and increasingly important research area to modern society. In recent years companies like Sony, Apple and Adobe have experienced data breaches resulting in compromised user data. In a system like PitchHub where commercially sensitive information is being handled extreme care must be taken to ensure its safety.
+
+\subsection{Background into Threshold Security Schemes}
+Secret Sharing schemes are a type of Threshold Security Scheme where a piece of data is split into \textit{n} secret shares. To retrieve the original data a threshold of \textit{k} of \textit{n} shares ("\textit{k}, \textit{n}") must be met before the original piece of data can be decrypted. A fictional scenario that describes this concept is where the code for launching a nuclear missile is split between three officers, to launch the missile all three officers must be present to reconstruct the launch code. Each share in isolation cannot be used to launch the missile, nor can it be used to infer the original code. This "3, 3" example is somewhat contrived but it showcases the fundamentals of secret sharing in that: the secret can be recovered given the threshold is met and the secret is indeed secret given any combination of \textit{t} shares less than \textit{k}.
+
+\subsection{Shamir's Secret Sharing Scheme}
+Shamir's secret sharing \cite{shamir1979share} is a threshold scheme based on polynomial interpolation. 
+
+\[q(x) = a_o +a_1x + ... + a_{k-1}x^{k-1} \]
+
+The fundamental idea is that given a "\textit{k}, \textit{n}" scheme a random polynomial of degree \textit{k}-1 may be generated where the secret \textit{D} is hidden as term \(a_o\). A set of \textit{n} points may then be constructed from this polynomial and shared to \textit{n} secret keepers. To recover the secret \textit{D} the process requires a subset of \textit{k} secret shares to calculate the coefficients of the polynomial using interpolation. With this a system is able to recover the secret \textit{D} at term \(a_o\).
+\par
+Shamir's Secret Sharing scheme effectively allows a system to share secrets to \textit{n} secret keepers while maintaining each secret's safety as a long as a threshold of \textit{k} malicious secret keepers is not met. Besides being secure, Shamir's Secret Sharing scheme holds a number of other useful properties such as being minimal, extensible and dynamic \cite{shamir1979share}. The scheme is minimal in that the the size of each share does not exceed the size of the original secret. The scheme is extensible in that \textit{n} may be increased by giving new secret keepers new points from the polynomial. The scheme is dynamic in that the shares may be changed by modifying the polynomial but retaining the term \(a_o\).
+\par
+As discussed in a number studies the simplicity of Shamir's Secret Sharing scheme does present limitations that have the potential for being exploited \cite{abdallah2015analysis}\cite{dautrich2012security}. First, complete trust is given to the system who is dealing the secret shares, if an error occurs the secret may be irrecoverable therefore the system dealing the shares can be seen as a single point of failure. Second, Shamir's Secret Sharing scheme cannot detect secret keepers that cheat by supplying wrong shares, this brings about the problem where if \textit{k} members are compromised not only will the secrets be recoverable by the malicious party but the compromised members may be used to supply wrong secret shares to the system, effectively denying the first party system of recovering secrets. To combat these exploits Shamir's Secret Sharing may be extended with signature schemes \cite{shoup2000practical}\cite{abdalla2001forward} and verification schemes that do not assume the party dealing the shares is honest or infallible \cite{herzberg1995proactive}\cite{cachin2002asynchronous}.
 
 \section{Design}
 As discussed in Section \ref{S:databaseSecurity} Shamir's Secret Sharing Scheme is a threshold security scheme based on Lagrange interpolation. Recall, the scheme works by splitting the secret into \textit{n} shares, \textit{k} of which are required to then retrieve the original secret. In this section the design for the service enabling PitchHub to leverage the secret sharing scheme is discussed.

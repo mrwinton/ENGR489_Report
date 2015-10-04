@@ -9,49 +9,48 @@
 \BOOKMARK [1][-]{section.2.3}{Innovation Online}{chapter.2}% 9
 \BOOKMARK [1][-]{section.2.4}{Security, Privacy, and Trust in Online Communities}{chapter.2}% 10
 \BOOKMARK [1][-]{section.2.5}{Related Work}{chapter.2}% 11
-\BOOKMARK [1][-]{section.2.6}{Database Security}{chapter.2}% 12
-\BOOKMARK [2][-]{subsection.2.6.1}{Threshold Security Schemes}{section.2.6}% 13
-\BOOKMARK [2][-]{subsection.2.6.2}{Shamir's Secret Sharing Scheme}{section.2.6}% 14
-\BOOKMARK [0][-]{chapter.3}{Requirements}{}% 15
-\BOOKMARK [1][-]{section.3.1}{Previous Work}{chapter.3}% 16
-\BOOKMARK [2][-]{subsection.3.1.1}{Pitch Cards Conceptualisation}{section.3.1}% 17
-\BOOKMARK [2][-]{subsection.3.1.2}{Collaboration Conceptualisation}{section.3.1}% 18
-\BOOKMARK [1][-]{section.3.2}{Methodology}{chapter.3}% 19
-\BOOKMARK [1][-]{section.3.3}{Functional Requirements}{chapter.3}% 20
-\BOOKMARK [1][-]{section.3.4}{Non-functional Requirements}{chapter.3}% 21
-\BOOKMARK [0][-]{chapter.4}{Web Application Design}{}% 22
-\BOOKMARK [1][-]{section.4.1}{Architecture}{chapter.4}% 23
-\BOOKMARK [1][-]{section.4.2}{System Model}{chapter.4}% 24
-\BOOKMARK [1][-]{section.4.3}{Technology}{chapter.4}% 25
-\BOOKMARK [2][-]{subsection.4.3.1}{Framework Selection}{section.4.3}% 26
-\BOOKMARK [2][-]{subsection.4.3.2}{Database Selection}{section.4.3}% 27
-\BOOKMARK [0][-]{chapter.5}{Web Application Implementation}{}% 28
-\BOOKMARK [1][-]{section.5.1}{Implementation Details}{chapter.5}% 29
-\BOOKMARK [2][-]{subsection.5.1.1}{Pitch Card System}{section.5.1}% 30
-\BOOKMARK [2][-]{subsection.5.1.2}{Scope of Disclosure}{section.5.1}% 31
-\BOOKMARK [1][-]{section.5.2}{Implementation Challenges}{chapter.5}% 32
-\BOOKMARK [2][-]{subsection.5.2.1}{Virtualised Environment}{section.5.2}% 33
-\BOOKMARK [2][-]{subsection.5.2.2}{Deployment}{section.5.2}% 34
-\BOOKMARK [0][-]{chapter.6}{Threshold Security Scheme}{}% 35
-\BOOKMARK [1][-]{section.6.1}{Design}{chapter.6}% 36
-\BOOKMARK [2][-]{subsection.6.1.1}{Shamir's Secret Sharing Scheme Service}{section.6.1}% 37
-\BOOKMARK [2][-]{subsection.6.1.2}{Overcoming Limitations of Threshold Security Schemes}{section.6.1}% 38
-\BOOKMARK [1][-]{section.6.2}{Implementation}{chapter.6}% 39
-\BOOKMARK [2][-]{subsection.6.2.1}{Shamir's Secret Sharing Scheme Service}{section.6.2}% 40
-\BOOKMARK [2][-]{subsection.6.2.2}{Diverse Secret Keepers}{section.6.2}% 41
-\BOOKMARK [0][-]{chapter.7}{Experiment Design and Test Bed}{}% 42
-\BOOKMARK [1][-]{section.7.1}{Evaluation Scope}{chapter.7}% 43
-\BOOKMARK [1][-]{section.7.2}{Assumptions and Limitations}{chapter.7}% 44
-\BOOKMARK [1][-]{section.7.3}{Test Design}{chapter.7}% 45
-\BOOKMARK [2][-]{subsection.7.3.1}{Collaboration Functionality}{section.7.3}% 46
-\BOOKMARK [2][-]{subsection.7.3.2}{Performance}{section.7.3}% 47
-\BOOKMARK [0][-]{chapter.8}{Evaluation}{}% 48
-\BOOKMARK [1][-]{section.8.1}{Functionality Evaluation}{chapter.8}% 49
-\BOOKMARK [2][-]{subsection.8.1.1}{Performance Evaluation}{section.8.1}% 50
-\BOOKMARK [0][-]{chapter.9}{Summary and Conclusions}{}% 51
-\BOOKMARK [1][-]{section.9.1}{A Summary of The Developed Prototypes}{chapter.9}% 52
-\BOOKMARK [1][-]{section.9.2}{A Discussion of Online Innovation Collaboration and The Prototypes}{chapter.9}% 53
-\BOOKMARK [1][-]{section.9.3}{Future Work}{chapter.9}% 54
-\BOOKMARK [2][-]{subsection.9.3.1}{Recommendation Engine}{section.9.3}% 55
-\BOOKMARK [2][-]{subsection.9.3.2}{Usability Evaluation/Improvement}{section.9.3}% 56
-\BOOKMARK [1][-]{section.9.4}{Final Comments}{chapter.9}% 57
+\BOOKMARK [0][-]{chapter.3}{Requirements}{}% 12
+\BOOKMARK [1][-]{section.3.1}{Previous Work}{chapter.3}% 13
+\BOOKMARK [2][-]{subsection.3.1.1}{Pitch Cards Conceptualisation}{section.3.1}% 14
+\BOOKMARK [2][-]{subsection.3.1.2}{Collaboration Conceptualisation}{section.3.1}% 15
+\BOOKMARK [1][-]{section.3.2}{Methodology}{chapter.3}% 16
+\BOOKMARK [1][-]{section.3.3}{Design Requirements}{chapter.3}% 17
+\BOOKMARK [0][-]{chapter.4}{Web Application Design}{}% 18
+\BOOKMARK [1][-]{section.4.1}{Architecture}{chapter.4}% 19
+\BOOKMARK [1][-]{section.4.2}{System Model}{chapter.4}% 20
+\BOOKMARK [1][-]{section.4.3}{Technology}{chapter.4}% 21
+\BOOKMARK [2][-]{subsection.4.3.1}{Framework Selection}{section.4.3}% 22
+\BOOKMARK [2][-]{subsection.4.3.2}{Database Selection}{section.4.3}% 23
+\BOOKMARK [0][-]{chapter.5}{Web Application Implementation}{}% 24
+\BOOKMARK [1][-]{section.5.1}{Implementation Details}{chapter.5}% 25
+\BOOKMARK [2][-]{subsection.5.1.1}{Pitch Card System}{section.5.1}% 26
+\BOOKMARK [2][-]{subsection.5.1.2}{Scope of Disclosure}{section.5.1}% 27
+\BOOKMARK [1][-]{section.5.2}{Implementation Challenges}{chapter.5}% 28
+\BOOKMARK [2][-]{subsection.5.2.1}{Virtualised Environment}{section.5.2}% 29
+\BOOKMARK [2][-]{subsection.5.2.2}{Deployment}{section.5.2}% 30
+\BOOKMARK [0][-]{chapter.6}{Threshold Security Scheme}{}% 31
+\BOOKMARK [1][-]{section.6.1}{Database Security}{chapter.6}% 32
+\BOOKMARK [2][-]{subsection.6.1.1}{Background into Threshold Security Schemes}{section.6.1}% 33
+\BOOKMARK [2][-]{subsection.6.1.2}{Shamir's Secret Sharing Scheme}{section.6.1}% 34
+\BOOKMARK [1][-]{section.6.2}{Design}{chapter.6}% 35
+\BOOKMARK [2][-]{subsection.6.2.1}{Shamir's Secret Sharing Scheme Service}{section.6.2}% 36
+\BOOKMARK [2][-]{subsection.6.2.2}{Overcoming Limitations of Threshold Security Schemes}{section.6.2}% 37
+\BOOKMARK [1][-]{section.6.3}{Implementation}{chapter.6}% 38
+\BOOKMARK [2][-]{subsection.6.3.1}{Shamir's Secret Sharing Scheme Service}{section.6.3}% 39
+\BOOKMARK [2][-]{subsection.6.3.2}{Diverse Secret Keepers}{section.6.3}% 40
+\BOOKMARK [0][-]{chapter.7}{Experiment Design and Test Bed}{}% 41
+\BOOKMARK [1][-]{section.7.1}{Evaluation Scope}{chapter.7}% 42
+\BOOKMARK [1][-]{section.7.2}{Assumptions and Limitations}{chapter.7}% 43
+\BOOKMARK [1][-]{section.7.3}{Test Design}{chapter.7}% 44
+\BOOKMARK [2][-]{subsection.7.3.1}{Collaboration Functionality}{section.7.3}% 45
+\BOOKMARK [2][-]{subsection.7.3.2}{Performance}{section.7.3}% 46
+\BOOKMARK [0][-]{chapter.8}{Evaluation}{}% 47
+\BOOKMARK [1][-]{section.8.1}{Functionality Evaluation}{chapter.8}% 48
+\BOOKMARK [2][-]{subsection.8.1.1}{Performance Evaluation}{section.8.1}% 49
+\BOOKMARK [0][-]{chapter.9}{Summary and Conclusions}{}% 50
+\BOOKMARK [1][-]{section.9.1}{A Summary of The Developed Prototypes}{chapter.9}% 51
+\BOOKMARK [1][-]{section.9.2}{A Discussion of Online Innovation Collaboration and The Prototypes}{chapter.9}% 52
+\BOOKMARK [1][-]{section.9.3}{Future Work}{chapter.9}% 53
+\BOOKMARK [2][-]{subsection.9.3.1}{Recommendation Engine}{section.9.3}% 54
+\BOOKMARK [2][-]{subsection.9.3.2}{Usability Evaluation/Improvement}{section.9.3}% 55
+\BOOKMARK [1][-]{section.9.4}{Final Comments}{chapter.9}% 56
