@@ -137,7 +137,7 @@ Ultimately, the aim of ensuring functionality is supported is well-suited to thi
 
 To evaluate the performance of the prototype, the average time to process a request is used. The values taken represent the time taken while being processed in the application server. This means client-side processing such as loading CSS and JavaScript are not included in the results. This test bed, \textit{TB2}, is used for several experiments: testing the performance against Nielsen's performance time limits \cite{Responsetime:online}, testing against various database configurations, and testing the overhead added of the Secret Sharing Scheme. Common amongst the tests is that they rely on the authenticity of the configuration/data used to derive meaningful results. To create an authentic test bed and environment several steps were taken:
 \begin{itemize}  
-    \item The application was run on the WEBrick application server.
+    \item The application is hosted on the WEBrick application server.
     \item The tests simulate user input via the REST API.
     \item The test data size is modelled off of the Statistics New Zealand innovation reports.
     \item The infrastructure used reflects a highly available production configuration, see Fig \ref{fig:architecture_evaluation}.
