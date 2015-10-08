@@ -98,7 +98,7 @@ A limitation of the experiment design for the functional testing is that Seleniu
 \section{Test Design}
 This section explores the three test beds designed for the evaluation. Each test bed was designed with different responsibilities in mind. The first, \textit{TB1}, evaluates the collaboration functionality supported for requirements D1, D2.1 and D2.2 using executable user stories. The second, \textit{TB2}, evaluates the the prototypes performance in various distribution configurations for requirement D4 and D5. The third, \textit{TB2}, evaluates the collaboration functionality supported for requirements D1, D2.1 and D2.2 using a live deployment and real users. The design and aim of each test bed is discussed with reflection on how automation has also been used to improve their flexibility.
 
-\subsection{Collaboration Functionality}\label{SS:collaborativeFunctionality}
+\subsection{Test Bed 1 - Collaboration Functionality}\label{SS:collaborativeFunctionality}
 The principal aim in testing the fulfilment of requirements D1, D2.1 and D2.2 is to ensure that users have the tools/functionality available to successfully collaborate online. Specifically what successful online collaboration is has been captured in the user stories developed by Callaghan Innovation with assistance from myself. The following is an example (concatenated for brevity) of the general granularity achieved in each user story:
 
 \begin{verbatim}
@@ -133,11 +133,11 @@ A key advantage in having functionality testing automated in this way is that th
 
 Ultimately, the aim of ensuring functionality is supported is well-suited to this type of testing for the following reasons: first, user interaction is simulated naturally, second, automation ensures that no lingering tests and their leftover states affect current tests, and third, the natural definition of these tests mean that non-technical users can specify and test behaviour.
 
-\subsection{Performance}\label{SS:performance}
+\subsection{Test Bed 2 - Performance}\label{SS:performance}
 
-To evaluate the performance of the prototype, the average time to process a request is used. The values taken represent the time taken while being processed in the application server. This means client-side processing such as loading CSS and JavaScript are not included in the results. This test bed, \textit{TB2}, is used for several experiments: testing the performance against Nielsen's performance time limits \cite{Responsetime:online}, testing against various database configurations, and testing the overhead added of the Secret Sharing Scheme. Common amongst the tests is that they rely on the authenticity of the configuration/data used to derive meaningful results. To create an authentic test bed and environment several steps were taken:
+To evaluate the performance of the prototype, the average wall-time to process a request is used. Wall-time is a key metric on which to evaluate performance as it represents the request's end-to-end process time. This means that the time taken for server-side processing, database queries, and client-side processing are included in the results. This test bed, \textit{TB2}, is used for several experiments: testing the performance against Nielsen's performance time limits \cite{Responsetime:online}, testing the overhead added through diverse secret keepers, and testing the overhead added of the Secret Sharing Scheme. Common amongst the tests is that they rely on the authenticity of the configuration/data used to derive meaningful results. To create an authentic test bed and environment several steps were taken:
 \begin{itemize}  
-    \item The application is hosted on the WEBrick application server.
+    \item The application is hosted on the WEBrick application server with production settings (e.g. caching).
     \item The tests simulate user input via the REST API.
     \item The test data size is modelled off of the Statistics New Zealand innovation reports.
     \item The infrastructure used reflects a highly available production configuration, see Fig \ref{fig:architecture_evaluation}.
@@ -146,6 +146,13 @@ To evaluate the performance of the prototype, the average time to process a requ
 \begin{figure}[ht]
     \centering
     \includegraphics[width=1\textwidth]{architecture_evaluation}
-    \caption{The architecture used for \textit{TB2}. The MongoDB secret keepers are replica sets, this ensures high availability as discussed in Section \ref{SS:design_shamir_secret_sharing_service}.}
+    \caption{The architecture used for \textit{TB2}. The MongoDB secret keepers are replica sets, the redundancy gained through this ensures high availability as discussed in Section \ref{SS:design_shamir_secret_sharing_service}.}
     \label{fig:architecture_evaluation}
 \end{figure}
+
+The database configuration in Fig \ref{fig:architecture_evaluation} reflects the general architecture utilised in the experiments. The \textit{n} amount of MongoDB clusters and PostGres instances vary between tests to reflect the test's goal. For example, the test gauging the overhead of diversity in secret keepers compares a 2x MongoDB HA Replica Set, 2x PostGres instance configuration against a 4x MongoDB HA Replica Set configuration. All instances were hosted on Amazon's Elastic Compute Cloud (EC2) in \textit{T2.Small} instances which contain 2GB of RAM and a 3.3GHz CPU.
+
+The collection of performance data is facilitated through the Rails-Perf-Test library \cite{railsperftest:online}. The suite of integration-tests defined against this library are special in that they are specifically designed for benchmarking and profiling. For the purposes of the evaluation, emphasis has been placed on testing the more logically complex flows in PitchHub. Such flows include Pitch Card creation, Pitch Card display and the display of the Pitch Card dashboard. To increase the precision of the results the tests for each flow has been repeated 1000 times. In doing so the variability introduced by network latency is normalised. It should be noted that because caching is used in accordance to the prototype's production settings the first test run of each test takes significantly longer because the assets have not yet been cached. This test run's wall-time has been kept in the data set that is averaged for the final result because it is a valid run. This does present itself as an extreme value in each test's data. The actual warm up times for each test have been excluded.
+
+\subsection{Test Bed 3 - Deployed Prototype}\label{SS:deployedPrototype}
+
