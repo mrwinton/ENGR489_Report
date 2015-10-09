@@ -155,4 +155,23 @@ The database configuration in Fig \ref{fig:architecture_evaluation} reflects the
 The collection of performance data is facilitated through the Rails-Perf-Test library \cite{railsperftest:online}. The suite of integration-tests defined against this library are special in that they are specifically designed for benchmarking and profiling. For the purposes of the evaluation, emphasis has been placed on testing the more logically complex flows in PitchHub. Such flows include Pitch Card creation, Pitch Card display and the display of the Pitch Card dashboard. To increase the precision of the results the tests for each flow has been repeated 1000 times. In doing so the variability introduced by network latency is normalised. It should be noted that because caching is used in accordance to the prototype's production settings the first test run of each test takes significantly longer because the assets have not yet been cached. This test run's wall-time has been kept in the data set that is averaged for the final result because it is a valid run. This does present itself as an extreme value in each test's data. The actual warm up times for each test have been excluded.
 
 \subsection{Test Bed 3 - Deployed Prototype}\label{SS:deployedPrototype}
-The goal of \textit{TB3} is to verify that the user stories specified reflect the actual use of real users. \textit{TB3} consists of a deployed version of the PitchHub prototype which has been instrumented to capture user events.
+@KB, this section feels light, thoughts?
+
+To strengthen the results of \textit{TB1} the goal of \textit{TB3} is to verify that the user stories specified support actual use of real users. To do this \textit{TB3} consists of a deployed version of the PitchHub prototype which has been instrumented to capture all API requests. These requests are logged as user events containing the action with it's properties and metadata: 
+
+\begin{verbatim}
+{
+  "id":"8d4614a0-f9f2-47ae-983e-73c6ec4014b6",
+  "name":"Processed dashboard#index",
+  "properties":{
+    "controller":"dashboard",
+    "action":"index"
+  },
+  "visit_id":"7e9cc8d4-2a5d-4e9a-9697-1f3b14b610b5",
+  "visitor_id":"4a41071c-e709-45ab-913c-eb0d890d10d6",
+  "user_id":{"$oid":"560496e970697428b4000000"},
+  "time":"2015-09-29T21:00:16.814Z"
+}
+\end{verbatim}
+
+Because only meaningful data can be derived from use by an actual innovation community \textit{TB3} has been released to the wider Callaghan Innovation organisation. Callaghan Innovation is regarded to be an ideal population to test the prototype against as all roles identified from Section \ref{background} (challenger, solver, enabler, facilitator) are present within the organisation.

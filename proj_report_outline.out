@@ -46,13 +46,19 @@
 \BOOKMARK [2][-]{subsection.7.3.2}{Test Bed 2 - Performance}{section.7.3}% 46
 \BOOKMARK [2][-]{subsection.7.3.3}{Test Bed 3 - Deployed Prototype}{section.7.3}% 47
 \BOOKMARK [0][-]{chapter.8}{Evaluation}{}% 48
-\BOOKMARK [1][-]{section.8.1}{Functionality Evaluation}{chapter.8}% 49
-\BOOKMARK [2][-]{subsection.8.1.1}{Performance Evaluation}{section.8.1}% 50
-\BOOKMARK [2][-]{subsection.8.1.2}{Discussion}{section.8.1}% 51
-\BOOKMARK [0][-]{chapter.9}{Summary and Conclusions}{}% 52
-\BOOKMARK [1][-]{section.9.1}{A Summary of The Developed Prototypes}{chapter.9}% 53
-\BOOKMARK [1][-]{section.9.2}{A Discussion of Online Innovation Collaboration and The Prototypes}{chapter.9}% 54
-\BOOKMARK [1][-]{section.9.3}{Future Work}{chapter.9}% 55
-\BOOKMARK [2][-]{subsection.9.3.1}{Recommendation Engine}{section.9.3}% 56
-\BOOKMARK [2][-]{subsection.9.3.2}{Usability Evaluation/Improvement}{section.9.3}% 57
-\BOOKMARK [1][-]{section.9.4}{Final Comments}{chapter.9}% 58
+\BOOKMARK [1][-]{section.8.1}{Functionality}{chapter.8}% 49
+\BOOKMARK [2][-]{subsection.8.1.1}{User Stories}{section.8.1}% 50
+\BOOKMARK [2][-]{subsection.8.1.2}{Deployed Prototype}{section.8.1}% 51
+\BOOKMARK [1][-]{section.8.2}{Performance}{chapter.8}% 52
+\BOOKMARK [2][-]{subsection.8.2.1}{Nielsen's Response Time Thresholds}{section.8.2}% 53
+\BOOKMARK [2][-]{subsection.8.2.2}{Test 1 - User Size}{section.8.2}% 54
+\BOOKMARK [2][-]{subsection.8.2.3}{Test 2 - Overhead of Threshold Scheme Security}{section.8.2}% 55
+\BOOKMARK [2][-]{subsection.8.2.4}{Test 3 - Overhead of Secret Keeper Diversity}{section.8.2}% 56
+\BOOKMARK [2][-]{subsection.8.2.5}{Discussion}{section.8.2}% 57
+\BOOKMARK [0][-]{chapter.9}{Summary and Conclusions}{}% 58
+\BOOKMARK [1][-]{section.9.1}{A Summary of The Developed Prototypes}{chapter.9}% 59
+\BOOKMARK [1][-]{section.9.2}{A Discussion of Online Innovation Collaboration and The Prototypes}{chapter.9}% 60
+\BOOKMARK [1][-]{section.9.3}{Future Work}{chapter.9}% 61
+\BOOKMARK [2][-]{subsection.9.3.1}{Recommendation Engine}{section.9.3}% 62
+\BOOKMARK [2][-]{subsection.9.3.2}{Usability Evaluation/Improvement}{section.9.3}% 63
+\BOOKMARK [1][-]{section.9.4}{Final Comments}{chapter.9}% 64
