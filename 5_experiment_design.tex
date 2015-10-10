@@ -2,7 +2,7 @@
 \chapter{Experiment Design and Test Bed}
 Following the completion and deployment of the prototype, an analysis of the artefacts produced was carried out. The evaluation was designed to verify the successfulness of the project against the requirements identified in Chapter \ref{C:requirements}. To build confidence in the results derived this chapter discusses the scope, assumptions, and limitations as well as the design of the experiments themselves.
 
-\section{Evaluation Scope}
+\section{Evaluation Scope}\label{S:evaluationScope}
 In designing the evaluation the requirements identified in Chapter \ref{C:requirements} were deconstructed to clearly define, where possible, the conditions upon which each requirement can be considered fulfilled. The high-level results of this requirements deconstruction is displayed in the following table:
 
 \begin{adjustwidth}{-1.25cm}{}
@@ -135,7 +135,7 @@ Ultimately, the aim of ensuring functionality is supported is well-suited to thi
 
 \subsection{Test Bed 2 - Performance}\label{SS:performance}
 
-To determine the prototype's fulfilment of requirements D4 and D5 the average wall-time to process a request in various configurations is evaluated. Wall-time is a key metric on which to evaluate performance as it represents the request's end-to-end processing time. This means that the time taken for server-side processing, database queries, and client-side processing are included in the results. This test bed, \textit{TB2}, is used for several experiments: testing the performance against Nielsen's performance time limits \cite{Responsetime:online}, testing the overhead added through diverse secret keepers, and testing the overhead added of the Secret Sharing Scheme. Common amongst the tests is that they rely on the authenticity of the configuration/data used to derive meaningful results. To create an authentic test bed and environment several steps were taken:
+In evaluating performance there are a number of metrics that may be analysed e.g. latency, throughput, capacity. Ultimately, the wall-time metric was chosen because it reflects the performance of the system as experienced by the user. As PitchHub is a user-facing applications this was deemed to be the most important measure. To determine the prototype's fulfilment of requirements D4 and D5 the average wall-time to process a request in various configurations is evaluated. Wall-time is a key metric on which to evaluate performance as it represents the request's end-to-end processing time. This means that the time taken for server-side processing, database queries, and client-side processing are included in the results. This test bed, \textit{TB2}, is used for several experiments: comparing the performance under different user base sizes, testing the overhead added through diverse secret keepers, and testing the overhead added of the Secret Sharing Scheme. Common amongst the tests is that they rely on the authenticity of the configuration/data used to derive meaningful results. To create an authentic test bed and environment several steps were taken:
 \begin{itemize}  
     \item The application is hosted on the WEBrick application server with production settings (e.g. caching).
     \item The tests simulate user input via the REST API.
