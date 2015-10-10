@@ -150,7 +150,7 @@ In evaluating performance there are a number of metrics that may be analysed e.g
     \label{fig:architecture_evaluation}
 \end{figure}
 
-The database configuration in Fig \ref{fig:architecture_evaluation} reflects the general architecture utilised in the experiments. The \textit{n} amount of MongoDB clusters and Postgres instances vary between tests to reflect the test's goal. For example, the test gauging the overhead of diversity in secret keepers compares a 2x MongoDB HA Replica Set, 2x Postgres instance configuration against a 4x MongoDB HA Replica Set configuration. All instances were hosted on Amazon's Elastic Compute Cloud (EC2) in \textit{T2.Small} instances which contain 2GB of RAM and a 3.3GHz CPU.
+The database configuration in Fig \ref{fig:architecture_evaluation} reflects the general architecture utilised in the experiments. The \textit{n} amount of MongoDB clusters and Postgres instances vary between tests to reflect the test's goal. For example, the test gauging the overhead of diversity in secret keepers compares a 2x MongoDB HA Replica Set, 2x Postgres instance configuration against a 4x MongoDB HA Replica Set configuration. In regards to the network topology, the MongoDB replica sets are hosted in AWS's Oregon region, the Postgres instances are hosted in AWS's Virginia region, and the application server is hosted on a DigitalOcean VPS in New York with 2GB of RAM and a 40GB SSD. Each AWS instance was hosted on Amazon's Elastic Compute Cloud (EC2) service with 2GB of RAM and a 3.3GHz CPU.
 
 The collection of performance data is facilitated through the Rails-Perf-Test library \cite{railsperftest:online}. The suite of integration-tests defined against this library are special in that they are specifically designed for benchmarking and profiling. For the purposes of the evaluation, emphasis has been placed on testing the more logically complex flows in PitchHub. Such flows include Pitch Card creation, Pitch Card display and the display of the Pitch Card dashboard. To increase the precision of the results the tests for each flow has been repeated 1000 times. In doing so the variability introduced by network latency is normalised. It should be noted that because caching is used in accordance to the prototype's production settings the first test run of each test takes significantly longer because the assets have not yet been cached. This test run's wall-time has been kept in the data set that is averaged for the final result because it is a valid run. This does present itself as an extreme value in each test's data. The actual warm up times for each test have been excluded.
 
@@ -175,3 +175,12 @@ The goal of \textit{TB3} is to analyse the usage of PitchHub by real people in t
 \end{verbatim}
 
 Because of PitchHub's very specific target user group, meaningful data can only be derived from use by an actual innovation community. This is what motivated \textit{TB3} to be released to the wider Callaghan Innovation organisation. Callaghan Innovation is regarded to be an ideal population to test the prototype against as all roles identified from Section \ref{background} (challenger, solver, enabler, facilitator) are present within the organisation.
+
+\section{Response Time Thresholds}
+@KB, where would you advise this section go?
+
+Evaluating the performance of the PitchHub prototype is done under various configurations using \textit{TB2}. The measure upon which performance quality is based on is Nielsen and Miller's response time thresholds \cite{Responsetime:online} for web application performance. 
+The response time thresholds are as follows:
+\paragraph{0.1 second} is about the limit for having the user feel that the system is reacting instantaneously.
+\paragraph{1.0 second} is about the limit for the user's flow of thought to stay uninterrupted, even though the user will notice the delay.
+\paragraph{10 seconds} is about the limit for keeping the user's attention focused on the dialogue.
