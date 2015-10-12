@@ -34,38 +34,75 @@ At the time of writing, the prototype, \textit{TB3}, has been successfully been 
 \section{Test \rom{3} - Community Size Support}
 
 \subsection{Motivation}
-Supporting collaboration within the innovation community firstly requires that sheer size of the community is able to be supported. Test \rom{3} seeks to test whether the PitchHub prototype could support the entire NZ innovation community. The sizes tested against are derived from the Statistics NZ data, where the expected size is estimated to be a population of 437,403 and the worst case size is estimated to be a population of 589,340.
+Supporting collaboration within the innovation community firstly requires that sheer size of the community is able to be supported. Test \rom{3} seeks to test whether the PitchHub prototype could support the entire NZ innovation community. The sizes tested against are derived from the Statistics NZ data, where the expected size is estimated to be a population of 400,000 and the worst case size is estimated to be a population of 600,000.
 
-Test \rom{3} uses the prototype in a diverse ``3, 4'' secret sharing scheme configuration (2x MongoDB replica sets and 2x Postgres instances).
+Test \rom{3} uses the prototype on \textit{TB2} in a diverse ``3, 4'' secret sharing scheme configuration (2x MongoDB replica sets and 2x Postgres instances).
 
 \subsection{Results}
 
+\begin{figure}[ht]
+    \centering
+    \includegraphics[width=1\textwidth]{experiment_3_results}
+    \caption{The mean response times with standard deviation for PitchHub flows: display dashboard, show Pitch Card, and create Pitch Card, under both expected and worst case community sizes. There is a very negligible performance difference between the two community sizes. Each size elicits mean response times that fall under Nielsen's third threshold. }
+    \label{fig:test_3_results}
+\end{figure}
+
 \subsection{Discussion}
+
+Fig \ref{fig:test_3_results} illustrates that the PitchHub prototype in a 2x MongoDB and 2x Postgres Secret Sharing configuration can support the innovation community at both the expected and worst case sizes (derived from the Statistics NZ data in Table \ref{tab:title}). In terms of Nielsen's response thresholds, each flow falls under Nielsen's third threshold (1 =< 10 seconds): where a users attention is still maintained but the wait-time interrupts flow of thought. Given that each flow in both community sizes meets the acceptable response threshold it can be concluded that the prototype satisfies requirement D4.
+
+The difference in community sizes shows only a negligible performance difference in mean wall-time for each flow. This is because, even at the worst-case size, the database is only medium in size - where the entire database is storing between 10\textsuperscript{5} and 10\textsuperscript{7} records and can still fit on a single server \cite{Large8:online}. At this size, performance is not effected by amount of data stored. For performance to be affected by database size, the user size would need to climb to XXX,XXX or the contribution distribution would need to shift to the right.
 
 \section{Test \rom{4} - Overhead of Threshold Scheme Security}
 
 \subsection{Motivation}
-The secret sharing service is an important part of keeping sensitive user data secure. A consequence of this service is a loss of performance - through the latency introduced by the queries to the secret keepers and added processing to reconstruct secrets. Test \rom{4} seeks to measure the overhead of this service and discuss whether the security afforded is worth the performance loss.
-
-Test \rom{4} uses the prototype in both a non-secret sharing configuration (1x MongoDB replica set) and a diverse ``3, 4'' secret sharing scheme configuration (2x MongoDB replica sets and 2x Postgres instances).
+The secret sharing service is an important part of keeping sensitive user data secure. A consequence of this service is a loss of performance - primarily a consequence of the latency introduced by the queries to the \textit{n} secret keepers and added processing on the application server in reconstructing the secrets. Test \rom{4} seeks to measure the overhead of this service and discuss whether the security afforded is worth the performance loss.
 
 \subsection{Results}
 
+\begin{figure}[ht]
+    \centering
+    \includegraphics[width=1\textwidth]{experiment_4_results}
+    \caption{Comparison of the mean response times with standard deviation for PitchHub flows: display dashboard, show Pitch Card, and create Pitch Card, in both Secret Sharing and non-Secret Sharing configurations. There is a very significant performance difference between the two configurations. The non-Secret Sharing configuration falls under Nielsen's second threshold whereas the Secret Sharing configuration falls under the third. }
+    \label{fig:test_4_results}
+\end{figure}
+
 \subsection{Discussion}
+Fig \ref{fig:test_4_results} illustrates the difference in mean wall-times between Secret Sharing and non-Secret Sharing configurations. It is clear that the Secret Sharing service incurs a significant loss in performance. The most prominent case is the Create Pitch Card flow, where the Secret Sharing configuration is 14x slower. There are a number of important differences between the two configurations that contribute to this loss. The most important of which is operations involved, the Create Pitch Card flow in the non-Secret Sharing configuration is essentially an insert statement followed by a redirect to the newly saved Pitch Card, whereas in the Secret Sharing configuration the Pitch Card object is split into \textit{n} shares, \textit{k-1} of these are adapted to Postgres' ORM format, each share is saved to their respective secret keepers, and on completion of the \textit{n} saves the action is concluded with a redirect to the newly saved Pitch Card. The Secret Sharing configuration is simply doing more and is therefore taking longer.
+Determining whether this overhead is acceptable is an inherently subjective task. Strictly in light of Nielsen's thresholds it is not worth it. As the non-Secret Sharing configuration meets the second threshold while the Secret Sharing configuration slips to meet the third. But ultimately, the question that must be asked is: ``Is the noticed delay and interrupted flow of thought worth the security afforded by the Secret Sharing scheme?''. Based on the nature of the data being served I believe that this overhead is indeed worth it. To view the problem from another perspective, it seems reasonable to trade 2 seconds in delay for assured security in the event that secret keepers be breached.
 
 \section{Test \rom{5} - Overhead of Secret Keeper Diversity}
 
 \subsection{Motivation}
 To strengthen the security afforded by the secret sharing service diversity was added to the secret keepers. A consequence of this is that the service is now only as fast as it's slowest secret keeper. Test \rom{5} seeks to measure the overhead of this added diversity and discuss whether the extra security afforded is worth the performance loss.
 
-Test \rom{5} uses the prototype in a both a diverse ``3, 4'' secret sharing scheme configuration (2x MongoDB replica sets and 2x Postgres instances) and a homogeneous ``3, 4'' secret sharing scheme configuration (4x MongoDB replica sets).
+Test \rom{5} uses the prototype on \textit{TB2} in a both a diverse ``3, 4'' secret sharing scheme configuration (2x MongoDB replica sets and 2x Postgres instances) and a homogeneous ``3, 4'' secret sharing scheme configuration (4x MongoDB replica sets).
 
 \subsection{Results}
 
+@KB, figure \ref{fig:test_5_results} should be here...
+
+\begin{figure}[ht]
+    \centering
+    \includegraphics[width=1\textwidth]{experiment_5_results}
+    \caption{Comparison of the mean response times with standard deviation for PitchHub flows: display dashboard, show Pitch Card, and create Pitch Card, in both diverse and homogeneous secret keeper configurations. There is a noticeable performance difference between the two configurations where the diverse configuration performs faster. Both configurations fall under Nielsen's third threshold limit.}
+    \label{fig:test_5_results}
+\end{figure}
+
 \subsection{Discussion}
+Fig \ref{fig:test_4_results} illustrates the difference in mean wall-times between Secret Sharing configurations with diverse and homogeneous secret keepers. The diverse configuration is consistently faster than the homogeneous configuration across all flows. The 10\% increase is likely because of the choice of secret keepers used - since MongoDB is less performant than Postgres in both read and write operations \cite{van2012sensor}. 
+A disadvantage with the Postgres instances is that they do not provide the same assurance of availability as the MongoDB replica set secret keepers. This may present itself as a problem should the Postgres instance become unavailable resulting in it's shares becoming unavailable and hence harder to meet the required \textit{k} shares needed for reconstruction. 
+Overall, these results indicate that this particular diverse configuration is worth the extra implementation effort as it not only solves the Secret Sharing scheme's redundancy issue but also performs better. 
 
+\section{Test \rom{6} - Concurrent Load Support}
+\subsection{Motivation}
+\subsection{Results}
 
-\section{General Discussion}
-@KB, not sure if this section will be necessary
+\begin{figure}[ht]
+    \centering
+    \includegraphics[width=1\textwidth]{experiment_6_results}
+    \caption{Load test of the Show Pitch Card flow in a 2x MongoDB and 2x Postgres Secret Sharing configuration. Under 120 requests per seconds the prototype is able to maintain a 2 second response time average. }
+    \label{fig:test_6_results}
+\end{figure}
 
-The disadvantage of unconditionally secure secret sharing schemes is that the storage and transmission of the shares requires an amount of storage and bandwidth resources equivalent to the size of the secret times the number of shares. If the size of the secret were significant, say 1 GB, and the number of shares were 10, then 10 GB of data must be stored by the shareholders
+\subsection{Discussion}
