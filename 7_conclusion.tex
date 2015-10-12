@@ -15,27 +15,37 @@ Built on the popular Ruby on Rails framework, the prototype was developed to sup
 
 \paragraph{C2.2: A PitchHub prototype deployed to Callaghan Innovation.} 
 
-
+For internal use within Callaghan Innovation a prototype was deployed following a production configuration: Passenger application server, caching, SSL, and various security measures suggested by OWASP (e.g. ssh hardening, protection against IP spoofing).
 
 
 \paragraph{C2.3: A PitchHub prototype with Shamir's Secret Sharing scheme integrated.} 
 
-lorem ipsum
+Use of the Shamir's Secret Sharing scheme, most commonly used in key services, was integrated into the PitchHub prototype. Sensitive information such as Pitch Points, suggestions, and comments is encrypted using this service providing unconditional security.
 
 \paragraph{C2.4: A PitchHub prototype with Diverse Secret Keepers.} 
 
-lorem ipsum
+In strengthening the security provided by the Secret Sharing scheme, diverse secret keepers were introduced. PitchHub supports the following databases: MongoDB, Postgres, MySQL and SQLite. To maintain \textit{plug-and-play} functionality afforded by MongoBD the configuration of SQL secret keepers has been automated.
 
 \paragraph{C3: Virtualised development environment.}
 
-lorem ipsum
+To make installation and setup of PitchHub as easy as possible the development environment has been virtualised using Vagrant and Chef. This was primarily for the benefit of non-technical stakeholders, but will be equally useful for future maintainers.
 
 \paragraph{C4: Automated deployment process.}
  
-lorem ipsum
+To make host configuration and code deployment as easy as possible the deployment process was automated using Capistrano. Deployments can be triggered effortlessly and use GitHub to ensure production reflects the Master branch. Beyond this deployments can be rolled-back easily, this will be useful in the future should any deployments prove to be defective.
+
+\section{Discussion}
+
+
 
 \section{Future Work}
 
+This section discusses potential extensions to the PitchHub prototype.
+
 \subsection{Recommendation Engine}
 
-\subsection{Usability Evaluation/Improvement}
+A potentially useful feature would be if Pitch Cards could be recommended to users based on their ontological profile. This would encourage collaboration through showing users ideas they are more likely to have an interest in. Offline learning is certainly viable, but an interesting challenge would be integrating the recommender to work with the Secret Sharing service in an online learning approach.
+
+\subsection{Usability Extension/Evaluation}
+
+\subsection{RealMe Integration}
