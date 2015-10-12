@@ -28,7 +28,7 @@ The design of this experiment was guided by two main questions: first, ``what be
 In regards to the second question, realistically simulating user interaction was identified as key. Manually testing the various behaviours and scope combinations would be time-consuming and tedious. \textit{TB1} automates this simulation with the added benefit of assertions, making it easy to verify that expected behaviour is indeed satisfied.
 Concluding on the fulfilment of requirements D1, D2.1 and D2.2 largely relies on whether the behaviours specified in relation to the first question accurately reflects the behaviour required by the innovation community. Generalising what a large population needs is a difficult task but it is my belief that because the user stories tested were created in collaboration with Callaghan Innovation, who is a large participant in the innovation community, they are therefore meet the level of credibility required for the purposes of this test. As such, it is concluded that requirements D1, D2.1 and D2.2 have been fulfilled.
 
-\section{Test \rom{2} - Deployed Prototype Analysis}
+\section{Test \rom{2} - Deployed Prototype Analysis}\label{S:test_2}
 At the time of writing, the prototype, \textit{TB3}, has been successfully been released to Callaghan Innovation and is ready for use. Unfortunately use of the prototype by Callaghan Innovation has not yet fully commenced. Without substantial activity to analyse this test was unable to be completed. It is expected that the access code will be distributed by the Callaghan Innovation stakeholders to the wider organisation in the coming weeks.
 
 \section{Test \rom{3} - Community Size Support}
@@ -49,7 +49,7 @@ Test \rom{3} uses the prototype on \textit{TB2} in a diverse ``3, 4'' secret sha
 
 \subsection{Discussion}
 
-Fig \ref{fig:test_3_results} illustrates that the PitchHub prototype in a 2x MongoDB and 2x Postgres Secret Sharing configuration can support the innovation community at both the expected and worst case sizes (derived from the Statistics NZ data in Table \ref{tab:title}). In terms of Nielsen's response thresholds, each flow falls under Nielsen's third threshold (1 =< 10 seconds): where a users attention is still maintained but the wait-time interrupts flow of thought. Given that each flow in both community sizes meets the acceptable response threshold it can be concluded that the prototype satisfies requirement D4.
+Fig \ref{fig:test_3_results} illustrates that the PitchHub prototype in a 2x MongoDB and 2x Postgres Secret Sharing configuration can support the innovation community at both the expected and worst case sizes (derived from the Statistics NZ data in Table \ref{tab:title}). In terms of Nielsen's response thresholds, each flow falls under Nielsen's third threshold (1 =\textless 10 seconds): where a users attention is still maintained but the wait-time interrupts flow of thought. Given that each flow in both community sizes meets the acceptable response threshold it can be concluded that the prototype satisfies requirement D4.
 
 The difference in community sizes shows only a negligible performance difference in mean wall-time for each flow. This is because, even at the worst-case size, the database is only medium in size - where the entire database is storing between 10\textsuperscript{5} and 10\textsuperscript{7} records and can still fit on a single server \cite{Large8:online}. At this size, performance is not effected by amount of data stored. For performance to be affected by database size, the user size would need to climb to XXX,XXX or the contribution distribution would need to shift to the right.
 
@@ -90,13 +90,17 @@ Test \rom{5} uses the prototype on \textit{TB2} in a both a diverse ``3, 4'' sec
 \end{figure}
 
 \subsection{Discussion}
-Fig \ref{fig:test_4_results} illustrates the difference in mean wall-times between Secret Sharing configurations with diverse and homogeneous secret keepers. The diverse configuration is consistently faster than the homogeneous configuration across all flows. The 10\% increase is likely because of the choice of secret keepers used - since MongoDB is less performant than Postgres in both read and write operations \cite{van2012sensor}. 
+Fig \ref{fig:test_5_results} illustrates the difference in mean wall-times between Secret Sharing configurations with diverse and homogeneous secret keepers. The diverse configuration is consistently faster than the homogeneous configuration across all flows. The 10\% increase is likely because of the choice of secret keepers used - since MongoDB is less performant than Postgres in both read and write operations \cite{van2012sensor}. 
 A disadvantage with the Postgres instances is that they do not provide the same assurance of availability as the MongoDB replica set secret keepers. This may present itself as a problem should the Postgres instance become unavailable resulting in it's shares becoming unavailable and hence harder to meet the required \textit{k} shares needed for reconstruction. 
 Overall, these results indicate that this particular diverse configuration is worth the extra implementation effort as it not only solves the Secret Sharing scheme's redundancy issue but also performs better. 
 
 \section{Test \rom{6} - Concurrent Load Support}
 \subsection{Motivation}
+Beyond being able to satisfy individual requests within an acceptable threshold it is important the PitchHub is able to do this while under the load of the innovation community. Test \rom{6} aims to assess the extent of the load that can be sustained by \textit{TB2} in a 2x MongoDB and 2x Postgres Secret Sharing configuration. This test specifically looks at the load that can be supported by the Show Pitch Card flow as this is assumed to be the most frequently requested flow.
+
 \subsection{Results}
+
+Fig \ref{fig:test_6_results} should be here...
 
 \begin{figure}[ht]
     \centering
@@ -106,3 +110,21 @@ Overall, these results indicate that this particular diverse configuration is wo
 \end{figure}
 
 \subsection{Discussion}
+From the data in Fig \ref{fig:test_6_results}, it is apparent that \textit{TB2} can reliably sustain a load of 50 requests per second while maintaining an average response time of 2 seconds. This is significant as it reveals that the individual response times found in Fig \ref{fig:test_3_results} can be sustained at load. Beyond 50 requests per second \textit{TB2} begins to return error code 500s, meaning that the server knows it has had a problem fulfilling the request.
+Determining exactly how many users 50 requests per second may support is difficult to estimate. Frequency analysis on \ref{S:test_2}'s results would have been helpful in identifying the community's usage patterns. Nevertheless, without this data, the following assumptions have been made: the load is distributed evenly, each user uses PitchHub once a day, and each user session is 10 requests deep (page requests). Calculating the necessary requests per second for the expected and worst case community sizes using these assumptions results in the following:
+
+\begin {table}[H]
+\begin{center}
+\begin{tabular}{ |p{2cm}||p{6cm}| }
+ \hline
+ Size & Required Requests Per Second (rps)\\
+ \hline
+    Expected & 45 rps\\
+ \hline
+    Worst case & 70 rps\\
+ \hline
+\end{tabular}
+\end{center}
+\end{table}
+Based on these assumptions \textit{TB2} can therefore satisfy the load of the expected community size but not the worst case. To increase the load supported \textit{TB2} could be either scaled vertically or horizontally, such that the application server size is increased or a load balancer and other servers are added. 
+One major drawback of the assumptions is that the load is unlikely to be even. Peaks in usage will occur throughout the day and it is this maximum peak load that will need to be satisfied. Once \textit{TB3} has gathered sufficient data, these peaks may be modelled, and subsequently more accurate load estimates can be made.
