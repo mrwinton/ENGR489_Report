@@ -1,13 +1,24 @@
 %!TEX root = proj_report_outline.tex
 
 \chapter{Web Application Design}\label{C:design_web}
+
+TODO
+
 The design of the web application focused on the use of standard architecture patterns and web development technologies. This approach was taken as web application development covers numerous domains and technologies. In \citeauthor{shklar2009web}'s tome ``Web Application Architecture: Principles, Protocols and Practices'' they describe the core areas of knowledge required: HTTP, HTML, SMTP, JavaScript, Databases, Graphics Design, and Server Technology \cite{shklar2009web}. While designing a unique foundation specifically optimised for PitchHub is enticing, as Donald Knuth is famously quoted ``97\% of the time premature optimization is the root of all evil'' \cite{knuth1974structured}. With this in mind, PitchHub leverages battle tested open source libraries to deliver more functionality while reserving the ability to make custom modifications and changes as necessary. This chapter explores these design choices and also the alternative designs that were considered throughout this project.
 
 \section{User Stories}
 
-The principal function of PitchHub is to facilitate collaboration in the innovation community, this is reflected in requirement D1. As such the design of PitchHub began with specifying these fundamentals in user stories. 
+The principal function of PitchHub is to facilitate collaboration in the innovation community, this is reflected in requirement D1. As such the design of PitchHub began with specifying these fundamentals in user stories. To do this each user story captured a desired behaviour by identifying the behaviour's corresponding `who', `what', and `why' attributes. An example user story capturing \textit{Post Pitch Card} behaviour is as follows:
 
-The requirements D2.1 and D2.2 are similarly behaviour-orientated and hence specified in user stories.
+\begin{verbatim}
+	  As a user, I want to create a Pitch Card so that the community and I may 
+	  collaborate to find a solution	
+\end{verbatim}
+
+To unpack on this example, the `who' is a user, the `what' is the ability post Pitch Cards, and the `why' is the desire of finding a solution through collaboration.
+So from these user stories not only is the behaviour captured but also relevant expectations of state. To continue using the above example, it can be discerned that once the user has posted a Pitch Card there is an expectation that other users will be able to see it and also interact with it `to find a solution'. Specifying these user stories was done in collaboration with Callaghan Innovation to ensure the behaviour documented was accurate. 
+
+To have a complete understanding of the functionality required by PitchHub user stories were used to describe all desired behaviour, ranging from sign-up to content scoping (as per requirement D2.1). These user stories as well as their feature definitions (the executable/testable representation of these user stories) are found in Appendix 
 
 \section{UI Design}
 
@@ -25,14 +36,14 @@ In Figure \ref{fig:architecture_1} within the Client and Server layers the Model
 
 \begin{figure}[ht]
     \centering
-    \includegraphics[width=1\textwidth]{architecture_1}
+    \includegraphics[width=0.6\textwidth]{architecture_1}
     \caption{The 3-tier architecture used in PitchHub capturing the security and distributed requirements identified in Chapter \ref{C:requirements} in the design.}
     \label{fig:architecture_1}
 \end{figure}
 
 \section{System Model}\label{S:systemModel}
 
-The design of the system's model is another case of requirements being captured early in the design phase. Figure \ref{fig:class_diagram} illustrates the system's classes and their relationships as a class diagram. The requirement to implement privacy controls is captured in the Pitch Card and Comment classes' relationship with the DisclosureScope class. To illustrate this it is important to understand how the platform works: A user creates a Pitch Card, detailing the idea's attributes in the Pitch Card's Pitch Points, their aim is to get the community to collaborate on the Pitch Card to derive meaningful information or connections to action the Pitch Card, collaborator's on a Pitch Card can make suggestions or comments on these Pitch Points to help drive the idea forward. By providing scoping on Pitch Cards initiator's set a base restriction level for the Pitch Card and it's related content. The negotiation aspect of PitchHub is introduced with the Comments and Suggestions users may contribute to PitchCards. As seen in Figure \ref{fig:class_diagram} these classes also have scoping, however in this case scoping can only be set to an equivalent or more restrictive level than that specified in the Pitch Card. An example of this is where an initiator set's the content scope to `Members', so only members of the PitchHub can view the idea, now if a user were to contribute a suggestion on a Pitch Point this suggestion can only be scoped as `Members' or any level which is more restrictive, they cannot however set it to `Public'. This interaction/requirement as seen in Figure \ref{fig:class_diagram} is designed with the Strategy Pattern so that future scopes will have minimal change to the application.
+The design of the system's model is another case of requirements being captured early in the design phase. Figure \ref{fig:class_diagram} illustrates the system's classes and their relationships as a class diagram. The requirement to implement privacy controls is captured in the Pitch Card and Comment classes' relationship with the DisclosureScope class. To illustrate this it is important to understand how the platform works: A user creates a Pitch Card, detailing the idea's attributes in the Pitch Card's Pitch Points, their aim is to get the community to collaborate on the Pitch Card to derive meaningful information or connections to action the Pitch Card, collaborator's on a Pitch Card can make suggestions or comments on these Pitch Points to help drive the idea forward. By providing scoping on Pitch Cards initiator's set a base restriction level for the Pitch Card and it's related content. The negotiation aspect of PitchHub is introduced with the Comments and Suggestions users may contribute to PitchCards. As seen in Figure \ref{fig:class_diagram} these classes also have scoping, however in this case scoping can only be set to an equivalent or more restrictive level than that specified in the Pitch Card. An example of this is where an initiator set's the content scope to `Members', so only members of the PitchHub can view the idea, now if a user were to contribute a suggestion on a Pitch Point this suggestion can only be scoped as `Members' or any level which is more restrictive, they cannot however set it to `Public'. This interaction/requirement as seen in Figure \ref{fig:class_diagram} is designed with the strategy pattern so that future scopes will have minimal change to the application.
  
 \begin{sidewaysfigure}[ht]
     \centering

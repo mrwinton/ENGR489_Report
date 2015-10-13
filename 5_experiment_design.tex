@@ -99,7 +99,7 @@ A limitation of the experiment design for the functional testing is that Seleniu
 This section explores the three test beds designed for the evaluation. Each test bed was designed with different responsibilities in mind. The first, \textit{TB1}, evaluates the collaboration functionality supported for requirements D1, D2.1 and D2.2 using executable user stories. The second, \textit{TB2}, evaluates the the prototypes performance in various distribution configurations for requirement D4 and D5. The third, \textit{TB3}, evaluates the collaboration functionality supported for requirements D1, D2.1 and D2.2 using a live deployment and real users. The design and aim of each test bed is discussed with reflection on how automation has also been used to improve their flexibility.
 
 \subsection{Test Bed 1 - Collaboration Functionality}\label{SS:collaborativeFunctionality}
-The principal aim in testing the fulfilment of requirements D1, D2.1 and D2.2 is to ensure that users have the tools/functionality available to successfully collaborate online. Specifically what successful online collaboration is has been captured in the user stories developed by Callaghan Innovation with assistance from myself. The following is an example (concatenated for brevity) of the general granularity achieved in each user story:
+The principal aim in testing the fulfilment of requirements D1, D2.1 and D2.2 is to ensure that users have the tools/functionality available to successfully collaborate online. Specifically what successful online collaboration is has been captured in the user stories developed by Callaghan Innovation and myself. The following is an example (concatenated for brevity) of the general granularity achieved in each user story:
 
 \begin{verbatim}
 Feature: Annotate Pitch Card
@@ -145,7 +145,7 @@ In evaluating performance there are a number of metrics that may be analysed e.g
 
 \begin{figure}[ht]
     \centering
-    \includegraphics[width=1\textwidth]{architecture_evaluation}
+    \includegraphics[width=0.6\textwidth]{architecture_evaluation}
     \caption{The architecture used for \textit{TB2}. The MongoDB secret keepers are replica sets, the redundancy gained through this ensures high availability as discussed in Section \ref{SS:design_shamir_secret_sharing_service}.}
     \label{fig:architecture_evaluation}
 \end{figure}

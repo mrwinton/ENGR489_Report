@@ -16,7 +16,7 @@ The user stories which affirm the fulfilment of requirements D1, D2.1 and D2.2 i
 
 \begin{figure}[ht]
     \centering
-    \includegraphics[width=1\textwidth]{scope_matrix}
+    \includegraphics[width=0.8\textwidth]{scope_matrix}
     \caption{The scope matrix which illustrates the relationship between viewer level and entity scope in regards to viewing the entity.}
     \label{fig:architecturescope_matrix_evaluation}
 \end{figure}
@@ -40,9 +40,9 @@ Test \rom{3} uses the prototype on \textit{TB2} in a diverse ``3, 4'' secret sha
 
 \subsection{Results}
 
-\begin{figure}[ht]
+\begin{figure}[H]
     \centering
-    \includegraphics[width=1\textwidth]{experiment_3_results}
+    \includegraphics[width=0.6\textwidth]{experiment_3_results}
     \caption{The mean response times with standard deviation for PitchHub flows: display dashboard, show Pitch Card, and create Pitch Card, under both expected and worst case community sizes. There is a very negligible performance difference between the two community sizes. Each size elicits mean response times that fall under Nielsen's third threshold. }
     \label{fig:test_3_results}
 \end{figure}
@@ -51,7 +51,7 @@ Test \rom{3} uses the prototype on \textit{TB2} in a diverse ``3, 4'' secret sha
 
 Fig \ref{fig:test_3_results} illustrates that the PitchHub prototype in a 2x MongoDB and 2x Postgres Secret Sharing configuration can support the innovation community at both the expected and worst case sizes (derived from the Statistics NZ data in Table \ref{tab:title}). In terms of Nielsen's response thresholds, each flow falls under Nielsen's third threshold (1 =\textless 10 seconds): where a users attention is still maintained but the wait-time interrupts flow of thought. Given that each flow in both community sizes meets the acceptable response threshold it can be concluded that the prototype satisfies requirement D4.
 
-The difference in community sizes shows only a negligible performance difference in mean wall-time for each flow. This is because, even at the worst-case size, the database is only medium in size - where the entire database is storing between 10\textsuperscript{5} and 10\textsuperscript{7} records and can still fit on a single server \cite{Large8:online}. At this size, performance is not effected by amount of data stored. For performance to be affected by database size, the user size would need to climb to XXX,XXX or the contribution distribution would need to shift to the right.
+The difference in community sizes shows only a negligible performance difference in mean wall-time for each flow. This is because, even at the worst-case size, the database is only medium in size - where the entire database is storing between 10\textsuperscript{5} and 10\textsuperscript{7} records and can still fit on a single server \cite{Large8:online}. At this size, performance is not affected by amount of data stored.
 
 \section{Test \rom{4} - Overhead of Threshold Scheme Security}
 
@@ -62,7 +62,7 @@ The secret sharing service is an important part of keeping sensitive user data s
 
 \begin{figure}[ht]
     \centering
-    \includegraphics[width=1\textwidth]{experiment_4_results}
+    \includegraphics[width=0.6\textwidth]{experiment_4_results}
     \caption{Comparison of the mean response times with standard deviation for PitchHub flows: display dashboard, show Pitch Card, and create Pitch Card, in both Secret Sharing and non-Secret Sharing configurations. There is a very significant performance difference between the two configurations. The non-Secret Sharing configuration falls under Nielsen's second threshold whereas the Secret Sharing configuration falls under the third. }
     \label{fig:test_4_results}
 \end{figure}
@@ -80,11 +80,9 @@ Test \rom{5} uses the prototype on \textit{TB2} in a both a diverse ``3, 4'' sec
 
 \subsection{Results}
 
-@KB, figure \ref{fig:test_5_results} should be here...
-
 \begin{figure}[ht]
     \centering
-    \includegraphics[width=1\textwidth]{experiment_5_results}
+    \includegraphics[width=0.6\textwidth]{experiment_5_results}
     \caption{Comparison of the mean response times with standard deviation for PitchHub flows: display dashboard, show Pitch Card, and create Pitch Card, in both diverse and homogeneous secret keeper configurations. There is a noticeable performance difference between the two configurations where the diverse configuration performs faster. Both configurations fall under Nielsen's third threshold limit.}
     \label{fig:test_5_results}
 \end{figure}
@@ -100,17 +98,22 @@ Beyond being able to satisfy individual requests within an acceptable threshold 
 
 \subsection{Results}
 
-Fig \ref{fig:test_6_results} should be here...
-
 \begin{figure}[ht]
     \centering
-    \includegraphics[width=1\textwidth]{experiment_6_results}
-    \caption{Load test of the Show Pitch Card flow in a 2x MongoDB and 2x Postgres Secret Sharing configuration. Under 120 requests per seconds the prototype is able to maintain a 2 second response time average. }
+    \includegraphics[width=0.8\textwidth]{experiment_6_results}
+    \caption{Load test of the Show Pitch Card flow in a 2x MongoDB and 2x Postgres Secret Sharing configuration. At 50 requests per seconds the prototype is able to maintain a 2 second response time average. }
     \label{fig:test_6_results}
 \end{figure}
 
+\begin{figure}[ht]
+    \centering
+    \includegraphics[width=0.8\textwidth]{experiment_6_results_b}
+    \caption{Corresponding response statuses of the Show Pitch Card flow load test conducted in Fig \ref{fig:test_6_results}. This graph demonstrates that the 2x MongoDB and 2x Postgres Secret Sharing configuration on \textit{TB2} can reliably withstand a load of 50 requests per second.}
+    \label{fig:test_6_results_b}
+\end{figure}
+
 \subsection{Discussion}
-From the data in Fig \ref{fig:test_6_results}, it is apparent that \textit{TB2} can reliably sustain a load of 50 requests per second while maintaining an average response time of 2 seconds. This is significant as it reveals that the individual response times found in Fig \ref{fig:test_3_results} can be sustained at load. Beyond 50 requests per second \textit{TB2} begins to return error code 500s, meaning that the server knows it has had a problem fulfilling the request.
+From the data in Fig \ref{fig:test_6_results} and Fig \ref{fig:test_6_results_b}, it is apparent that \textit{TB2} can reliably sustain a load of 50 requests per second while maintaining an average response time of 2 seconds. This is significant as it reveals that the individual response times found in Fig \ref{fig:test_3_results} can be sustained at load. Beyond 50 requests per second \textit{TB2} begins to return error code 500s, meaning that the server knows it has had a problem fulfilling the request.
 Determining exactly how many users 50 requests per second may support is difficult to estimate. Frequency analysis on Fig \ref{S:test_2}'s results would have been helpful in identifying the community's usage patterns. Nevertheless, without this data, the following assumptions have been made: the load is distributed evenly, each user uses PitchHub once a day, and each user session is 10 requests deep (page requests). Calculating the necessary requests per second for the expected and worst case community sizes using these assumptions results in the following:
 
 \begin {table}[H]
