@@ -111,7 +111,7 @@ Fig \ref{fig:test_6_results} should be here...
 
 \subsection{Discussion}
 From the data in Fig \ref{fig:test_6_results}, it is apparent that \textit{TB2} can reliably sustain a load of 50 requests per second while maintaining an average response time of 2 seconds. This is significant as it reveals that the individual response times found in Fig \ref{fig:test_3_results} can be sustained at load. Beyond 50 requests per second \textit{TB2} begins to return error code 500s, meaning that the server knows it has had a problem fulfilling the request.
-Determining exactly how many users 50 requests per second may support is difficult to estimate. Frequency analysis on \ref{S:test_2}'s results would have been helpful in identifying the community's usage patterns. Nevertheless, without this data, the following assumptions have been made: the load is distributed evenly, each user uses PitchHub once a day, and each user session is 10 requests deep (page requests). Calculating the necessary requests per second for the expected and worst case community sizes using these assumptions results in the following:
+Determining exactly how many users 50 requests per second may support is difficult to estimate. Frequency analysis on Fig \ref{S:test_2}'s results would have been helpful in identifying the community's usage patterns. Nevertheless, without this data, the following assumptions have been made: the load is distributed evenly, each user uses PitchHub once a day, and each user session is 10 requests deep (page requests). Calculating the necessary requests per second for the expected and worst case community sizes using these assumptions results in the following:
 
 \begin {table}[H]
 \begin{center}
