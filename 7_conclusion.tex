@@ -1,42 +1,53 @@
 %!TEX root = proj_report_outline.tex
 \chapter{Conclusions and Future Work}
-This chapter discusses the project's contributions, and reflects on the requirements with regard to the evaluation conducted. Finally, potential future work is identified and summarised.
+This chapter reviews the project's contributions in light of the design requirements, discusses potential future work and finally, surmises the project.
 
-\section{Contributions}
+\section{Review}
+
 The project's principal contributions are as follows:
 
-\paragraph{C1: User stories describing collaboration in the innovation community.} 
+\paragraph{C1: Innovation Role Taxonomy.} 
+
+TODO
+
+\paragraph{C2: UI design.} 
+
+TODO
+
+\paragraph{C3: Architecture.} 
+
+TODO
+
+\paragraph{C4: User stories describing collaboration in the innovation community.} 
 
 Existing user stories of collaboration in the innovation community do not exist. As such new user stories were specified with an emphasis on networking/collaborating around ideas. These stories specify the following: engagement of all roles within the innovation community, the ability to scope content's disclosure, and audit who has seen ideas that you have initiated.
 
-\paragraph{C2.1: A PitchHub prototype.} 
+\paragraph{C5.1: A PitchHub prototype.} 
 
 Built on the popular Ruby on Rails framework, the prototype was developed to support the user stories specified. Having followed good coding practices this artefact is open to future extensions.
 
-\paragraph{C2.2: A PitchHub prototype deployed to Callaghan Innovation.} 
+\paragraph{C5.2: A PitchHub prototype deployed to Callaghan Innovation.} 
 
 For internal use within Callaghan Innovation a prototype was deployed following a production configuration: Passenger application server, caching, SSL, and various security measures suggested by OWASP (e.g. ssh hardening, protection against IP spoofing).
 
 
-\paragraph{C2.3: A PitchHub prototype with Shamir's Secret Sharing scheme integrated.} 
+\paragraph{C5.3: A PitchHub prototype with Shamir's Secret Sharing scheme integrated.} 
 
 Use of the Shamir's Secret Sharing scheme, most commonly used in key services, was integrated into the PitchHub prototype. Sensitive information such as Pitch Points, suggestions, and comments is encrypted using this service providing unconditional security.
 
-\paragraph{C2.4: A PitchHub prototype with Diverse Secret Keepers.} 
+\paragraph{C5.4: A PitchHub prototype with Diverse Secret Keepers.} 
 
 In strengthening the security provided by the Secret Sharing scheme, diverse secret keepers were introduced. PitchHub supports the following databases: MongoDB, Postgres, MySQL and SQLite. To maintain \textit{plug-and-play} functionality afforded by MongoBD the configuration of SQL secret keepers has been automated.
 
-\paragraph{C3: Virtualised development environment.}
+\paragraph{C6: Virtualised development environment.}
 
 To make installation and setup of PitchHub as easy as possible the development environment has been virtualised using Vagrant and Chef. This was primarily for the benefit of non-technical stakeholders, but will be equally useful for future maintainers.
 
-\paragraph{C4: Automated deployment process.}
+\paragraph{C7: Automated deployment process.}
  
 To make host configuration and code deployment as easy as possible the deployment process was automated using Capistrano. Deployments can be triggered effortlessly and use GitHub to ensure production reflects the Master branch. Beyond this deployments can be rolled-back easily, this will be useful in the future should any deployments prove to be defective.
 
-\section{Discussion}
-
-
+TODO review in light of design requirements
 
 \section{Future Work}
 
@@ -48,4 +59,12 @@ A potentially useful feature would be if Pitch Cards could be recommended to use
 
 \subsection{Usability Extension/Evaluation}
 
+TODO
+
 \subsection{RealMe Integration}
+
+TODO
+
+\section{Summary}
+
+TODO
