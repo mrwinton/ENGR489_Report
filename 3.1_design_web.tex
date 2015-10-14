@@ -24,10 +24,25 @@ To have a complete understanding of the functionality required by PitchHub user 
 
 A well-designed user interface drives user behaviour. Given PitchHub's aim of facilitating collaboration behaviour it is advantageous to have it also drive it. Specifically the behaviour aimed to be driven is those found in requirements D1, D2.1, and D2.2. To do this, the behaviour captured in the user stories were embraced in the content templates and wire frames created to guide the final UI design.
 The creation of content templates for each page were the first step in UI design. Content templates were used as they place emphasis on the narrative of each page being designed first before the visual elements, thus prioritising the fundamentals. Ultimately, through content templates each page is deconstructed into: who the target audience is, what the page's purpose is, and what the context is. An example content template for the Pitch Card page can be found in Appendix \ref{A:content_template}.
-Wire frames were then used to iterate on the layout of each page. This process solely focused on the layout and visual design of each page rather than the content (having already been specified in the content templates).
+Wire frames were then used to iterate on the layout of each page. This process solely focused on the layout and visual design of each page rather than determining the content (already been specified in the content templates). For example, the Pitch Card page wire frame, Fig \ref{fig:wire_frame}, simply visualises the content specified in Appendix \ref{A:content_template}. The Pitch Card page shown in Fig \ref{fig:show_pitch_card} illustrates the implemented design. There exist only minor differences between the wire frame and final implementation. An example is the lack of ``Make Suggestion'' button, instead users are able to make suggestion on the Pitch Points through in-line editing (see Fig \ref{fig:show_pitch_card}). Not only is this regarded as a more natural interaction but also a behaviour driver. Making a suggestion in-line in the context of the Pitch Card is designed to encourage suggestions that are considered in relation to the Pitch Card as a whole.
 
+\begin{figure}[ht]
+    \centering
+    \includegraphics[width=0.6\textwidth]{wire_frame}
+    \caption{Wire frame of the ``Show Pitch Card'' page. The primary features are the Pitch Points on the left, and suggestions with comments on the right. Users can contribute suggestions by clicking the ``Make Suggestion'' button.}
+    \label{fig:wire_frame}
+\end{figure}
+
+
+\begin{figure}[ht]
+    \centering
+    \includegraphics[width=1\textwidth]{pitch_card_view}
+    \caption{Implementation of the ``Show Pitch Card'' page. The primary features are as follows: the Pitch Points to direct collaboration (requirement D1), the ability to suggest/comment (requirement D1), the ability to scope (D2.1), and the ability to audit viewers (requirement D2.2).}
+    \label{fig:show_pitch_card}
+\end{figure}
 
 \section{Architecture}
+TODO
 
 The architecture of the web application was some of the first work accomplished on PitchHub. The architecture is the abstraction of the system and hence should be designed with the desired system qualities needed to to be achieved. With PitchHub the security and distributed requirements identified in Chapter \ref{C:requirements} were captured in the three tier architecture designed, hence formalising the requirements specification early on.
 \par
