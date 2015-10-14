@@ -6,17 +6,11 @@ This chapter reviews the project's contributions in light of the design requirem
 
 The project's principal contributions are as follows:
 
-\paragraph{C1: Innovation Role Taxonomy.} 
+\paragraph{C1: Innovation Role Taxonomy.} For classifying communication layers/platforms facilitating collaboration between the archetypal roles in the innovation community. The relationship semantics between roles in the taxonomy is denoted as either explicitly supported or implicitly supported. Layers/platforms that facilitate innovation collaboration ideally have explicit support for all roles.
 
-TODO
+\paragraph{C2: UI design.} Built upon the conceptual work done by Callaghan Innovation the final UI implementation was designed to encourage collaboration and be visually appealing. Content templates and wire frames were the key artefacts produced to guide the final implementation.
 
-\paragraph{C2: UI design.} 
-
-TODO
-
-\paragraph{C3: Architecture.} 
-
-TODO
+\paragraph{C3: Architecture.} The architecture designed and implemented is principal in realising the distributed and performance requirements identified. The architecture has also been designed to support ease of extension for future works by embracing a tiered architectural style.
 
 \paragraph{C4: User stories describing collaboration in the innovation community.} 
 
@@ -28,7 +22,7 @@ Built on the popular Ruby on Rails framework, the prototype was developed to sup
 
 \paragraph{C5.2: A PitchHub prototype deployed to Callaghan Innovation.} 
 
-For internal use within Callaghan Innovation a prototype was deployed following a production configuration: Passenger application server, caching, SSL, and various security measures suggested by OWASP (e.g. ssh hardening, protection against IP spoofing).
+For internal use within Callaghan Innovation a prototype was deployed following a production configuration: Passenger application server, caching, SSL, and various security measures suggested by OWASP (e.g. ssh hardening, protection against IP spoofing). Visit \url{http://pitchhub.net}.
 
 
 \paragraph{C5.3: A PitchHub prototype with Shamir's Secret Sharing scheme integrated.} 
@@ -46,6 +40,23 @@ To make installation and setup of PitchHub as easy as possible the development e
 \paragraph{C7: Automated deployment process.}
  
 To make host configuration and code deployment as easy as possible the deployment process was automated using Capistrano. Deployments can be triggered effortlessly and use GitHub to ensure production reflects the Master branch. Beyond this deployments can be rolled-back easily, this will be useful in the future should any deployments prove to be defective.
+\\
+\newline
+These contributions are instrumental in fulfilling the design requirements identified. The contributions are now considered in light of these requirements.
+\\
+\newline
+C2, C4, and C5.\{1,2,3\} all play roles in the fulfilment of requirements D1, D2.1, and D2.2. The user stories created in D1 capture the behaviours required by D1, D2.1, and D2.2. These user stories were used to drive the design process of the UI (C4) that C5.\{1,2,3\} ultimately uses to facilitate these behaviours. The strict adherence to the user stories throughout the design and execution of the project has culminated in artefacts that are faithful in their support of the behaviours required. This fulfilment has been verified by Test \rom{1}.
+
+\paragraph{D2.3: The prototype must store sensitive data securely.}
+
+\paragraph{D3:  The prototype must be portable and extensible.}
+
+\paragraph{D4: The prototype must be performant.}
+
+\paragraph{D5: The prototype must support a distributed architecture.}
+
+
+
 
 TODO review in light of design requirements
 
