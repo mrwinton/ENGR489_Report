@@ -22,11 +22,14 @@ To have a complete understanding of the functionality required by PitchHub user 
 
 \section{UI Design}
 
-TODO
+A well-designed user interface drives user behaviour. Given PitchHub's aim of facilitating collaboration behaviour it is advantageous to have it also drive it. Specifically the behaviour aimed to be driven is those found in requirements D1, D2.1, and D2.2. To do this, the behaviour captured in the user stories were embraced in the content templates and wire frames created to guide the final UI design.
+The creation of content templates for each page were the first step in UI design. Content templates were used as they place emphasis on the narrative of each page being designed first before the visual elements, thus prioritising the fundamentals. Ultimately, through content templates each page is deconstructed into: who the target audience is, what the page's purpose is, and what the context is. An example content template for the Pitch Card page can be found in Appendix \ref{A:content_template}.
+Wire frames were then used to iterate on the layout of each page. This process solely focused on the layout and visual design of each page rather than the content (having already been specified in the content templates).
+
 
 \section{Architecture}
 
-The architecture of the web application was the first work accomplished on PitchHub. The architecture is the abstraction of the system and hence should be designed with the desired system qualities needed to to be achieved. With PitchHub the security and distributed requirements identified in Chapter \ref{C:requirements} were captured in the three tier architecture designed, hence formalising the requirements specification early on.
+The architecture of the web application was some of the first work accomplished on PitchHub. The architecture is the abstraction of the system and hence should be designed with the desired system qualities needed to to be achieved. With PitchHub the security and distributed requirements identified in Chapter \ref{C:requirements} were captured in the three tier architecture designed, hence formalising the requirements specification early on.
 \par
 The common software engineering practice of separation of concerns has a strong presence within this architecture as seen in Figure \ref{fig:architecture_1}. Each tier's logic and responsibilities is encapsulated from the other tiers. Their only knowledge of the outside world is in the design-time defined interfaces of their neighbouring tiers. To partially fulfil the security requirement PitchHub communicates using the \textit{Transport Layer Security} (TLS) protocol, that provides secure bidirectional communication between the client and server.
 \par
