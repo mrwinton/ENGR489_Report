@@ -25,10 +25,10 @@ The project's principal contributions are as follows:
 
 \paragraph{C6:} I have virtualised the {\em PitchHub development environment} using Vagrant and Chef to make installation and setup of PitchHub as easy as possible. This was primarily for the benefit of non-technical stakeholders, but will be equally useful for future maintainers.
 
-\paragraph{C7:} I have automated the {\em PitchHub deployment process} using Capistrano to make host configuration and code deployment as easy as possible. The scripts defined facilitate zero-downtime deployments and also enable deployments to be rolled-back easily. This could be useful in the future should any deployments prove to be defective.
+\paragraph{C7:} I have automated the {\em PitchHub deployment process} using Capistrano to make host configuration and code deployment as easy as possible. The scripts defined facilitate zero-downtime deployments and also enable deployments to be rolled-back easily.
 \\
 \newline
-These contributions are instrumental in fulfilling the design requirements identified in Section \ref{S:designRequirements}. The fulfilment relationship between contributions to requirements is shown in Fig 
+These contributions are instrumental in fulfilling the design requirements identified in Section \ref{S:designRequirements}. The fulfilment relationship between contributions to requirements is shown in Fig \ref{fig:contribution_requirements_mapping}.
 
 \begin{figure}[ht]
     \centering
@@ -39,20 +39,13 @@ These contributions are instrumental in fulfilling the design requirements ident
 
 C2, C4, and C5.{\em X} all play roles in the fulfilment of requirements D1, D2.1, and D2.2. The user stories created in D1 capture the behaviours required by D1, D2.1, and D2.2. These user stories were used to drive the design process of the UI (C4) that C5.{\em X} ultimately uses to facilitate these behaviours. The strict adherence to the user stories throughout the design and execution of the project has culminated in artefacts that are faithful in their support of the behaviours required. This fulfilment has been verified by Test \rom{1} and thus requirements D1, D2.1, and D2.2 are concluded as fulfilled.
 
-C5.3 and C5.4 contribute to the fulfilment of requirement D2.3. Integrating the Secret Sharing scheme into the prototype and encrypting commercially sensitive data and IP at the Pitch Point level ensures unconditional security in relation to database breaches (of up to \textit{k}). As described in Section \ref{S:evaluationScope} verification of this component was out of scope of this project. Despite this it is believed that requirement D2.3 has been fulfilled to the extent possible within the scope of this project.
+C5.3 and C5.4 contribute to the fulfilment of requirement D2.3. Integrating the Secret Sharing scheme into the prototype and encrypting commercially sensitive data and IP at the Pitch Point level ensures unconditional security in relation to database breaches (of up to \textit{k}). As described in Section \ref{S:evaluationScope} verification of this component was out of scope of this project. Despite this, it is believed that requirement D2.3 has been fulfilled to the extent possible within the scope of this project.
 
 C3, C6 and C7 each play roles in satisfying requirement D3. The architecture (C3) aids extensibility through the tiered architecture style adopted. The virtualised development environment (C6) is key in providing portability, enabling \textit{plug-and-play} functionality for all artefact prototype variations (C5.{\em X}). C7 aids in the extensibility of the deployment process, as new tasks and environment targets can be easily added.
 
-C5.{\em X} have been verified as meeting requirement D4 through Tests \rom{3}-\rom{6} against Nielsen's response time thresholds. Specifically, Tests \rom{3}-Tests \rom{5} verify that requests can be fulfilled within the response-time thresholds given the different Secret Sharing configurations and 
+C5.{\em X} has been used to verify the fulfilment of requirement D4 through Tests \rom{3}-\rom{6}. Specifically, Tests \rom{3}-\rom{5} verify that the main flows can be performed within Nielsen's time thresholds (in different Secret Sharing configurations) and Test 6 verifies that the prototype can sustain the expected community size's load while maintaining the mean response wall-time within the time thresholds. Therefore, in the context of Nielsen's response time thresholds requirement D4 has been met.
 
-
-
-\paragraph{D5: The prototype must support a distributed architecture.}
-
-
-
-
-TODO review in light of design requirements
+C3 demonstrates the distributed architecture PitchHub is built upon in satisfaction of requirement D5. Ultimately through C5.3 and C5.4's verification of C3's design in their implementation and evaluation it is concluded that requirement D5 has been satisfied.
 
 \section{Future Work}
 
@@ -64,8 +57,8 @@ A potentially useful feature would be if Pitch Cards could be recommended to use
 
 \subsection{Usability Extension/Evaluation}
 
-TODO
+Future work concentrating on the usability of PitchHub could focus on evaluating and extending the current prototype. A user study would be beneficial in verifying the accuracy of the behaviours identified in the user stories. A user study could also help with the identification of new user stories and potential functionality extensions. 
 
 \subsection{RealMe Integration}
 
-TODO
+When PitchHub is released to the public it may be open to abuse by users creating fake accounts. These fake accounts may be used maliciously to view others' IP or contribute unhelpful suggestions. Therefore it is important to for users on PitchHub to be verified as being who they say they are so that there may be a sense of accountability. A service like RealMe would be ideal for this as it is maintained by the Department of Internal Affairs and the actual identity verification process is facilitated by them. To integrate RealMe into PitchHub would require using RealMe's SAML service for authentication.
