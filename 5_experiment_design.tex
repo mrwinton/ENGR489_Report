@@ -41,8 +41,6 @@ white-list firewall set-up, \textit{fstab} modification to prevent shared memory
 Assessing whether a system is portable and extensible is an inherently subjective endeavour. The fulfilment criteria for requirement D3 reflects this. A system can be regarded as portable if it works in all environments required of it, and likewise a system can be regarded as extensible given it is able to adapt to all it's future requirements. However, determining all the future environments and requirements of the system is a difficult task. PitchHub has therefore sought to achieve general portability and extensibility. The definition of portability adopted is: ``the ease with which a system or component can be transferred from one hardware or software environment to another'' \cite{mattsson2006software}. As discussed in previous sections PitchHub has employed virtualisation and automation to make such tasks easy as possible. The definition of extensibility adopted is: ``the ability of the system to tolerate additional features or functionality will little or no required rework of previously developed features or functions'' \cite{Extensibility:online}. PitchHub has been developed with this in mind, the layered architecture and MVC pattern followed mean that both hardware and software components are divided in terms of responsibility. This separation of concerns means that future change request modifications will be isolated to components whose responsibility fits. The inability to strictly quantify or qualify whether requirement D3 is met has led me to regard this requirement as out of scope for the purposes of this evaluation. However I believe the spirit of this requirement has been reflected in the system's design.
 
 \section{Assumptions and Limitations}
-@KB, SHOULD THIS BE AFTER THE EXPERIMENTS? - 
-
 The experiments undertaken have operated under a number of assumptions and limitations. These assumptions and limitations are explored in this section. Reflection on these assumptions and limitations are provided with discussion on their possible ramifications.
 
 A limitation of the experiment described in Section \ref{SS:performance} is that it seeded with synthetic data rather than user data. This is because no open-source user data currently exists within the domain of collaborative innovation networks\footnote{As of 29/9/15.}. To achieve a representative synthetic dataset I required: the number of people in the innovation community, to determine user base size, and also an idea of their platform engagement, to determine a distribution of the PitchCards contributed. Statistics New Zealand's (SNZ) data on innovation activities in New Zealand gives a picture of the innovation communities size from 2003 to 2013 \cite{Innov5:online}. 
@@ -145,7 +143,7 @@ In evaluating performance there are a number of metrics that may be analysed e.g
 
 \begin{figure}[ht]
     \centering
-    \includegraphics[width=0.6\textwidth]{architecture_evaluation}
+    \includegraphics[width=1\textwidth]{evaluation_architecture}
     \caption{The architecture used for \textit{TB2}. The MongoDB secret keepers are replica sets, the redundancy gained through this ensures high availability as discussed in Section \ref{SS:design_shamir_secret_sharing_service}.}
     \label{fig:architecture_evaluation}
 \end{figure}
@@ -157,8 +155,6 @@ The collection of performance data is facilitated through the Rails-Perf-Test li
 To increase the precision of the results the tests for each flow has been repeated 1000 times. In doing so the variability introduced by network latency is normalised. It should be noted that because caching is used in accordance to the prototype's production settings the first test run of each test takes significantly longer because the assets have not yet been cached. This test run's wall-time has been kept in the data set that is averaged for the final result because it is a valid run. This does present itself as an extreme value in each test's data. The actual warm up times for each test have been excluded.
 
 \subsection{Test Bed 3 - Deployed Prototype}\label{SS:deployedPrototype}
-@KB, this section feels light, thoughts?
-
 The goal of \textit{TB3} is to analyse the usage of PitchHub by real people in the innovation community. To do this \textit{TB3} consists of a deployed version of the PitchHub prototype which has been instrumented to capture all API requests. These requests are logged as user events containing the action with it's properties and metadata: 
 
 \begin{verbatim}
@@ -179,8 +175,6 @@ The goal of \textit{TB3} is to analyse the usage of PitchHub by real people in t
 Because of PitchHub's very specific target user group, meaningful data can only be derived from use by an actual innovation community. This is what motivated \textit{TB3} to be released to the wider Callaghan Innovation organisation. Callaghan Innovation is regarded to be an ideal population to test the prototype against as all roles identified from Section \ref{background} (challenger, solver, enabler, facilitator) are present within the organisation.
 
 \section{Response Time Thresholds}
-@KB, where would you advise this section go?
-
 Evaluating the performance of the PitchHub prototype is done under various configurations using \textit{TB2}. The measure upon which performance quality is based on is Nielsen and Miller's response time thresholds \cite{Responsetime:online} for web application performance. 
 The response time thresholds are as follows:
 \paragraph{0.1 second} is about the limit for having the user feel that the system is reacting instantaneously.

@@ -45,13 +45,15 @@ To make host configuration and code deployment as easy as possible the deploymen
 These contributions are instrumental in fulfilling the design requirements identified. The contributions are now considered in light of these requirements.
 \\
 \newline
-C2, C4, and C5.\{1,2,3\} all play roles in the fulfilment of requirements D1, D2.1, and D2.2. The user stories created in D1 capture the behaviours required by D1, D2.1, and D2.2. These user stories were used to drive the design process of the UI (C4) that C5.\{1,2,3\} ultimately uses to facilitate these behaviours. The strict adherence to the user stories throughout the design and execution of the project has culminated in artefacts that are faithful in their support of the behaviours required. This fulfilment has been verified by Test \rom{1}.
+C2, C4, and C5.{\em X} all play roles in the fulfilment of requirements D1, D2.1, and D2.2. The user stories created in D1 capture the behaviours required by D1, D2.1, and D2.2. These user stories were used to drive the design process of the UI (C4) that C5.{\em X} ultimately uses to facilitate these behaviours. The strict adherence to the user stories throughout the design and execution of the project has culminated in artefacts that are faithful in their support of the behaviours required. This fulfilment has been verified by Test \rom{1} and thus requirements D1, D2.1, and D2.2 are concluded as fulfilled.
 
-\paragraph{D2.3: The prototype must store sensitive data securely.}
+C5.3 and C5.4 contribute to the fulfilment of requirement D2.3. Integrating the Secret Sharing scheme into the prototype and encrypting commercially sensitive data and IP at the Pitch Point level ensures unconditional security in relation to database breaches (of up to \textit{k}). As described in Section \ref{S:evaluationScope} verification of this component was out of scope of this project. Despite this it is believed that requirement D2.3 has been fulfilled to the extent possible within the scope of this project.
 
-\paragraph{D3:  The prototype must be portable and extensible.}
+C3, C6 and C7 each play roles in satisfying requirement D3. The architecture (C3) aids extensibility through the tiered architecture style adopted. The virtualised development environment (C6) is key in providing portability, enabling \textit{plug-and-play} functionality for all artefact prototype variations (C5.{\em X}). C7 aids in the extensibility of the deployment process, as new tasks and environment targets can be easily added.
 
-\paragraph{D4: The prototype must be performant.}
+C5.{\em X} have been verified as meeting requirement D4 through Tests \rom{3}-\rom{6} against Nielsen's response time thresholds. Specifically, Tests \rom{3}-Tests \rom{5} verify that requests can be fulfilled within the response-time thresholds given the different Secret Sharing configurations and 
+
+
 
 \paragraph{D5: The prototype must support a distributed architecture.}
 
@@ -73,9 +75,5 @@ A potentially useful feature would be if Pitch Cards could be recommended to use
 TODO
 
 \subsection{RealMe Integration}
-
-TODO
-
-\section{Summary}
 
 TODO

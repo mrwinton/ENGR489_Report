@@ -40,7 +40,7 @@ There is a fundamental tension in the relationship between availability and secu
 
 \begin{figure}[ht]
     \centering
-    \includegraphics[width=0.6\textwidth]{architecture_high_availability}
+    \includegraphics[width=1\textwidth]{ha_architecture}
     \caption{The architecture extended with high-availability (HA) replica sets increases the Threshold Scheme's robustness without compromising security.}
     \label{fig:architecture_high_availability}
 \end{figure}
@@ -64,16 +64,3 @@ The secret sharing configuration developed for the prototype used a (\textit{3},
 An initial concern was that the upfront schema set-up and overall schema-strictness required by relational databases would impact PitchHub's portability and extensibility, important attributes captured in requirement \textit{F4}. Thankfully, Ruby on Rails has out-of-the-box support for \textit{migrations} which enable database schemas to be defined/altered incrementally. This is another case of PitchHub configuring infrastructure in code and opening the door for automation.
 \par
 The most manual portion of setting up PitchHub at this stage is that the migrations required being manually executed on each database instance (as well as maintaining separate configuration files for each instance). To consolidate and automate this process PitchHub leverages the open-source community's \textit{Octopus} library \cite{tchan7:online}. Octopus enables sharding and migration management for distributed database configurations. Integrating Octopus restores near `plug-and-play' functionality. Still required is the actual setting up of the PostgreSQL instances. This can be done manually or via Vagrant but even this is considered to violate requirement \textit{F4}, which identifies non-technical users being able to easily set up a local instance of PitchHub. To resolve this issue, the (development branch of) PitchHub makes use of SQLite \cite{SQLit5:online}, a self-contained SQL database. This configuration while not appropriate for production makes local instances of PitchHub with the secret sharing configuration easily accessible by non-technical users.
-
-
-
-
-
-
-
-
-
-
-
-
-
