@@ -16,3 +16,22 @@ The aim of this project has been to design, implement and evaluate this solution
 
 \section{Contributions}
 
+\paragraph{C1:} I have developed an {\em Innovation Role Taxonomy} for classifying existing innovation platforms. The relationship semantics between roles in the taxonomy is denoted as either explicitly supported or implicitly supported. Platforms that facilitate innovation collaboration ideally have explicit support for all roles.
+
+\paragraph{C2:} I have designed a {\em new UI} to encourage collaboration and be visually appealing. Content templates and wire frames were key artefacts produced to guide the final implementation.
+
+\paragraph{C3:} I have designed the {\em PitchHub distributed architecture}. The tiered architecture style adopted supports ease of extension for future development.
+
+\paragraph{C4:} I have developed {\em the first suite of user stories} that capture the interactions of innovation collaboration. These stories specify the following: engagement of all roles within the innovation community, the ability to scope content's disclosure, and audit who has seen ideas that you have initiated.
+
+\paragraph{C5.1:} I have implemented the {\em PitchHub prototype}, a platform that supports the innovation collaboration user stories specified. Built on the popular Ruby on Rails framework and good coding practices this artefact is open to future development.
+
+\paragraph{C5.2:} I have {\em deployed a PitchHub prototype} to Callaghan Innovation for their use. This instance contains the following production configuration: a Passenger application server, caching, SSL, and various security measures suggested by OWASP (e.g. ssh hardening, protection against IP spoofing). Visit \url{http://pitchhub.net} to view this instance.
+
+\paragraph{C5.3:} I have implemented a {\em PitchHub prototype with Shamir's Secret Sharing scheme} integrated. Sensitive information such as Pitch Points, suggestions, and comments is encrypted using this service.
+
+\paragraph{C5.4:} I have implemented a {\em PitchHub prototype with diverse secret keepers} to strengthen the security provided by the Secret Sharing scheme. The prototype supports the following databases: MongoDB, Postgres, MySQL and SQLite. To maintain the \textit{plug-and-play} functionality afforded by MongoDB the configuration required by SQL secret keepers has been automated.
+
+\paragraph{C6:} I have virtualised the {\em PitchHub development environment} using Vagrant and Chef to make installation and setup of PitchHub as easy as possible. This was primarily for the benefit of non-technical stakeholders, but will be equally useful for future maintainers.
+
+\paragraph{C7:} I have automated the {\em PitchHub deployment process} using Capistrano to make host configuration and code deployment as easy as possible. The scripts defined facilitate zero-downtime deployments and also enable deployments to be rolled-back easily.
