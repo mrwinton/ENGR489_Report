@@ -99,15 +99,15 @@ This section explores the three test beds designed for the evaluation. Each test
 \subsection{Test Bed 1 - Collaboration Functionality}\label{SS:collaborativeFunctionality}
 The principal aim in testing the fulfilment of requirements D1, D2.1 and D2.2 is to ensure that users have the tools/functionality available to successfully collaborate online. Specifically what successful online collaboration is has been captured in the user stories developed by Callaghan Innovation and myself. The following is an example (concatenated for brevity) of the general granularity achieved in each user story:
 
-\begin{verbatim}
+\begin{lstlisting}[language=ustory,firstnumber=1]
 Feature: Annotate Pitch Card
   As a user, I want to suggest changes on viewable pitches so that I can offer insight
 
   Background:
     Given following users exist:
       | username    | email             |
-      | Foo	        | foo@foo.foo       |
-      | Bar      	  | bar@bar.bar       |
+      | Foo         | foo@foo.foo       |
+      | Bar         | bar@bar.bar       |
     And a user with email "foo@foo.foo" posts a well formed pitch card
 
   Scenario: suggest a change
@@ -124,7 +124,7 @@ Feature: Annotate Pitch Card
     And I should see "reasoning for my change suggestion" within "discourses-content"
     And I should see "less than a minute ago" within "discourses-content"
 
-\end{verbatim}
+\end{lstlisting}
 
 The test bed PitchHub uses for evaluating the functional requirements, \textit{TB1}, `executes' these user stories. It does so in exactly the same way users interact with the system through a browser. This has been achieved by using Cucumber, a Ruby behaviour driven development library, and Selenium, a popular web driver. To verify that these `executable' user stories sufficiently simulate user behaviour let us explore the above example. The feature \textit{Annotate Pitch Card} contains three main sections: a brief description of the test's aim, the background which specifies the beginning state of each test, and scenarios which are essentially the feature's tests. The content of the background and scenario blocks are interpreted via step definitions which use Selenium to then drive browser interaction (clicks, text input, etc.). For example, the line ``When I sign in as bar@bar.bar'' is interpreted through the step definitions into the following browser interactions: navigate to page \url{localhost:3000/users/sign_in}, fill email field, fill password field, click login button.
 A key advantage in having functionality testing automated in this way is that the state of the application is far simpler to reason about. At the start of each test the application is guaranteed to always be in the state specified in the background and throughout each scenario all statements following the `then' keyword act as assert statements making in-test guarantees possible.
@@ -157,7 +157,7 @@ To increase the precision of the results the tests for each flow has been repeat
 \subsection{Test Bed 3 - Deployed Prototype}\label{SS:deployedPrototype}
 The goal of \textit{TB3} is to analyse the usage of PitchHub by real people in the innovation community. To do this \textit{TB3} consists of a deployed version of the PitchHub prototype which has been instrumented to capture all API requests. These requests are logged as user events containing the action with it's properties and metadata: 
 
-\begin{verbatim}
+\begin{lstlisting}[language=json,firstnumber=1]
 {
   "id":"8d4614a0-f9f2-47ae-983e-73c6ec4014b6",
   "name":"Processed dashboard#index",
@@ -170,11 +170,11 @@ The goal of \textit{TB3} is to analyse the usage of PitchHub by real people in t
   "user_id":{"$oid":"560496e970697428b4000000"},
   "time":"2015-09-29T21:00:16.814Z"
 }
-\end{verbatim}
+\end{lstlisting}
 
 Because of PitchHub's very specific target user group, meaningful data can only be derived from use by an actual innovation community. This is what motivated \textit{TB3} to be released to the wider Callaghan Innovation organisation. Callaghan Innovation is regarded to be an ideal population to test the prototype against as all roles identified from Section \ref{background} (challenger, solver, enabler, facilitator) are present within the organisation.
 
-\section{Response Time Thresholds}
+\section{Response Time Thresholds}\label{S:responseTimeLimits}
 Evaluating the performance of the PitchHub prototype is done under various configurations using \textit{TB2}. The measure upon which performance quality is based on is Nielsen and Miller's response time thresholds \cite{Responsetime:online} for web application performance. 
 The response time thresholds are as follows:
 \paragraph{0.1 second} is about the limit for having the user feel that the system is reacting instantaneously.

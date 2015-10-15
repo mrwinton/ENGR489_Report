@@ -1,11 +1,11 @@
 %!TEX root = proj_report_outline.tex
 \chapter{Evaluation}
-Following the completed implementation and infrastructure setup an evaluation of the project was carried out on prototype. The evaluation was designed primarily to verify whether or not the prototype developed was successful in fulfilling the requirements identified as in scope in Section \ref{S:evaluationScope}.
+Following the completed implementation and infrastructure setup an evaluation of the project was carried out on a prototype. The evaluation was designed primarily to verify whether the prototype developed was successful in fulfilling the requirements identified in scope in Section \ref{S:evaluationScope}.
 
 \section{Test \rom{1} - Collaboration Functionality Fulfilment}
 
 \subsection{Motivation}
-PitchHub's primary goal is to facilitate collaboration within the innovation community. To do this PitchHub seeks to engage all roles in the innovation community by focusing de-constructing ideas to appeal their expertise - in terms of  value proposition, business opportunity, challenges, and solution. Test \rom{1} seeks to verify that the prototype supports the behaviour necessary to facilitate this collaboration. As discussed in Section \ref{C:requirements} this behaviour is distilled in the requirements D1, D2.1 and D2.2.
+PitchHub's primary goal is to facilitate collaboration within the innovation community. To do this, PitchHub seeks to engage all roles in the innovation community by de-constructing ideas - in terms of  value proposition, business opportunity, challenges, and solution. Test \rom{1} seeks to verify that the prototype supports the behaviour necessary to facilitate this collaboration. As discussed in Section \ref{C:requirements}, this behaviour is distilled in requirements D1, D2.1 and D2.2.
 
 \subsection{Results}
 The user stories which affirm the fulfilment of requirements D1, D2.1 and D2.2 in \textit{TB1} confirm support of the following behaviour:
@@ -24,12 +24,12 @@ The user stories which affirm the fulfilment of requirements D1, D2.1 and D2.2 i
 \paragraph{Requirement D1's user stories specify that:} users who have viewed a Pitch Card are able to be seen as a ``viewer'' by the PitchCard's initiator.
 
 \subsection{Discussion}
-The design of this experiment was guided by two main questions: first, ``what behaviours are needed to facilitate collaboration in the innovation community?'' And second, ``how can these behaviours be verified as functional from a user's point of view?''. In regards to the first question, determining what behaviours were required was to an extent already completed by Callaghan Innovation through their conceptualisation of PitchHub. To formalise these behaviours Callaghan Innovation and I collaborated on the specification of the user stories.
+The design of this experiment was guided by two main questions: first, ``what behaviours are needed to facilitate collaboration in the innovation community?'' And second, ``how can these behaviours be verified as functional from a user's point of view?''. In regard to the first question, determining what behaviours were required was, to an extent, already completed by Callaghan Innovation through their conceptualisation of PitchHub. To formalise these behaviours Callaghan Innovation and I collaborated on the specification of the user stories.
 In regards to the second question, realistically simulating user interaction was identified as key. Manually testing the various behaviours and scope combinations would be time-consuming and tedious. \textit{TB1} automates this simulation with the added benefit of assertions, making it easy to verify that expected behaviour is indeed satisfied.
 Concluding on the fulfilment of requirements D1, D2.1 and D2.2 largely relies on whether the behaviours specified in relation to the first question accurately reflects the behaviour required by the innovation community. Generalising what a large population needs is a difficult task but it is my belief that because the user stories tested were created in collaboration with Callaghan Innovation, who is a large participant in the innovation community, they are therefore meet the level of credibility required for the purposes of this test. As such, it is concluded that requirements D1, D2.1 and D2.2 have been fulfilled.
 
 \section{Test \rom{2} - Deployed Prototype Analysis}\label{S:test_2}
-At the time of writing, the prototype, \textit{TB3}, has been successfully been released to Callaghan Innovation and is ready for use. Unfortunately use of the prototype by Callaghan Innovation has not yet fully commenced. Without substantial activity to analyse this test was unable to be completed. It is expected that the access code will be distributed by the Callaghan Innovation stakeholders to the wider organisation in the coming weeks.
+At the time of writing, the prototype, \textit{TB3}, has been released to Callaghan Innovation and is ready for use. However use of the prototype by Callaghan Innovation has just commenced. Without substantial activity to analyse this test was unable to be completed. It is expected that the access code will be distributed by the Callaghan Innovation stakeholders to the wider organisation in the coming weeks.
 
 \section{Test \rom{3} - Community Size Support}
 
@@ -43,7 +43,7 @@ Test \rom{3} uses the prototype on \textit{TB2} in a diverse ``3, 4'' secret sha
 \begin{figure}[H]
     \centering
     \includegraphics[width=0.6\textwidth]{experiment_3_results}
-    \caption{The mean response times with standard deviation for PitchHub flows: display dashboard, show Pitch Card, and create Pitch Card, under both expected and worst case community sizes. There is a very negligible performance difference between the two community sizes. Each size elicits mean response times that fall under Nielsen's third threshold. }
+    \caption{The mean response times with standard deviation for PitchHub flows: display dashboard, show Pitch Card, and create Pitch Card, under both expected and worst case community sizes. There is a very negligible performance difference between the two community sizes. Each size elicits mean response times that fall under Nielsen's third threshold, Fig \ref{S:responseTimeLimits}. }
     \label{fig:test_3_results}
 \end{figure}
 
