@@ -11,10 +11,22 @@ First, the current solutions used in the innovation space for collaboration eith
 
 \section{Proposed Solution}\label{S:projectObjectives}
 
-A solution to the issues identified above is to use a system that is specifically designed for engaging the innovation community, enabling users to control the scope of their intellectual property's dissemination, and ensuring the security of their intellectual property. To engage the innovation community it must support all roles within the innovation ecosystem. In doing so PitchHub will be able to facilitate collaboration for a large percentage of the collaboration community. By providing functionality for explicit scoping of intellectual property users may protect themselves from accidental disclosure. Finally, by storing sensitive data via a Threshold scheme users can be assured of unconditional security with regard to malicious access (of up to \textit{k} databases, discussed in Chapter \ref{C:threshholdSecurity}).
-The aim of this project has been to design, implement and evaluate this solution, henceforth referred to as PitchHub.
+A solution to the issues identified above is to use a system that is specifically designed for engaging the innovation community, enabling users to audit and control the scope of their intellectual property's dissemination, and ensuring the security of their intellectual property. To engage the innovation community it must support all roles within the innovation ecosystem. In doing so PitchHub will be able to facilitate collaboration for a large percentage of the collaboration community. By providing functionality for explicit scoping of intellectual property users may protect themselves from accidental disclosure. Finally, by storing sensitive data via a Threshold scheme users can be assured of unconditional security with regard to malicious access (of up to \textit{k} databases, discussed in Chapter \ref{C:threshholdSecurity}). This solution is henceforth referred to as PitchHub.
+
+\section{Goals}\label{S:goals}
+
+The high-level objective of this project is to develop a platform for the New Zealand innovation community that facilitates and encourages collaboration. To achieve this the project seeks to answer the following questions: 
+
+\begin{itemize}
+  \item How can an innovation collaboration platform engage the roles present in the innovation community?
+  \item How can an innovation collaboration platform empower users with control over the dissemination of their contributions?
+  \item How can an innovation collaboration platform ensure security for the potentially commercially-sensitive data shared?
+  \item Can the innovation collaboration platform developed support the New Zealand innovation community in terms of performance?
+\end{itemize}
 
 \section{Contributions}
+
+The project's principal contributions are as follows:
 
 \paragraph{C1:} I have developed an {\em Innovation Role Taxonomy} for classifying existing innovation platforms. The relationship semantics between roles in the taxonomy is denoted as either explicitly supported or implicitly supported. Platforms that facilitate innovation collaboration ideally have explicit support for all roles.
 
@@ -24,14 +36,19 @@ The aim of this project has been to design, implement and evaluate this solution
 
 \paragraph{C4:} I have developed {\em the first suite of user stories} that capture the interactions of innovation collaboration. These stories specify the following: engagement of all roles within the innovation community, the ability to scope content's disclosure, and audit who has seen ideas that you have initiated.
 
-\paragraph{C5.1:} I have implemented the {\em PitchHub prototype}, a platform that supports the innovation collaboration user stories specified. Built on the popular Ruby on Rails framework and good coding practices this artefact is open to future development.
+\paragraph{C5:} I have implemented the {\em PitchHub prototype}, a platform that supports the innovation collaboration user stories specified. Built on the Ruby on Rails framework and by using good coding practices this artefact is open to future development.
 
-\paragraph{C5.2:} I have {\em deployed a PitchHub prototype} to Callaghan Innovation for their use. This instance contains the following production configuration: a Passenger application server, caching, SSL, and various security measures suggested by OWASP (e.g. ssh hardening, protection against IP spoofing). Visit \url{http://pitchhub.net} to view this instance.
+\paragraph{C5.1:} I have {\em deployed a PitchHub prototype} to Callaghan Innovation for their use. This instance contains the following production configuration: a Passenger application server, caching, SSL, and various security measures suggested by OWASP (e.g. ssh hardening, protection against IP spoofing). Visit \url{http://pitchhub.net} to view this instance.
 
-\paragraph{C5.3:} I have implemented a {\em PitchHub prototype with Shamir's Secret Sharing scheme} integrated. Sensitive information such as Pitch Points, suggestions, and comments is encrypted using this service.
 
-\paragraph{C5.4:} I have implemented a {\em PitchHub prototype with diverse secret keepers} to strengthen the security provided by the Secret Sharing scheme. The prototype supports the following databases: MongoDB, Postgres, MySQL and SQLite. To maintain the \textit{plug-and-play} functionality afforded by MongoDB the configuration required by SQL secret keepers has been automated.
+\paragraph{C5.2:} I have extended the {\em PitchHub prototype with Shamir's Secret Sharing scheme} integrated. Sensitive information such as Pitch Points, suggestions, and comments are encrypted using this service.
+
+\paragraph{C5.3:} I have extended the {\em PitchHub prototype with diverse secret keepers} to strengthen the security provided by the Secret Sharing scheme. The prototype supports the following databases: MongoDB, Postgres, MySQL and SQLite. To maintain the \textit{plug-and-play} functionality afforded by MongoDB the configuration required by SQL secret keepers has been automated.
 
 \paragraph{C6:} I have virtualised the {\em PitchHub development environment} using Vagrant and Chef to make installation and setup of PitchHub as easy as possible. This was primarily for the benefit of non-technical stakeholders, but will be equally useful for future maintainers.
 
 \paragraph{C7:} I have automated the {\em PitchHub deployment process} using Capistrano to make host configuration and code deployment as easy as possible. The scripts defined facilitate zero-downtime deployments and also enable deployments to be rolled-back easily.
+
+\section{Report Structure}\label{S:structure}
+
+Chapter 2 provides background on the innovation community,  innovation online, and reviews existing work with the innovation role taxonomy developed. Chapter 3 describes the previous work undertaken on PitchHub by Callaghan Innovation and summarises the design requirements for this project. Chapter 4 and 5 explores the design and implementation of the prototype developed. Chapter 4 gives specific focus to the design decisions made and how the behaviours required for innovation collaboration were supported. Chapter 5 details the implementation of the Pitch Card system and summarises the challenges encountered. Chapter 6 discusses the Threshold Security scheme used and describes how the scheme was integrated. Furthermore, attention is given to how the scheme's redundancy issue was overcome. Chapter 7 summarises the the test beds used, describing their design and any limitations identified. The evaluation of the prototype is detailed in Chapter 8 using these test beds. Finally, Chapter 9 conducts a review of the project, contrasting the contributions and their significance to the design requirements identified in Chapter 3, and outlines potential future work.

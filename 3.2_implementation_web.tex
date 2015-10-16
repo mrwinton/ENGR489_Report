@@ -42,7 +42,7 @@ As discussed in Section \ref{S:projectObjectives} one of the objectives was to h
     \item An automated process facilitated by Capistrano, a Ruby on Rails deployment library.
 \end{itemize}
 
-The manual process, while easier for the initial deployment, was decided against as the process is brittle in that it relies on the deployer to fulfil each deployment step correctly and in order. For a Ruby on Rails application this process at the very minimum consists of: transferring the updated application code, pre-compiling the assets, downloading any newly added libraries and updating the binaries. Should this be done incorrectly or in the wrong environment this manual process has no `undo' action, therefore the process of reverting the application must also be done manually. Capistrano alleviates these problems but at the cost of a steep-learning curve. Capistrano is similar to Vagrant in that the process is automated by scripts which automate the entire process. Ultimately, the initial investment in defining the scripts is negligible in comparison to the long term gains of robust and consistent deployments. PitchHub is currently hosted at \textit{pitchhub.net}, note that the current release is being used internally in Callaghan Innovation and requires an access code to sign up.
+The manual process, while easier for the initial deployment, was decided against as the process is brittle in that it relies on the deployer to fulfil each deployment step correctly and in order. For a Ruby on Rails application this process at the very minimum consists of: transferring the updated application code, pre-compiling the assets, downloading any newly added libraries and updating the binaries. Should this be done incorrectly or in the wrong environment this manual process has no `undo' action, therefore the process of reverting the application must also be done manually. Capistrano alleviates these problems but at the cost of a steep-learning curve. Capistrano is similar to Vagrant in that the process is automated by scripts which automate the entire process. Ultimately, the initial investment in defining the scripts is negligible in comparison to the long term gains of robust and consistent deployments. PitchHub is currently hosted at \textit{pitchhub.net}, note that the current release is being used internally by Callaghan Innovation and requires an access code to sign up.
 
 \begin{figure}[ht]
     \centering
@@ -56,4 +56,11 @@ The manual process, while easier for the initial deployment, was decided against
     \includegraphics[width=1\textwidth]{dashboard_pitchhub}
     \caption{PitchHub's dashboard populated with fictional Pitch Cards. The grid layout displayed is responsive, so the Pitch Cards will reorganise and size to fit the user's device screen. See Appendix \ref{A:dashboard_pitchhub} for larger picture.}
     \label{fig:dashboard_pitchhub}
+\end{figure}
+
+\begin{figure}[ht]
+    \centering
+    \includegraphics[width=0.4\textwidth]{dashboard_mobile_pitchhub}
+    \caption{PitchHub's dashboard (mobile). See Appendix \ref{A:dashboard_mobile_pitchhub} for larger picture.}
+    \label{fig:dashboard_mobile_pitchhub}
 \end{figure}

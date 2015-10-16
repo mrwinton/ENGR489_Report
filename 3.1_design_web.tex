@@ -10,7 +10,9 @@ The design of the web application focused on the use of standard architecture pa
 
 \section{User Stories}
 
-The principal function of PitchHub is to facilitate collaboration in the innovation community, this is reflected in requirement D1. As such the design of PitchHub began with specifying these fundamentals in user stories. To do this each user story captured a desired behaviour by identifying the behaviour's corresponding `who', `what', and `why' attributes. An example user story capturing \textit{Post Pitch Card} behaviour is as follows:
+The principal function of PitchHub is to facilitate collaboration in the innovation community, this is reflected in requirement D1. To achieve this it is necessary to understand exactly what online collaboration in the innovation community looks like. An investigation into this found no existing works. 
+
+As such the design of PitchHub began with specifying the fundamentals of online innovation collaboration in user stories. To do this each user story captured a desired behaviour by identifying the behaviour's corresponding `who', `what', and `why' attributes. An example user story capturing \textit{Post Pitch Card} behaviour is as follows:
 
 \begin{verbatim}
 	  As a user, I want to create a Pitch Card so that the community and I may 
@@ -18,48 +20,68 @@ The principal function of PitchHub is to facilitate collaboration in the innovat
 \end{verbatim}
 
 To unpack on this example, the `who' is a user, the `what' is the ability post Pitch Cards, and the `why' is the desire of finding a solution through collaboration.
-So from these user stories not only is the behaviour captured but also relevant expectations of state. To continue using the above example, it can be discerned that once the user has posted a Pitch Card there is an expectation that other users will be able to see it and also interact with it `to find a solution'. Specifying these user stories was done in collaboration with Callaghan Innovation to ensure the behaviour documented was accurate. 
+So from these user stories not only is the behaviour captured but also relevant expectations of state. To continue using the above example, it can be discerned that once the user has posted a Pitch Card there is an expectation that other users will be able to see it and also interact with it `to find a solution'. 
+
+User stories, such as the following, were also used to introduce the different actors involved in the community:
+
+\begin{verbatim}
+    As an initiator, I want to see who has viewed my content so that I 
+    have an account of it's dissemination
+\end{verbatim}
+
+In this example, the initiator is the `who' and the expectation is that they have extra functionality which enables them to audit who has seen the Pitch Card they initiated. This notion of variable functionality/visibility levels given your relationship to the content is central to the innovation collaboration process. To ensure the accuracy of these user stories, specification was done in collaboration with Callaghan Innovation. 
 
 To have a complete understanding of the functionality required by PitchHub user stories were used to describe all desired behaviour, ranging from sign-up to content scoping (as per requirement D2.1). These user stories are found in Appendix \ref{A:user_stories}.
 
-TODO
-talk about how investigation found no innovation collaboration use stories
-
-+ one other example
 
 \section{UI Design}
-
-TODO 
-place template here
-dashboard wire frame here 
-maybe discuss mobile-friendly
-
 A well-designed user interface drives user behaviour. Given PitchHub's aim of facilitating collaboration behaviour it is advantageous to have it also drive it. Specifically the behaviour aimed to be driven is those found in requirements D1, D2.1, and D2.2. To do this, the behaviour captured in the user stories were embraced in the content templates and wire frames created to guide the final UI design.
-The creation of content templates for each page were the first step in UI design. Content templates were used as they place emphasis on the narrative of each page being designed first before the visual elements, thus prioritising the fundamentals. Ultimately, through content templates each page is deconstructed into: who the target audience is, what the page's purpose is, and what the context is. An example content template for the Pitch Card page can be found in Appendix \ref{A:content_template}.
-Wire frames were then used to iterate on the layout of each page. This process solely focused on the layout and visual design of each page rather than determining the content (already been specified in the content templates). For example, the Pitch Card page wire frame, Fig \ref{fig:wire_frame}, simply visualises the content specified in Appendix \ref{A:content_template}. The Pitch Card page shown in Fig \ref{fig:show_pitch_card} illustrates the implemented design. There exist only minor differences between the wire frame and final implementation. An example is the lack of ``Make Suggestion'' button, instead users are able to make suggestion on the Pitch Points through in-line editing (see Fig \ref{fig:show_pitch_card}). Not only is this regarded as a more natural interaction but also a behaviour driver. Making a suggestion in-line in the context of the Pitch Card is designed to encourage suggestions that are considered in relation to the Pitch Card as a whole.
+The creation of content templates for each page were the first step in UI design. Content templates were used as they place emphasis on the narrative of each page being designed first before the visual elements, thus prioritising the fundamentals. Ultimately, through content templates each page is deconstructed into: who the target audience is, what the page's purpose is, and what the context is. An example content template for the Pitch Card page is displayed in Fig \ref{fig:content_template}.
 
 \begin{figure}[ht]
     \centering
-    \includegraphics[width=0.6\textwidth]{wire_frame}
-    \caption{Wire frame of the ``Show Pitch Card'' page. The primary features are the Pitch Points on the left, and suggestions with comments on the right. Users can contribute suggestions by clicking the ``Make Suggestion'' button.}
+    \includegraphics[width=0.6\textwidth]{show_pitch_card_content_template}
+    \caption{Content template for the ``Show Pitch Card'' page. The content template is organised into two sections: supporting information and metadata on the left, and page content on the right. A larger version is displayed in Appendix \ref{A:content_template}.}
+    \label{fig:content_template}
+\end{figure}
+
+Wire frames were then used to plan the layout of each page. This process solely focused on the layout and visual design of each page rather than determining the content (already been specified in the content templates). For example, the Pitch Card page wire frame, Fig \ref{fig:wire_frame}, simply visualises the content specified in Fig \ref{fig:content_template}. The Pitch Card page shown in Fig \ref{fig:show_pitch_card} illustrates the implemented design. There exist only minor differences between the wire frame and final implementation. An example is the lack of ``Make Suggestion'' button, instead users are able to make suggestion on the Pitch Points through in-line editing (see Fig \ref{fig:show_pitch_card}). Not only is this regarded as a more natural interaction but also a behaviour driver. Making a suggestion in-line in the context of the Pitch Card is designed to encourage suggestions that are considered in relation to the Pitch Card as a whole.
+Wire frames were also used to guide the design of PitchHub on mobile form factors. Given the increasing trend of mobile browser usage, now accounting for a third of web traffic \cite{Mobile_rise:online} it is important that PitchHub feature mobile support. The wide range of mobile sizes made it necessary for the layout to have a responsive design. Fig. \ref{fig:wire_frame_mobile} demonstrates the dashboard view's design for the mobile size. In this size the view utilises a list design over the grid design used for desktop sizes. 
+
+\begin{figure}[ht]
+  \begin{subfigure}[t]{.45\textwidth}
+  \centering
+    \includegraphics[width=1\textwidth]{wire_frame}
+    \caption{Wire frame of the ``Show Pitch Card'' page. The primary features are the Pitch Points on the left, and suggestions with comments on the right. Users can contribute suggestions by clicking the ``Make Suggestion'' button. See Fig \ref{fig:show_pitch_card} for final implementation.}
     \label{fig:wire_frame}
+  \end{subfigure}\hfill
+  \begin{subfigure}[t]{.45\textwidth}
+  \centering
+    \includegraphics[width=.4\textwidth]{wire_frame_dashboard_mobile}
+    \caption{Wire frame of the ``Dashboard'' page on a mobile. The primary features are the concatenated Pitch Cards and the search function. See Fig \ref{fig:dashboard_mobile_pitchhub} for final implementation.}
+    \label{fig:wire_frame_mobile}
+  \end{subfigure}
+  \caption{Example wire frames used to guide final implementation.}
 \end{figure}
 
 \section{Architecture}
-TODO three tier discussion
 
-The architecture of the web application was some of the first work accomplished on PitchHub. The architecture is the abstraction of the system and hence should be designed with the desired system qualities needed to to be achieved. With PitchHub the security and distributed requirements identified in Chapter \ref{C:requirements} were captured in the three tier architecture designed, hence formalising the requirements specification early on.
-\par
-The common software engineering practice of separation of concerns has a strong presence within this architecture as seen in Figure \ref{fig:architecture_1}. Each tier's logic and responsibilities is encapsulated from the other tiers. Their only knowledge of the outside world is in the design-time defined interfaces of their neighbouring tiers. To partially fulfil the security requirement PitchHub communicates using the \textit{Transport Layer Security} (TLS) protocol, that provides secure bidirectional communication between the client and server.
-\par
-The data layer is designed in a distributed configuration where database nodes may be scaled horizontally. The data intensive nature of PitchHub means that it can improve it's performance through spreading the data and processing logic among nodes. This kind of approach is known as a shared nothing architecture \cite{stonebraker1986case}, prevalent in NoSQL systems. The \textit{n} number of databases shown in Figure \ref{fig:architecture_1} act as the secret keepers for the database security security scheme discussed in Section \ref{S:databaseSecurity}, this is further elaborated in Chapter \ref{C:threshholdSecurity}.
-\par
-In Figure \ref{fig:architecture_1} within the Client and Server layers the Model-View-Controller architecture pattern has been employed continuing the design theme of separation of concerns. To unpack this term: models maintain state, usually communicating with a database, controllers coordinate interaction and are responsible for delegating tasks to models and views determine what data is rendered from the model. This separation of responsibilities enables complex sets of interactions to be standardised, conforming to conventions that are well defined and that can be easily be understood \cite{leff2001web}.
+A key aspect of PitchHub's distributed architecture design is the principle: separation of concerns (SoC). Systems that embody SoC generally use encapsulation to achieve modularity, thus they benefit from well-defined interfaces and the ability to reuse modules.
+
+SoC was identified as a fundamental feature for aiding the PitchHub's extensibility, per requirement D3.  PitchHub's SoC is primarily achieved through the adoption of the three-tier architecture, consisting of the following: 
+
+\begin{description}
+  \item[presentation tier] communicates user interaction to the application tier and displays the content in a structured view using HTML and SASS. AJAX has been leveraged so that interaction with the application tier can occur without reloading the entire page.
+  \item[application tier] performs business logic and responds to user interaction. To simplify the request life-cycle, SoC has been applied further with the MVC pattern. The SoC in this tier enables complex sets of interactions to be standardised, conforming to conventions that are well defined and that can be easily be understood \cite{leff2001web}.
+  \item[data tier] persists application data in a distributed configuration. The data intensive nature of PitchHub means that it can improve it's performance through spreading the data and processing logic among nodes. This kind of approach is known as a shared nothing architecture \cite{stonebraker1986case}, prevalent in NoSQL systems. The \textit{n} number of databases shown in Figure \ref{fig:architecture_1} act as the secret keepers for the database security security scheme discussed in Chapter \ref{C:threshholdSecurity}.
+\end{description}
+
+Ultimately, through this SoC PitchHub can switch out modules without affecting neighbouring tiers given they conform to the same interface. Or if changes to the interface are required then only the neighbouring tier is needed to be changed. 
 
 \begin{figure}[ht]
     \centering
     \includegraphics[width=1\textwidth]{initial_architecture}
-    \caption{The 3-tier architecture used in PitchHub capturing the security and distributed requirements identified in Chapter \ref{C:requirements} in the design.}
+    \caption{The 3-tier architecture designed for PitchHub. Key attributes to note are: the separation of concerns (for requirement D3) and the variable number of \textit{n} databases.}
     \label{fig:architecture_1}
 \end{figure}
 
