@@ -78,9 +78,9 @@ To strengthen the security afforded by the secret sharing service diversity was 
 
 Test \rom{5} uses the prototype on \textit{TB2} in a both a diverse ``3, 4'' secret sharing scheme configuration (2x MongoDB replica sets and 2x Postgres instances) and a homogeneous ``3, 4'' secret sharing scheme configuration (4x MongoDB replica sets).
 
-\subsection{MongoDB \& Postgres Comparison}
+\subsection{MongoDB \& Postgres Comparison}\label{ss:mongoVsPostgres}
 
-TODO
+MongoDB secret keepers differ from Postgres secret keepers in a number of important ways. The principal difference that MongoDB secret keepers are replica sets consisting of several machines: a primary node, the secondary nodes, and an arbiter node, whereas Postgres secret keepers consist of a single Postgres instance. While it is well known that MongoDB is less performant than Postgres in both read and write operations \cite{van2012sensor}, for the purposes of the diversity evaluation it must be noted that the MongoDB secret keepers are replica sets. As such they do extra steps on each write request to ensure that the data has been propagated to the secondary nodes. This increases the availability of each MongoDB secret keeper, but is at the cost of performance.
 
 \subsection{Results}
 
@@ -92,9 +92,11 @@ TODO
 \end{figure}
 
 \subsection{Discussion}
-Fig \ref{fig:test_5_results} illustrates the difference in mean wall-times between Secret Sharing configurations with diverse and homogeneous secret keepers. The diverse configuration is consistently faster than the homogeneous configuration across all flows. The 10\% increase is likely because of the choice of secret keepers used - since MongoDB is less performant than Postgres in both read and write operations \cite{van2012sensor}. 
-A disadvantage with the Postgres instances is that they do not provide the same assurance of availability as the MongoDB replica set secret keepers. This may present itself as a problem should the Postgres instance become unavailable resulting in it's shares becoming unavailable and hence harder to meet the required \textit{k} shares needed for reconstruction. 
-Overall, these results indicate that this particular diverse configuration is worth the extra implementation effort as it not only solves the Secret Sharing scheme's redundancy issue but also performs better. 
+Fig \ref{fig:test_5_results} illustrates the difference in mean wall-times between Secret Sharing configurations with diverse and homogeneous secret keepers. The diverse configuration is consistently faster than the homogeneous configuration across all flows. The 10\% increase is likely because of the choice of secret keepers used as discussed in Section \ref{ss:mongoVsPostgres}.
+Overall, these results indicate that this particular diverse configuration is worth the extra implementation effort if wall-time performance is the key metric desired. 
+
+This would be trading off availability which may present itself as a problem should Postgres instances become unavailable, resulting in their shares becoming unavailable and consequently making it harder to meet the required \textit{k} shares needed for secret reconstruction. In the case of \textit{TB2}, if both Postgres instances became unavailable the \textit{k} threshold would not be able to be met and hence the entire system would be unavailable.
+
 
 \section{Test \rom{6} - Concurrent Load Support}
 \subsection{Motivation}
