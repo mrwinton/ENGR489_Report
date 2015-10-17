@@ -1,6 +1,6 @@
 %!TEX root = proj_report_outline.tex
 \chapter{Evaluation}
-Following the completed implementation and infrastructure setup an evaluation of the project was carried out on a prototype. The evaluation was designed primarily to verify whether the prototype developed was successful in fulfilling the requirements identified in scope in Section \ref{S:evaluationScope}.
+Following the completed implementation and infrastructure setup, an evaluation of the project was carried out on a prototype. The evaluation was designed primarily to verify whether the prototype developed was successful in fulfilling the requirements identified in scope in Section \ref{S:evaluationScope}.
 
 \section{Test \rom{1} - Collaboration Functionality Fulfilment}
 
@@ -12,7 +12,7 @@ The user stories which affirm the fulfilment of requirements D1, D2.1 and D2.2 i
 
 \paragraph{Requirement D1's user stories specify the ability to:} post Pitch Cards, make suggestions on Pitch Points, accept/reject suggestions, comment on Pitch Points, comment on suggestions and mark Pitch Cards as completed/active.
 
-\paragraph{Requirement D2.1's user stories specify the ability to:} scope entities such as Pitch Cards, suggestions, and one's identity such that unintended viewers are avoided. To ensure the completeness of these user stories, each scope/viewer level combination is tested. These combinations are displayed in Fig \ref{fig:architecturescope_matrix_evaluation}.
+\paragraph{Requirement D2.1's user stories specify the ability to:} scope entities such as Pitch Cards, suggestions, and one's identity such that unintended viewers are avoided. To ensure the completeness of these user stories, each scope/viewer level combination is tested. These combinations are displayed in Figure \ref{fig:architecturescope_matrix_evaluation}.
 
 \begin{figure}[ht]
     \centering
@@ -29,7 +29,7 @@ In regards to the second question, realistically simulating user interaction was
 Concluding on the fulfilment of requirements D1, D2.1 and D2.2 largely relies on whether the behaviours specified in relation to the first question accurately reflects the behaviour required by the innovation community. Generalising what a large population needs is a difficult task but it is my belief that because the user stories tested were created in collaboration with Callaghan Innovation, who is a large participant in the innovation community, they are therefore meet the level of credibility required for the purposes of this test. As such, it is concluded that requirements D1, D2.1 and D2.2 have been fulfilled.
 
 \section{Test \rom{2} - Deployed Prototype Analysis}\label{S:test_2}
-At the time of writing, the prototype, \textit{TB3}, has been released to Callaghan Innovation and is ready for use. However use of the prototype by Callaghan Innovation has just commenced. Without substantial activity to analyse this test was unable to be completed. It is expected that the access code will be distributed by the Callaghan Innovation stakeholders to the wider organisation in the coming weeks.
+At the time of writing, the prototype, \textit{TB3}, has been released to Callaghan Innovation and is ready for use. However use of the prototype by Callaghan Innovation has just commenced. Without substantial activity to analyse, this test was unable to be completed. It is expected that the access code will be distributed by the Callaghan Innovation stakeholders to the wider organisation in the coming weeks.
 
 \section{Test \rom{3} - Community Size Support}
 
@@ -43,13 +43,13 @@ Test \rom{3} uses the prototype on \textit{TB2} in a diverse ``3, 4'' secret sha
 \begin{figure}[H]
     \centering
     \includegraphics[width=0.6\textwidth]{experiment_3_results}
-    \caption{The mean response times with standard deviation for PitchHub flows: display dashboard, show Pitch Card, and create Pitch Card, under both expected and worst case community sizes. There is a very negligible performance difference between the two community sizes. Each size elicits mean response times that fall under Nielsen's third threshold, Fig \ref{S:responseTimeLimits}. }
+    \caption{The mean response times with standard deviation for PitchHub flows: display dashboard, show Pitch Card, and create Pitch Card, under both expected and worst case community sizes. There is a very negligible performance difference between the two community sizes. Each size elicits mean response times that fall under Nielsen's third threshold, Figure \ref{S:responseTimeLimits}. }
     \label{fig:test_3_results}
 \end{figure}
 
 \subsection{Discussion}
 
-Fig \ref{fig:test_3_results} illustrates that the PitchHub prototype in a 2x MongoDB and 2x Postgres Secret Sharing configuration can support the innovation community at both the expected and worst case sizes (derived from the Statistics NZ data in Table \ref{tab:title}). In terms of Nielsen's response thresholds, each flow falls under Nielsen's third threshold (1 =\textless 10 seconds): where a users attention is still maintained but the wait-time interrupts flow of thought. Given that each flow in both community sizes meets the acceptable response threshold it can be concluded that the prototype satisfies requirement D4.
+Fig \ref{fig:test_3_results} illustrates that the PitchHub prototype in a 2x MongoDB and 2x Postgres Secret Sharing configuration can support the innovation community at both the expected and worst case sizes (derived from the Statistics NZ data in Table \ref{tab:title}). In terms of Nielsen's response thresholds, each flow falls under Nielsen's third threshold (1 \textless= 10 seconds): where a users attention is still maintained but the wait-time interrupts flow of thought. Given that each flow in both community sizes meets the acceptable response threshold it can be concluded that the prototype satisfies requirement D4.
 
 The difference in community sizes shows only a negligible performance difference in mean wall-time for each flow. This is because, even at the worst-case size, the database is only medium in size - where the entire database is storing between 10\textsuperscript{5} and 10\textsuperscript{7} records and can still fit on a single server \cite{Large8:online}. At this size, performance is not affected by amount of data stored.
 
@@ -92,7 +92,7 @@ MongoDB secret keepers differ from Postgres secret keepers in a number of import
 \end{figure}
 
 \subsection{Discussion}
-Fig \ref{fig:test_5_results} illustrates the difference in mean wall-times between Secret Sharing configurations with diverse and homogeneous secret keepers. The diverse configuration is consistently faster than the homogeneous configuration across all flows. The 10\% increase is likely because of the choice of secret keepers used as discussed in Section \ref{ss:mongoVsPostgres}.
+Fig \ref{fig:test_5_results} illustrates the difference in mean wall-times between Secret Sharing configurations with diverse and homogeneous secret keepers. The diverse configuration is consistently faster than the homogeneous configuration across all flows. The 10\% increase is likely because of the choice of secret keepers used, as discussed in Section \ref{ss:mongoVsPostgres}.
 Overall, these results indicate that this particular diverse configuration is worth the extra implementation effort if wall-time performance is the key metric desired. 
 
 This would be trading off availability which may present itself as a problem should Postgres instances become unavailable, resulting in their shares becoming unavailable and consequently making it harder to meet the required \textit{k} shares needed for secret reconstruction. In the case of \textit{TB2}, if both Postgres instances became unavailable the \textit{k} threshold would not be able to be met and hence the entire system would be unavailable.
@@ -114,13 +114,13 @@ Beyond being able to satisfy individual requests within an acceptable threshold 
 \begin{figure}[ht]
     \centering
     \includegraphics[width=0.8\textwidth]{experiment_6_results_b}
-    \caption{Corresponding response statuses of the Show Pitch Card flow load test conducted in Fig \ref{fig:test_6_results}. This graph demonstrates that the 2x MongoDB and 2x Postgres Secret Sharing configuration on \textit{TB2} can reliably withstand a load of 50 requests per second.}
+    \caption{Corresponding response statuses of the Show Pitch Card flow load test conducted in Figure \ref{fig:test_6_results}. This graph demonstrates that the 2x MongoDB and 2x Postgres Secret Sharing configuration on \textit{TB2} can reliably withstand a load of 50 requests per second.}
     \label{fig:test_6_results_b}
 \end{figure}
 
 \subsection{Discussion}
-From the data in Fig \ref{fig:test_6_results} and Fig \ref{fig:test_6_results_b}, it is apparent that \textit{TB2} can reliably sustain a load of 50 requests per second while maintaining an average response time of 2 seconds. This is significant as it reveals that the individual response times found in Fig \ref{fig:test_3_results} can be sustained at load. Beyond 50 requests per second \textit{TB2} begins to return error code 500s, meaning that the server knows it has had a problem fulfilling the request.
-Determining exactly how many users 50 requests per second may support is difficult to estimate. Frequency analysis on Fig \ref{S:test_2}'s results would have been helpful in identifying the community's usage patterns. Nevertheless, without this data, the following assumptions have been made: the load is distributed evenly, each user uses PitchHub once a day, and each user session is 10 requests deep (page requests). Calculating the necessary requests per second for the expected and worst case community sizes using these assumptions results in the following:
+From the data in Figure \ref{fig:test_6_results} and Figure \ref{fig:test_6_results_b}, it is apparent that \textit{TB2} can reliably sustain a load of 50 requests per second while maintaining an average response time of 2 seconds. This is significant as it reveals that the individual response times found in Figure \ref{fig:test_3_results} can be sustained at load. Beyond 50 requests per second \textit{TB2} begins to return error code 500s, meaning that the server knows it has had a problem fulfilling the request.
+Determining exactly how many users 50 requests per second may support is difficult to estimate. Frequency analysis on Section \ref{S:test_2}'s results would have been helpful in identifying the community's usage patterns. Nevertheless, without this data, the following assumptions have been made: the load is distributed evenly, each user uses PitchHub once a day, and each user session is 10 requests deep (page requests). Calculating the necessary requests per second for the expected and worst case community sizes using these assumptions results in the following:
 
 \begin {table}[H]
 \begin{center}
