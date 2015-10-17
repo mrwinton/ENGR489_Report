@@ -2,11 +2,7 @@
 
 \chapter{Web Application Design}\label{C:design_web}
 
-TODO
-
-rewrite and sprinkle requirements
-
-The design of the web application focused on the use of standard architecture patterns and web development technologies. This approach was taken as web application development covers numerous domains and technologies. In \citeauthor{shklar2009web}'s tome ``Web Application Architecture: Principles, Protocols and Practices'' they describe the core areas of knowledge required: HTTP, HTML, SMTP, JavaScript, Databases, Graphics Design, and Server Technology \cite{shklar2009web}. While designing a unique foundation specifically optimised for PitchHub is enticing, as Donald Knuth is famously quoted ``97\% of the time premature optimization is the root of all evil'' \cite{knuth1974structured}. With this in mind, PitchHub leverages battle tested open source libraries to deliver more functionality while reserving the ability to make custom modifications and changes as necessary. This chapter explores these design choices and also the alternative designs that were considered throughout this project.
+In this Chapter the design of the PitchHub prototype is discussed. Important aspects such as the user stories and UI design artefacts are explored. Finally, architectural decisions are reflected upon.
 
 \section{User Stories}
 
@@ -45,8 +41,11 @@ The creation of content templates for each page were the first step in UI design
     \label{fig:content_template}
 \end{figure}
 
-Wire frames were then used to plan the layout of each page. This process solely focused on the layout and visual design of each page rather than determining the content (already been specified in the content templates). For example, the Pitch Card page wire frame, Fig \ref{fig:wire_frame}, simply visualises the content specified in Fig \ref{fig:content_template}. The Pitch Card page shown in Fig \ref{fig:show_pitch_card} illustrates the implemented design. There exist only minor differences between the wire frame and final implementation. An example is the lack of ``Make Suggestion'' button, instead users are able to make suggestion on the Pitch Points through in-line editing (see Fig \ref{fig:show_pitch_card}). Not only is this regarded as a more natural interaction but also a behaviour driver. Making a suggestion in-line in the context of the Pitch Card is designed to encourage suggestions that are considered in relation to the Pitch Card as a whole.
-Wire frames were also used to guide the design of PitchHub on mobile form factors. Given the increasing trend of mobile browser usage, now accounting for a third of web traffic \cite{Mobile_rise:online} it is important that PitchHub feature mobile support. The wide range of mobile sizes made it necessary for the layout to have a responsive design. Fig. \ref{fig:wire_frame_mobile} demonstrates the dashboard view's design for the mobile size. In this size the view utilises a list design over the grid design used for desktop sizes. 
+Wire frames were then used to plan the layout of each page. This process solely focused on the layout and visual design of each page rather than determining the content (already specified in the content templates). For example, the Pitch Card page wire frame, Fig \ref{fig:wire_frame}, simply visualises the content specified in it's content template, Fig \ref{fig:content_template}.
+
+There exist only minor differences between the wire frames created and the final implementation. An example difference is the lack of ``Make Suggestion'' button. This button has been removed as the final implementation enables users to make suggestions on the Pitch Points through in-line editing (see Fig \ref{fig:show_pitch_card}). Not only is this regarded as a more natural interaction but also a behaviour driver. Making a suggestion in-line in the context of the Pitch Card is designed to encourage suggestions that are considered in the theme of the Pitch Card as a whole.
+
+Wire frames were also used to guide the design of PitchHub on mobile form factors. Given the increasing trend of mobile browser usage, now accounting for a third of web traffic \cite{Mobile_rise:online} it is important that PitchHub feature mobile support. The wide range of mobile sizes made it necessary for the layout to have a responsive design. Fig. \ref{fig:wire_frame_mobile} demonstrates the dashboard view's design for the mobile size. In this size the view utilises a list design whereas the the grid design is used for desktop sizes.
 
 \begin{figure}[ht]
   \begin{subfigure}[t]{.45\textwidth}
@@ -66,9 +65,7 @@ Wire frames were also used to guide the design of PitchHub on mobile form factor
 
 \section{Architecture}
 
-A key aspect of PitchHub's distributed architecture design is the principle: separation of concerns (SoC). Systems that embody SoC generally use encapsulation to achieve modularity, thus they benefit from well-defined interfaces and the ability to reuse modules.
-
-SoC was identified as a fundamental feature for aiding the PitchHub's extensibility, per requirement D3.  PitchHub's SoC is primarily achieved through the adoption of the three-tier architecture, consisting of the following: 
+A key aspect of PitchHub's distributed architecture design is separation of concerns (SoC). Systems that embody SoC generally use encapsulation to achieve modularity. SoC was identified as a fundamental feature for aiding PitchHub's extensibility, per requirement D3. PitchHub's SoC is primarily achieved through the adoption of the three-tier architecture, consisting of the following: 
 
 \begin{description}
   \item[presentation tier] communicates user interaction to the application tier and displays the content in a structured view using HTML and SASS. AJAX has been leveraged so that interaction with the application tier can occur without reloading the entire page.
@@ -87,7 +84,11 @@ Ultimately, through this SoC PitchHub can switch out modules without affecting n
 
 \section{System Model}\label{S:systemModel}
 
-The design of the system's model is another case of requirements being captured early in the design phase. Figure \ref{fig:class_diagram} illustrates the system's classes and their relationships as a class diagram. The requirement to implement privacy controls is captured in the Pitch Card and Comment classes' relationship with the DisclosureScope class. To illustrate this it is important to understand how the platform works: A user creates a Pitch Card, detailing the idea's attributes in the Pitch Card's Pitch Points, their aim is to get the community to collaborate on the Pitch Card to derive meaningful information or connections to action the Pitch Card, collaborator's on a Pitch Card can make suggestions or comments on these Pitch Points to help drive the idea forward. By providing scoping on Pitch Cards initiator's set a base restriction level for the Pitch Card and it's related content. The negotiation aspect of PitchHub is introduced with the Comments and Suggestions users may contribute to PitchCards. As seen in Figure \ref{fig:class_diagram} these classes also have scoping, however in this case scoping can only be set to an equivalent or more restrictive level than that specified in the Pitch Card. An example of this is where an initiator set's the content scope to `Members', so only members of the PitchHub can view the idea, now if a user were to contribute a suggestion on a Pitch Point this suggestion can only be scoped as `Members' or any level which is more restrictive, they cannot however set it to `Public'. This interaction/requirement as seen in Figure \ref{fig:class_diagram} is designed with the strategy pattern so that future scopes will have minimal change to the application.
+Fig \ref{fig:class_diagram} displays the system model in a class diagram. The functionality to support requirement D2.1's privacy controls is captured through the Pitch Card and Comment classes' relationship with the DisclosureScope class. This DisclosureScope class essentially filters out any associated content should a viewer not meet it's requirements. With Pitch Cards this is fairly simple: an initiator sets the scope as they create the Pitch Card, and only those who satisfy the scope can see the Pitch Card.
+
+This scoping works similarly with Comments and Suggestions on Pitch Points however business logic ensures that the  scoping can only be set to an equivalent or more restrictive level than that specified in the Pitch Card being commented/suggested on. An example of this is where an initiator set's the content scope to `Members', so only members of the PitchHub can view the idea, now if a user were to contribute a suggestion on a Pitch Point this suggestion can only be scoped as `Members' or any level which is more restrictive, they cannot however set it to `Public'. 
+
+To make the scoping functionality more extensible it has been designed with the strategy pattern, see Fig \ref{fig:class_diagram}.
  
 \begin{sidewaysfigure}[ht]
     \centering
@@ -98,7 +99,7 @@ The design of the system's model is another case of requirements being captured 
 
 \section{Technology}
 
-The quality of service attributes of a web application are deeply influenced by the fundamental technologies backing the solution. In this section both the framework and database selections are discussed in relation to quality of service attributes and more importantly the requirements identified in Chapter \ref{C:requirements}.
+The overall performance and quality of service of an application is deeply influenced by the frameworks and infrastructure it built upon. In this section both the framework and database selections are discussed in relation to quality of service attributes and more importantly the requirements identified in Chapter \ref{C:requirements}.
 
 \subsection{Framework Selection}\label{SS:frameworkSelection}
 
@@ -108,10 +109,10 @@ Of these frameworks Ruby on Rails was selected because of its vast open source l
 
 \subsection{Database Selection}\label{SS:databaseSelection}
 
-The choice of database has profound effects on the performance and scalability requirements identified in Chapter \ref{C:requirements}. The rise of NoSQL databases has been attributed to the increasing need for highly scalable and performant databases. Given this need in PitchHub, in addition to PostgreSQL (Postgres), the NoSQL databases MongoDB and Cassandra were also investigated.
+The choice of database has profound effects on requirements D4 and D5. The rise of NoSQL databases has been attributed to the increasing need for highly scalable and performant databases. Given this need in PitchHub, in addition to PostgreSQL (Postgres), the NoSQL databases MongoDB and Cassandra were also investigated.
 \par
 The nature of the Pitch Card data PitchHub is modelling is inherently hierarchical and heterogeneous. In PitchHub, each Pitch Card has a varying number of Pitch Points, and each Pitch Point value also contains a number of interaction attributes. This data model naturally lends itself to the document model offered by MongoDB. Pitch Cards may be modelled in a single document with Pitch Point relations expressed via embedding. This has the additional benefit of being able to efficiently query this Pitch Cards.
 \par
 The case for using a relational database like Postgres is also motivated by the inherent nature of PitchHub's data. For example, each user is associated to the Pitch Cards they have initiated and contributed to, as well as the suggestions and comments they have offered on Pitch Cards. Unlike the internal model of Pitch Cards these relations are not well suited to being hierarchical as these relations have associations which are N:M rather than 1:1 or 1:N. Modelling these objects separately in tables and querying them through joins in the relational model is the ideal way to represent and query these relations.
 \par
-Ultimately both databases were selected for PitchHub. MongoDB has been configured as the default database in the prototype. While Postgres has been used to diversify the threshold scheme's secret keepers, this is discussed in Section \ref{SS:diverse_secret_keepers}. MongoDB was chosen as the default because the Pitch Card data is well suited to MongoDB's data model and the use case flows which require joins at most only need one join operation. It was concluded that using MongoDB and performing manual joins within the application is not a major issue because of this. Also MongoDB's ability to scale horizontally easily without the expensive migrations characteristic of relational databases provides an edge over Postgres in meeting the scalability requirement.
+Ultimately both databases were decided to be used in PitchHub. MongoDB has been configured as the default database in the prototype. While Postgres has been used to diversify the threshold scheme's secret keepers, this is discussed in Section \ref{SS:diverse_secret_keepers}. MongoDB was chosen as the default because the Pitch Card data is well suited to MongoDB's data model and the use case flows which require joins at most only need one join operation. It was concluded that using MongoDB and performing manual joins within the application is not a major issue because of this. Also MongoDB's ability to scale horizontally easily without the expensive migrations characteristic of relational databases provides an edge over Postgres in meeting the scalability requirement.
