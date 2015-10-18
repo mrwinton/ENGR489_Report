@@ -1,6 +1,6 @@
 %!TEX root = proj_report_outline.tex
 \chapter{Evaluation}
-Following the completed implementation and infrastructure setup, an evaluation of the project was carried out on a prototype. The evaluation was designed primarily to verify whether the prototype developed was successful in fulfilling the requirements identified in scope in Section \ref{S:evaluationScope}.
+Following the completed implementation and infrastructure setup, an evaluation of the project was carried out on a prototype. The evaluation was designed to verify whether the prototype developed was successful in fulfilling the requirements identified in scope in Section \ref{S:evaluationScope}.
 
 \section{Test \rom{1} - Collaboration Functionality Fulfilment}
 
@@ -10,9 +10,9 @@ PitchHub's primary goal is to facilitate collaboration within the innovation com
 \subsection{Results}
 The user stories which affirm the fulfilment of requirements D1, D2.1 and D2.2 in \textit{TB1} confirm support of the following behaviour:
 
-\paragraph{Requirement D1's user stories specify the ability to:} post Pitch Cards, make suggestions on Pitch Points, accept/reject suggestions, comment on Pitch Points, comment on suggestions and mark Pitch Cards as completed/active.
+\paragraph{Requirement D1's user stories specify the ability to:} create Pitch Cards, make suggestions on Pitch Points, accept/reject suggestions, comment on Pitch Points, comment on suggestions and mark Pitch Cards as completed/active.
 
-\paragraph{Requirement D2.1's user stories specify the ability to:} scope entities such as Pitch Cards, suggestions, and one's identity such that unintended viewers are avoided. To ensure the completeness of these user stories, each scope/viewer level combination is tested. These combinations are displayed in Figure \ref{fig:architecturescope_matrix_evaluation}.
+\paragraph{Requirement D2.1's user stories specify the ability to:} scope entities such as Pitch Cards, suggestions, and one's identity so that unintentional disclosure is avoided. To ensure the completeness of these user stories, each scope/viewer level combination is tested. These combinations are displayed in Figure \ref{fig:architecturescope_matrix_evaluation}.
 
 \begin{figure}[ht]
     \centering
@@ -21,12 +21,12 @@ The user stories which affirm the fulfilment of requirements D1, D2.1 and D2.2 i
     \label{fig:architecturescope_matrix_evaluation}
 \end{figure}
 
-\paragraph{Requirement D1's user stories specify that:} users who have viewed a Pitch Card are able to be seen as a ``viewer'' by the PitchCard's initiator.
+\paragraph{Requirement D2.2's user stories specify that:} users who have viewed a Pitch Card are able to be seen as a ``viewer'' by the PitchCard's initiator.
 
 \subsection{Discussion}
-The design of this experiment was guided by two main questions: first, ``what behaviours are needed to facilitate collaboration in the innovation community?'' And second, ``how can these behaviours be verified as functional from a user's point of view?''. In regard to the first question, determining what behaviours were required was, to an extent, already completed by Callaghan Innovation through their conceptualisation of PitchHub. To formalise these behaviours Callaghan Innovation and I collaborated on the specification of the user stories.
+The design of this experiment was guided by two main questions: first, ``what behaviours are needed to facilitate collaboration in the innovation community?'' and second, ``how can these behaviours be verified as functional from a user's point of view?''. In regard to the first question, determining what behaviours were required was (to an extent) already completed by Callaghan Innovation through their conceptualisation of PitchHub. To formalise these behaviours Callaghan Innovation and I collaborated on the specification of the user stories.
 In regards to the second question, realistically simulating user interaction was identified as key. Manually testing the various behaviours and scope combinations would be time-consuming and tedious. \textit{TB1} automates this simulation with the added benefit of assertions, making it easy to verify that expected behaviour is indeed satisfied.
-Concluding on the fulfilment of requirements D1, D2.1 and D2.2 largely relies on whether the behaviours specified in relation to the first question accurately reflects the behaviour required by the innovation community. Generalising what a large population needs is a difficult task but it is my belief that because the user stories tested were created in collaboration with Callaghan Innovation, who is a large participant in the innovation community, they are therefore meet the level of credibility required for the purposes of this test. As such, it is concluded that requirements D1, D2.1 and D2.2 have been fulfilled.
+Concluding on the fulfilment of requirements D1, D2.1 and D2.2 largely relies on whether the behaviours specified in relation to the first question accurately reflects the behaviour required by the innovation community. Generalising what a large population needs is a difficult task but it is my belief that because the user stories tested were created in collaboration with Callaghan Innovation, who is a large participant in the innovation community, they therefore meet the level of credibility required for the purposes of this test. As such, it is concluded that requirements D1, D2.1 and D2.2 have been fulfilled.
 
 \section{Test \rom{2} - Deployed Prototype Analysis}\label{S:test_2}
 At the time of writing, the prototype, \textit{TB3}, has been released to Callaghan Innovation and is ready for use. However use of the prototype by Callaghan Innovation has just commenced. Without substantial activity to analyse, this test was unable to be completed. It is expected that the access code will be distributed by the Callaghan Innovation stakeholders to the wider organisation in the coming weeks.
@@ -68,26 +68,26 @@ The secret sharing service is an important part of keeping sensitive user data s
 \end{figure}
 
 \subsection{Discussion}
-Fig \ref{fig:test_4_results} illustrates the difference in mean wall-times between Secret Sharing and non-Secret Sharing configurations. It is clear that the Secret Sharing service incurs a significant loss in performance. The most prominent case is the Create Pitch Card flow, where the Secret Sharing configuration is 14x slower. There are a number of important differences between the two configurations that contribute to this loss. The most important of which is operations involved, the Create Pitch Card flow in the non-Secret Sharing configuration is essentially an insert statement followed by a redirect to the newly saved Pitch Card, whereas in the Secret Sharing configuration the Pitch Card object is split into \textit{n} shares, \textit{k-1} of these are adapted to Postgres' ORM format, each share is saved to their respective secret keepers, and on completion of the \textit{n} saves the action is concluded with a redirect to the newly saved Pitch Card. The Secret Sharing configuration is simply doing more and is therefore taking longer.
-Determining whether this overhead is acceptable is an inherently subjective task. Strictly in light of Nielsen's thresholds it is not worth it. As the non-Secret Sharing configuration meets the second threshold while the Secret Sharing configuration slips to meet the third. But ultimately, the question that must be asked is: ``Is the noticed delay and interrupted flow of thought worth the security afforded by the Secret Sharing scheme?''. Based on the nature of the data being served I believe that this overhead is indeed worth it. To view the problem from another perspective, it seems reasonable to trade 2 seconds in delay for assured security in the event that secret keepers be breached.
+Fig \ref{fig:test_4_results} illustrates the difference in mean wall-times between Secret Sharing and non-Secret Sharing configurations. It is clear that the Secret Sharing service incurs a significant loss in performance. The most prominent case is the Create Pitch Card flow, where the Secret Sharing configuration is 14x slower. There are a number of important differences between the two configurations that contribute to this loss. The most important of which is operations involved, the Create Pitch Card flow in the non-Secret Sharing configuration is essentially an insert statement followed by a redirect to the newly saved Pitch Card, whereas in the Secret Sharing configuration the Pitch Card object is split into \textit{n} shares, \textit{k-1} of these are adapted to Postgres' ORM format, each share is saved to their respective secret keeper, and on completion of the \textit{n} saves the action is concluded with a redirect to the newly saved Pitch Card. The Secret Sharing configuration is simply doing more and is therefore taking longer.
+Determining whether this overhead is acceptable is inherently subjective. Strictly in light of Nielsen's thresholds it is not worth it. As the non-Secret Sharing configuration meets the second threshold while the Secret Sharing configuration slips to meet the third. But ultimately, the question that must be asked is: ``Is the noticed delay and interrupted flow of thought worth the security afforded by the Secret Sharing scheme?''. Based on the nature of the data being served I believe that this overhead is indeed worth it. To view the problem from another perspective, it seems reasonable to trade 2 seconds in delay for assured security in the event that secret keepers are breached.
 
 \section{Test \rom{5} - Overhead of Secret Keeper Diversity}
 
 \subsection{Motivation}
-To strengthen the security afforded by the secret sharing service diversity was added to the secret keepers. A consequence of this is that the service is now only as fast as it's slowest secret keeper. Test \rom{5} seeks to measure the overhead of this added diversity and discuss whether the extra security afforded is worth the performance loss.
+To strengthen the security afforded by the secret sharing service diversity was added to the secret keepers make-up. A consequence of this is that the service is now only as fast as it's slowest secret keeper. Test \rom{5} seeks to measure the overhead of this added diversity and discuss whether the extra security afforded is worth the performance loss.
 
 Test \rom{5} uses the prototype on \textit{TB2} in a both a diverse ``3, 4'' secret sharing scheme configuration (2x MongoDB replica sets and 2x Postgres instances) and a homogeneous ``3, 4'' secret sharing scheme configuration (4x MongoDB replica sets).
 
 \subsection{MongoDB \& Postgres Comparison}\label{ss:mongoVsPostgres}
 
-MongoDB secret keepers differ from Postgres secret keepers in a number of important ways. The principal difference that MongoDB secret keepers are replica sets consisting of several machines: a primary node, the secondary nodes, and an arbiter node, whereas Postgres secret keepers consist of a single Postgres instance. While it is well known that MongoDB is less performant than Postgres in both read and write operations \cite{van2012sensor}, for the purposes of the diversity evaluation it must be noted that the MongoDB secret keepers are replica sets. As such they do extra steps on each write request to ensure that the data has been propagated to the secondary nodes. This increases the availability of each MongoDB secret keeper, but is at the cost of performance.
+MongoDB secret keepers differ from Postgres secret keepers in a number of important ways. The principal difference is that MongoDB secret keepers are replica sets consisting of several machines: a primary node, the secondary nodes, and an arbiter node, whereas Postgres secret keepers consist of a single Postgres instance. While it is well known that MongoDB is less performant than Postgres in both read and write operations \cite{van2012sensor}, for the purposes of the diversity evaluation it must be also noted that the MongoDB secret keepers are replica sets. As replica sets they do extra steps on each write request to ensure that the data has been propagated to the secondary nodes. This increases the availability of each MongoDB secret keeper, but is at the cost of performance.
 
 \subsection{Results}
 
 \begin{figure}[ht]
     \centering
     \includegraphics[width=0.6\textwidth]{experiment_5_results}
-    \caption{Comparison of the mean response times with standard deviation for PitchHub flows: display dashboard, show Pitch Card, and create Pitch Card, in both diverse and homogeneous secret keeper configurations. There is a noticeable performance difference between the two configurations where the diverse configuration performs faster. Both configurations fall under Nielsen's third threshold limit.}
+    \caption{Comparison of the mean response times with standard deviation for PitchHub flows: display dashboard, show Pitch Card, and create Pitch Card, in both diverse and homogeneous secret keeper configurations. There is a noticeable performance difference between the two configurations, where the diverse configuration performs faster. Both configurations fall under Nielsen's third threshold limit.}
     \label{fig:test_5_results}
 \end{figure}
 
@@ -95,7 +95,7 @@ MongoDB secret keepers differ from Postgres secret keepers in a number of import
 Fig \ref{fig:test_5_results} illustrates the difference in mean wall-times between Secret Sharing configurations with diverse and homogeneous secret keepers. The diverse configuration is consistently faster than the homogeneous configuration across all flows. The 10\% increase is likely because of the choice of secret keepers used, as discussed in Section \ref{ss:mongoVsPostgres}.
 Overall, these results indicate that this particular diverse configuration is worth the extra implementation effort if wall-time performance is the key metric desired. 
 
-This would be trading off availability which may present itself as a problem should Postgres instances become unavailable, resulting in their shares becoming unavailable and consequently making it harder to meet the required \textit{k} shares needed for secret reconstruction. In the case of \textit{TB2}, if both Postgres instances became unavailable the \textit{k} threshold would not be able to be met and hence the entire system would be unavailable.
+This scheme trades off availability, which may present itself as a problem should Postgres instances become unavailable. In this event, their shares becoming unavailable and consequently it is harder to meet the required \textit{k} shares needed for secret reconstruction. In the case of \textit{TB2}, if both Postgres instances became unavailable the \textit{k} threshold would not be able to be met and hence the entire system would be unavailable.
 
 
 \section{Test \rom{6} - Concurrent Load Support}
