@@ -2,7 +2,7 @@
 \chapter{Conclusions and Future Work}
 This chapter reviews the project's contributions in light of the design requirements, discusses potential future work and finally, surmises the project.
 
-\section{Review}
+\section{Review}\label{S:review}
 
 The project's principal contributions are as follows:
 
@@ -37,15 +37,15 @@ These contributions are instrumental in fulfilling the design requirements ident
     \label{fig:contribution_requirements_mapping}
 \end{figure}
 
-C2, C4, and C5.{\em X} all play roles in the fulfilment of requirements D1, D2.1, and D2.2. The user stories created in D1 capture the behaviours required by D1, D2.1, and D2.2. These user stories were used to drive the design process of the UI (C4) that C5.{\em X} ultimately uses to facilitate these behaviours. The strict adherence to the user stories throughout the design and execution of the project has culminated in artefacts that are faithful in their support of the behaviours required. This fulfilment has been verified by Test \rom{1} and thus requirements D1, D2.1, and D2.2 are concluded as fulfilled.
+The blue mapping in Figure \ref{fig:contribution_requirements_mapping} demonstrates the fulfilment of the behaviour orientated requirements: D1, D2.1, and D2.2. The user stories created in C1 capture the behaviours required by D1, D2.1, and D2.2. These user stories were used to drive the design process of the UI (C4) that C5.{\em X} ultimately uses to facilitate these behaviours. The strict adherence to the user stories throughout the design and execution of the project has culminated in artefacts that are faithful in their support of the behaviours required. This fulfilment has been verified by Test \rom{1} and thus requirements D1, D2.1, and D2.2 are concluded as fulfilled.
 
-C5.3 and C5.4 contribute to the fulfilment of requirement D2.3. Integrating the Secret Sharing scheme into the prototype and encrypting commercially sensitive data and IP at the Pitch Point level ensures unconditional security in relation to database breaches (of up to \textit{k}). As described in Section \ref{S:evaluationScope} verification of this component was out of scope of this project. Despite this, it is believed that requirement D2.3 has been fulfilled to the extent possible within the scope of this project.
+The green mapping in Figure \ref{fig:contribution_requirements_mapping} represents C5.3 and C5.4's contributions to the fulfilment of the security requirement, D2.3. Integrating the Secret Sharing scheme into the prototype and encrypting commercially sensitive data and IP at the Pitch Point level ensures unconditional security in relation to database breaches (of up to \textit{k}). As described in Section \ref{S:evaluationScope} verification of this component was out of scope of this project. Despite this, it is believed that requirement D2.3 has been fulfilled to the extent possible within the scope of this project.
 
-C3, C6 and C7 each play roles in satisfying requirement D3. The architecture (C3) aids extensibility through the tiered architecture style adopted. The virtualised development environment (C6) is key in providing portability, enabling \textit{plug-and-play} functionality for all artefact prototype variations (C5.{\em X}). C7 aids in the extensibility of the deployment process, as new tasks and environment targets can be easily added.
+The orange mapping in Figure \ref{fig:contribution_requirements_mapping} demonstrates the fulfilment of the portability/extensibility requirement, D3. The architecture (C3) aids extensibility through the tiered architecture style adopted. The virtualised development environment (C6) is key in providing portability, enabling \textit{plug-and-play} functionality for all artefact prototype variations (C5.{\em X}). C7 aids in the extensibility of the deployment process, as new tasks and environment targets can be easily added.
 
-C5.{\em X} has been used to verify the fulfilment of requirement D4 through Tests \rom{3}-\rom{6}. Specifically, Tests \rom{3}-\rom{5} verify that the main flows can be performed within Nielsen's time thresholds (in different Secret Sharing configurations) and Test 6 verifies that the prototype can sustain the expected community size's load while maintaining the mean response wall-time within the time thresholds. Therefore, in the context of Nielsen's response time thresholds requirement D4 has been met.
+The purple mapping in Figure \ref{fig:contribution_requirements_mapping} reflects the fulfilment of the performance requirement (D4). This was verified on C5.{\em X} through the Tests \rom{3}-\rom{6}. Specifically, Tests \rom{3}-\rom{5} verified that the main flows can be performed within Nielsen's time thresholds (in different Secret Sharing configurations) and Test 6 verified that the prototype can sustain the expected community size's load while maintaining the mean response wall-time within the time thresholds. Therefore, in the context of Nielsen's response time thresholds requirement D4 has been met.
 
-C3 demonstrates the distributed architecture PitchHub is built upon in satisfaction of requirement D5. Ultimately through C5.3 and C5.4's verification of C3's design in their implementation and evaluation it is concluded that requirement D5 has been satisfied.
+The pink mapping in Figure \ref{fig:contribution_requirements_mapping} showcases the fulfilment of the distributed requirement, D5. C3 demonstrates the distributed architecture PitchHub is built upon in satisfaction of requirement D5. Ultimately through C5.3 and C5.4's verification of C3's design in their implementation and evaluation it is concluded that requirement D5 has been satisfied.
 
 \section{Future Work}
 
@@ -62,3 +62,11 @@ Future work concentrating on the usability of PitchHub could focus on evaluating
 \subsection{RealMe Integration}
 
 When PitchHub is released to the public it may be open to abuse by users creating fake accounts. These fake accounts may be used maliciously to view others' IP or contribute unhelpful suggestions. Therefore it is important for users on PitchHub to be verified as being who they say they are so that there may be a sense of accountability. A service like RealMe would be ideal for this as it is maintained by the Department of Internal Affairs and the actual identity verification process is facilitated by them. To integrate RealMe into PitchHub would require using RealMe's SAML service for authentication.
+
+\section{Summary}
+
+This project has produced and evaluated PitchHub, an online collaboration platform for the innovation community. PitchHub provides explicit collaboration support for all roles in the innovation community, enables users to audit/scope the dissemination of their content, and ensures that all potentially commercially-sensitive content is stored securely.
+
+The evaluation of the prototype demonstrated two key aspects. First, that PitchHub can support the size of the New Zealand innovation community and second, that PitchHub satisfies Nielsen's response time thresholds (across all the configurations tested). 
+
+Ultimately by having been accepted into Callaghan Innovation, the artefact produced was successful in it's aim of facilitating innovation collaboration.
