@@ -97,6 +97,16 @@
       {]}{{{\color{delim}{]}}}}{1},
 }
 
+\makeatletter
+\renewcommand{\@chapapp}{}% Not necessary...
+\newenvironment{chapquote}[2][2em]
+  {\setlength{\@tempdima}{#1}%
+   \def\chapquote@author{#2}%
+   \parshape 1 \@tempdima \dimexpr\textwidth-2\@tempdima\relax%
+   \itshape}
+  {\par\normalfont\hfill--\ \chapquote@author\hspace*{\@tempdima}\par\bigskip}
+\makeatother
+
 \graphicspath{ {images/} }
 
 % font
@@ -131,7 +141,7 @@ The ability to connect innovative ideas to people and resources is a critical pa
 
 \maketitle
 
-% \include{acknowledge}
+\include{acknowledge}
 
 \tableofcontents
 
